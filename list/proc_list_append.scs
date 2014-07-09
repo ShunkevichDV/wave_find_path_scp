@@ -48,7 +48,7 @@ scp_program -> proc_list_append (*
 			*);;
 
 			-> .proc_list_append_operator_return (*
-				<-return;;
+				<- return;;
 			*);;	
 		*);;
 
