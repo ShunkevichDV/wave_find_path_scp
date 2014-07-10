@@ -18,7 +18,7 @@ scp_program -> proc_find_min_path (*
 		
 			->rrel_set_5: rrel_assign: rrel_scp_var: _not_checked_vertexes;;
 			=> nrel_then: .proc_find_min_path_operator2;;		
-		 	=> nrel_else: .proc_find_min_path_operator6_1;;	//end operator(empty graph)
+		 	=> nrel_else: .proc_find_min_path_operator_erase_not_checked_vertexes;;	
 		*);;
 //	Удаление из множества непроверенных узла начала пути.
 		-> .proc_find_min_path_operator2 (*
@@ -52,7 +52,7 @@ scp_program -> proc_find_min_path (*
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_new_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
-				-> rrel_2: rrel_fixed: rrel_scp_var: _waves_list_head;;
+				-> rrel_2: rrel_assign: rrel_scp_var: _waves_list_head;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -121,7 +121,7 @@ scp_program -> proc_find_min_path (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _new_wave;;
 				-> rrel_3: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
-				-> rrel_4: rrel_fixed: rrel_scp_var: _new_wave;;
+				-> rrel_4: rrel_assign: rrel_scp_var: _new_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -173,7 +173,7 @@ scp_program -> proc_find_min_path (*
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_new_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
-				-> rrel_2: rrel_fixed: rrel_scp_var: _waves_list_curr;;
+				-> rrel_2: rrel_assign: rrel_scp_var: _waves_list_curr;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -222,7 +222,7 @@ scp_program -> proc_find_min_path (*
 // Новая волна не пуста.
 			=> nrel_then: .proc_find_min_path_operator24;;
 // Новая волна пуста. Очищаем память и завершаем алгоритм.
-			=> nrel_else: .proc_find_min_path_operator_erase_waves_list;; //end of program
+			=> nrel_else: .proc_find_min_path_operator_erase_waves_list;; 
 		*);;
 
 // 6. Если в текущей волне есть конечная вершина, то перейти к пункту 7, иначе к пункту 4.
@@ -322,7 +322,7 @@ scp_program -> proc_find_min_path (*
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_vertex_visit_to_route_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _beg_vertex;;
-				-> rrel_3: rrel_fixed: rrel_scp_var: _beg_vertex_visit;;
+				-> rrel_3: rrel_assign: rrel_scp_var: _beg_vertex_visit;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -343,7 +343,7 @@ scp_program -> proc_find_min_path (*
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_vertex_visit_to_route_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _end_vertex;;
-				-> rrel_3: rrel_fixed: rrel_scp_var: _end_vertex_visit;;
+				-> rrel_3: rrel_assign: rrel_scp_var: _end_vertex_visit;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -372,8 +372,8 @@ scp_program -> proc_find_min_path (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_prev;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_get_prev_params (*
-				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
-				-> rrel_2: rrel_fixed: rrel_scp_var: _end_vertex;;
+				-> rrel_1: rrel_fixed: rrel_scp_var: _waves_list_tail;;
+				-> rrel_2: rrel_assign: rrel_scp_var: _list_it;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -388,42 +388,123 @@ scp_program -> proc_find_min_path (*
 		*);;
 //	Цикл построения структуры маршрута
 
+		-> .proc_find_min_path_operator40 (*
+			<- ifVarAssign;;
+			-> rrel_1: _list_it;;
+
+		 	=> nrel_then: .proc_find_min_path_operator41;;
+			=> nrel_else: .proc_find_min_path_operator_erase_waves_list;; 
+		*);;
+
+		-> .proc_find_min_path_operator41 (*
+			<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_value;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_get_value_params (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _list_it;;
+				-> rrel_2: rrel_assign: rrel_scp_var: _cur_wave;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: .proc_find_min_path_operator42;;
+		*);;
+
+		-> .proc_find_min_path_operator42 (*
+			<- waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+
+		 	=> nrel_goto: .proc_find_min_path_operator43;;
+		*);;
+
+		-> .proc_find_min_path_operator43 (*
+			<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_find_any_edge;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_find_any_edge_params (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
+				-> rrel_2: rrel_fixed: rrel_scp_var: _cur_vertex;;
+				-> rrel_3: rrel_fixed: rrel_scp_var: _cur_wave;;
+				-> rrel_4: rrel_assign: rrel_scp_var: _edge;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: .proc_find_min_path_operator44;;
+		*);;
+
+		-> .proc_find_min_path_operator44 (*
+			<- waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+
+		 	=> nrel_goto: .proc_find_min_path_operator45;;
+		*);;
+//	Получаем предыдущую вершину в пути.
+		-> .proc_find_min_path_operator45 (*
+			<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_other_vertex_incidence_edge;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_get_other_vertex_incidence_edge_params (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _edge;;
+				-> rrel_2: rrel_fixed: rrel_scp_var: _cur_vertex;;
+				-> rrel_3: rrel_assign: rrel_scp_var: _prev_vertex;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: .proc_find_min_path_operator46;;
+		*);;
+
+		-> .proc_find_min_path_operator46 (*
+			<- waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+
+		 	=> nrel_goto: .proc_find_min_path_operator47;;
+		*);;
+//	Добавляем посещение ребра edge в путь.
+		-> .proc_find_min_path_operator47 (*
+			<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_add_edge_visit_to_route;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_edge_visit_to_route_params (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
+				-> rrel_2: rrel_fixed: rrel_scp_var: _edge;;
+				-> rrel_3: rrel_fixed: rrel_scp_var: _prev_vertex;;
+				-> rrel_4: rrel_fixed: rrel_scp_var: _cur_vertex;;
+				-> rrel_5: rrel_assign: rrel_scp_var: _edge_visit;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: .proc_find_min_path_operator48;;
+		*);;
+
+		-> .proc_find_min_path_operator48 (*
+			<- waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+
+		 	=> nrel_goto: .proc_find_min_path_operator49;;
+		*);;
+//	Делаем предыдущую вершину текущей.
+		->.proc_find_min_path_operator49 (*
+			<-varAssign;;
+			-> rrel_1: rrel_assign: rrel_scp_var: _cur_vertex;;
+			-> rrel_2: rrel_fixed: rrel_scp_var: _prev_vertex;;
+
+			=>nrel_goto: .proc_find_min_path_operator50;;
+		*);;
+
+		-> .proc_find_min_path_operator50 (*
+			<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_prev;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_get_prev_params (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _list_it;;
+				-> rrel_2: rrel_assign: rrel_scp_var: _list_it;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: .proc_find_min_path_operator51;;
+		*);;
 		
+		-> .proc_find_min_path_operator51 (*
+			<- waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		 	=> nrel_goto: .proc_find_min_path_operator40;;
+		*);;
+// Чистим память.
 		-> .proc_find_min_path_operator_erase_waves_list (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_erase_waves_list;;
