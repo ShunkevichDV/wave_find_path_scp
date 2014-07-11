@@ -27,8 +27,8 @@ scp_program -> proc_list_erase (*
 			<- call;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_next;;
 		  	-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_append_operator4_params (*
-					-> rrel_1: rrel_fixed: rrel_scp_var: _previous_element;;
-					-> rrel_2: rrel_fixed: rrel_scp_var: _current_element;;
+					-> rrel_1: _previous_element;;
+					-> rrel_2: _current_element;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 

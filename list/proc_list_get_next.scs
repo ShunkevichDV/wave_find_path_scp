@@ -25,7 +25,7 @@ scp_program -> proc_list_get_next(*
 			-> rrel_fixed:  rrel_scp_const: _list_next;;
 
 			=> nrel_then: .proc_list_get_next_operator_return;;
-			=> nrel_then: .proc_list_get_next_operator_return;;
+			=> nrel_else: .proc_list_get_next_operator_return;;
 		*);;
 
 		-> .proc_list_get_next_operator_return (*
