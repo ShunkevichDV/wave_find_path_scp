@@ -1,0 +1,74 @@
+// ѕроцедура получени€ вершин, инцидентных ребру.
+// ”читывает кратное вхождение вершин, т.е. петлю.
+//
+scp_program -> proc_get_edge_vertexes (*
+	
+	-> rrel_params: .proc_get_edge_vertexes_params (*
+		rrel_1: rrel_in: _edge;;
+		rrel_2: rrel_out: _vertex1;;
+		rrel_3: rrel_out: _vertex2;;
+	*);;
+
+	-> rrel_operators: .proc_get_edge_vertexes_operator_set (*
+
+		// —оздаем копию множества вершин, инцидентных ребру			
+			<- searchSetStr3;;
+			-> rrel_1: rrel_fixed: _edge;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
+			-> rrel_3: rrel_assign: _temp;;	
+			-> rrel_set_3: rrel_assign: _edge_copy;;
+
+			=> nrel_then: .proc_get_edge_vertexes_operator2;;
+			=> nrel_else: .proc_get_edge_vertexes_operator2;;
+		//
+		rrel_init: .proc_get_edge_vertexes_operator1 (*
+
+		*);;
+
+		// »щем в копии множества вершин, инцидентных ребру, любую вершину и считаем ее за первую
+		//
+		-> .proc_get_edge_vertexes_operator2 (*
+			<- searchElStr3;;
+			-> rrel_1: rrel_fixed: _edge_copy;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_const: rrel_pos_: arc2;;
+			-> rrel_3: rrel_assign: _vertex1;;
+			
+			=> nrel_then: .proc_get_edge_vertexes_operator3;;
+			=> nrel_else: .proc_get_edge_vertexes_operator3;;	
+		*);;
+
+		// ”дал€ем из копии множества вершин, инцидентных ребру, первую вершину
+		//
+		-> .proc_get_edge_vertexes_operator3 (*
+			<- eraseEl;;
+			-> rrel_1: rrel_fixed: rrel_erase: rrel_scp_var: _arc2;;
+			
+			-> nrel_goto: .proc_get_edge_vertexes_operator4;;		
+		*);;
+
+		// »щем в копии множества вершин, инцидентных ребру, оставшуюс€ вершину, и считаем ее за вторую
+		//
+		-> .proc_get_edge_vertexes_operator4 (*
+			<- searchElStr3;;
+			-> rrel_1: rrel_fixed: _edge_copy;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_const: rrel_pos: _arc2;;
+			-> rrel_3: rrel_assign: _vertex2;;
+			
+			=> nrel_then: .proc_get_edge_vertexes_operator5;;
+			=> nrel_else: .proc_get_edge_vertexes_operator5;;	
+		*);;
+
+		// ќчищаем пам€ть от копии множества вершин, инцидентных ребру
+		//
+		-> .proc_get_edge_vertexes_operator5 (*
+			<- eraseEl;;
+			-> rrel_1: rrel_fixed: rrel_erase: rrel_scp_var: _edge_copy;;
+			
+			-> nrel_goto: .proc_get_edge_vertexes_operator_return;;		
+		*);;
+
+		-> .proc_get_edge_vertexes_operator_return (*
+			<- return;;
+		*);;	
+	*);;
+*);;
