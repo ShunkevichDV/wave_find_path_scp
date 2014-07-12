@@ -35,7 +35,7 @@ scp_program -> proc_list_prepend (*
 			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: arc2;;
 			-> rrel_3: rrel_fixed: _current_element;;
 			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: arc4;;
-			-> rrel_5: rrel_fixed_: _list_next;;
+			-> rrel_5: rrel_fixed: rrel_const:  rrel_list_next;;
 			
 			=> nrel_then: .proc_list_prepend_operator4;;
 			=> nrel_else: .proc_list_prepend_operator6;;
@@ -54,7 +54,7 @@ scp_program -> proc_list_prepend (*
 			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: arc2;;
 			-> rrel_3: rrel_fixed: _new_element;;
 			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: arc4;;
-			-> rrel_5: rrel_fixed: _list_next;;
+			-> rrel_5: rrel_fixed: rrel_const: rrel_list_next;;
 
 			=> nrel_goto: .proc_list_prepend_operator6;;
 		*);;
@@ -65,7 +65,7 @@ scp_program -> proc_list_prepend (*
 			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: arc2;;
 			-> rrel_3: rrel_fixed: _current_element;;
 			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: arc4;;
-			-> rrel_5: rrel_fixed: _list_next;;
+			-> rrel_5: rrel_fixed: rrel_const: rrel_list_next;;
 
 			=> nrel_goto:  .proc_list_prepend_operator_return;;
 		*);;
