@@ -1,0 +1,86 @@
+// Для отношения _relation находит связку отношения, в которой элементом с атрибутом _value_attribute является _value. 
+// 
+scp_program -> proc_bin_ord_at (*
+	
+	-> rrel_params: .proc_bin_ord_at_params (*
+		-> rrel_1: rrel_in: _relation;; 
+		-> rrel_2: rrel_in: _value;;
+		-> rrel_3: rrel_in: _value_attribute;;
+		-> rrel_4: rrel_out: _result;;
+	*);;
+
+	-> rrel_operators: .proc_bin_ord_at_operator_set (*
+		
+		// Создаем множество всех связок отношения
+		//
+		-> rrel_init: .proc_bin_ord_at_operator1 (*
+			<- searchSetStr3;;
+			-> rrel_1: rrel_fixed: _relation;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_const: rrel_pos: _arc2;;
+			-> rrel_3: rrel_assign: _element;;
+			-> rrel_set_3: rrel_assign: _connectives;;
+
+		=> nrel_then: .proc_bin_ord_at_operator2;;
+		=> nrel_else: .proc_bin_ord_at_operator2;;
+		*);;
+
+		// Итерация по всем связкам
+		//
+		-> .proc_bin_ord_at_operator2 (*
+			<- searchElStr3;;
+			-> rrel_1: rrel_fixed: _connectives;;
+			-> rrel_2: rrel_assign: _arc2;;
+			-> rrel_3: rrel_assign: _current_connective;;
+			
+			=> nrel_then: ,proc_bin_ord_at_operator3;;
+			=> nrel_else: .proc_bin_ord_at_operator7;;			
+		*);;
+
+		-> .proc_bin_ord_at_operator3 (*
+			<- eraseEl;;
+			-> rrel_1: rrel_fixed:rrel_erase: rrel_scp_var: _arc2;;
+			
+			-> nrel_goto: .proc_bin_ord_at_operator4;;
+		*);;
+
+		-> .proc_bin_ord_at_operator4 (*
+			<- searchElStr5;;
+			-> rrel_1: rrel_fixed: _current_connective;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
+			-> rrel_3: rrel_assign: _current_value;;
+			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed: _value_attribute;;
+	
+			=> nrel_then: .proc_bin_ord_at_operator5;;
+			=> nrel_then: .proc_bin_ord_at_operator2;;
+		*);;
+
+		-> .proc_bin_ord_at_operator_5 (*
+			<- ifCoin;;
+			-> rrel_1: rrel_fixed: _current_value;;
+			-> rrel_2: rrel_fixed: _value;;
+
+			=> nrel_then: .proc_bin_ord_at_operator6;;
+			=> nrel_else: ,proc_bin_ord_at_operator2;;
+		*);;
+
+		-> ,proc_bin_ord_at_operator6 (*
+			<- varAssign;;
+			-> rrel_1: _result;;
+			-> rrel_2: rrel_fixed: _current_connective;;
+			
+			=> nrel_goto: .proc_bin_ord_at_operator7;;
+		*);;	
+
+		-> .proc_bin_ord_at_operator7 (*
+			<- eraseEl;;
+			-> rrel_1: rrel_fixed:rrel_erase: rrel_scp_var: _connectives;;
+
+			=> nrel_goto: .proc_bin_ord_at_operator_return;;
+		*);;
+
+		-> .proc_bin_ord_at_operator_return (*
+			<- return;;
+		*);;	 
+	*);;
+*);;
