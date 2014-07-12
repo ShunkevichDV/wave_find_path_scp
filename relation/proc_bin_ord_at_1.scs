@@ -1,0 +1,60 @@
+//Процедура поиска связки бинарного отношения по второму элементу связки
+//Возвращает элемент найденной связки под первым атрибутом.
+scp_program -> proc_bin_ord_at_1 (*
+	
+	-> rrel_params: .proc_bin_ord_at_1_params (*
+		-> rrel_1: rrel_in: _relation;;
+		-> rrel_2: rrel_in: _second;;
+		-> rrel_3: rrel_out: _first;;  
+	*);;
+
+	-> rrel_operators: .proc_bin_ord_at_1_operator_set (*
+		
+		-> rrel_init: .proc_bin_ord_at_1_operator1 (*
+			<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_bin_ord_at;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_bin_ord_at_1_operator1_params (*
+				-> rrel_1:  _relation;;
+				-> rrel_2:  _second;;
+				-> rrel_3: rrel_2;
+				-> rrel_4: _connective;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: .proc_bin_ord_at_1_operator2;; 
+		*);;
+
+		-> .proc_bin_ord_at_1_operator2 (*
+			<-waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+
+		  	=> nrel_goto: .proc_bin_ord_at_1_operator3;;
+		*);;		
+
+		-> .proc_bin_ord_at_1_operator3 (*
+			<- ifVarAssign;;
+			-> rrel_1: _connective;;
+
+			=> nrel_then: .proc_bin_ord_at_1_operator4;;
+			=> nrel_else: .proc_bin_ord_at_1_operator_return;;
+		*);;
+
+		// Получаем первый элемент найденной связки
+		//
+		-> .proc_bin_ord_at_1_operator4 (*
+			<- searchElStr5;;
+			-> rrel_1: rrel_fixed: _connective;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
+			-> rrel_3: rrel_assign: _first;;
+			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed: rrel_1;;
+	
+			=> nrel_then: .proc_bin_ord_at_1_operator_return;;
+			=> nrel_else: .proc_bin_ord_at_1_operator_return;;
+		*);;
+
+		-> .proc_bin_ord_at_1_operator_return (*
+			<- return;;
+		*);;	 
+	*);;
+*);;

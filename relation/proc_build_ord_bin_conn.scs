@@ -1,0 +1,57 @@
+// Создает бинарную ориентированную константную связку отношения relation, которая
+// имеет в качестве элемента с атрибутом 1_ value_at_1, с атрибутом 2_ - value_at_2.
+//
+scp_program -> proc_build_ord_bin_conn (*
+
+	-> rrel_params: .proc_build_ord_bin_conn_params (*
+		-> rrel_1: rrel_in: _relation;;
+		-> rrel_2: rrel_in: _value_at_1;;
+		-> rrel_3: rrel_in: _value_at_2;;
+		-> rrel_4: rrel_out: _connective;;  
+	*);;	
+
+	-> rrel_operators: .proc_build_ord_bin_conn_operator_set (*
+		
+		-> rrel_init: .proc_build_ord_bin_conn_operator1 (*
+			<- genEl;;
+			-> rrel_1: rrel_assign: rrel_node: rrel_const: _connective;;
+
+			=> nrel_goto: .proc_build_ord_bin_conn_operator2;;
+		*);;
+
+		-> .proc_build_ord_bin_conn_operator2 (*
+			<- genElStr3;;
+			-> rrel_1: rrel_fixed: _relation;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_const: rrel_pos: _arc2;;
+			-> rrel_3: rrel_fixed: _connective;;			
+		
+			=> nrel_goto: .proc_build_ord_bin_conn_operator3;;
+		*);;
+
+		-> .proc_build_ord_bin_conn_operator3 (*
+			<- getElStr5;;
+			-> rrel_1: rrel_fixed: _connective;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
+			-> rrel_3: rrel_fixed: _value_at_1;;
+			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed: rrel_1;;		
+
+			=> nrel_goto: .proc_build_ord_bin_conn_operator4;;
+		*);;
+
+		-> .proc_build_ord_bin_conn_operator4 (*
+			<- getElStr5;;
+			-> rrel_1: rrel_fixed: _connective;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
+			-> rrel_3: rrel_fixed: _value_at_2;;
+			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed: rrel_2;;		
+
+			=> nrel_goto: .proc_build_ord_bin_conn_operator_return;;
+		*);;	
+
+		-> .proc_build_ord_bin_conn_operator_return (*
+			<- return;;
+		*);;	 
+	*);;
+*);;
