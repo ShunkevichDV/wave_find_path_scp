@@ -18,7 +18,7 @@ scp_program -> proc_create_wave (*
 		-> .proc_create_wave_operator2 (*
 			 <- searchSetStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _wave;;
-			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _el3;;
 		
 			->rrel_set_3: rrel_assign: rrel_scp_var: _wave_copy;;
@@ -29,7 +29,7 @@ scp_program -> proc_create_wave (*
 		-> .proc_create_wave_operator3 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _wave_copy;;
-			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _vertex;;
 
 			=> nrel_then: .proc_create_wave_operator4;;
@@ -46,9 +46,9 @@ scp_program -> proc_create_wave (*
 		.proc_create_wave_operator5 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: graph;;
-			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _el3;;
-			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
+			-> rrel_4: rrel_assign: rrel_pos: rrel_scp_var: _arc4;;
 			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_edge;;
 		
 			->rrel_set_3: rrel_assign: rrel_scp_var: _edges_set;;
@@ -59,7 +59,7 @@ scp_program -> proc_create_wave (*
 		-> .proc_create_wave_operator6 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _edges_set;;
-			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _edge;;
 
 			=> nrel_then: .proc_create_wave_operator7;;
@@ -79,7 +79,7 @@ scp_program -> proc_create_wave (*
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_get_other_vertex_incidence_edge_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _edge;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _vertex;;
-				-> rrel_1: rrel_assign: rrel_scp_var: _other_vertex;;
+				-> rrel_3: rrel_assign: rrel_scp_var: _other_vertex;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -121,7 +121,7 @@ scp_program -> proc_create_wave (*
 		-> .proc_create_wave_operator13 (*
 			<- genElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _other_vertex;;
 
 			=> nrel_goto: .proc_create_wave_operator6;;
