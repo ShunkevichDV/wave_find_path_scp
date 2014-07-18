@@ -41,7 +41,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator4 (*
 			<- genElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _beg_vertex;;
 
 			=> nrel_goto: .proc_find_min_path_operator5;;
@@ -267,7 +267,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator28 (*
 			<- genElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: directed_graph;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _route_stuct;;
 
 			=> nrel_goto: .proc_find_min_path_operator29;;
@@ -276,9 +276,9 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator29 (*
 			<- genElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _route_stuct;;
-			-> rrel_4: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc4;;
+			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
 			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_1;;
 
 			=> nrel_goto: .proc_find_min_path_operator30;;
@@ -287,9 +287,9 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator30 (*
 			<- genElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _graph;;
-			-> rrel_4: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc4;;
+			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
 			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_2;;
 
 			=> nrel_goto: .proc_find_min_path_operator31;;
@@ -298,9 +298,9 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator31 (*
 			<- genElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _route_visit;;
-			-> rrel_4: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc4;;
+			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
 			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_3;;
 
 			=> nrel_goto: .proc_find_min_path_operator32;;
@@ -309,7 +309,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator32 (*
 			<- genElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: nrel_simple_trail;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _route;;
 
 			=> nrel_goto: .proc_find_min_path_operator33;;
