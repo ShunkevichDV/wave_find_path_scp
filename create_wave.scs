@@ -126,14 +126,14 @@ scp_program -> proc_create_wave (*
 
 			=> nrel_goto: .proc_create_wave_operator6;;
 		*);;
-
+//  ѕосле каждого цикла итерации по ребрам будем выполн€ть очистку пам€ти
 		-> .proc_create_wave_operator_erase_edges_set (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _edges_set;;
 
 			=> nrel_goto: .proc_create_wave_operator3;;
 		*);;
-
+// ”дал€ем копию волны.
 		-> .proc_create_wave_operator_erase_wave_copy (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _wave_copy;;

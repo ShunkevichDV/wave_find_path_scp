@@ -41,7 +41,7 @@ scp_program -> proc_print_graph (*
 
 			=> nrel_goto: .proc_print_graph_operator5;;
 		*);;
-
+//	Получаем вершины, инцидентные ребру.
 		-> .proc_print_graph_operator5 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_edge_vertexes;;
@@ -61,7 +61,7 @@ scp_program -> proc_print_graph (*
 
 			=> nrel_goto: .proc_print_graph_operator7;;
 		*);;	
-
+//	Выводим идентификатор первой вершины.
 		.proc_print_graph_operator7 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _first_inc_vertex;;
@@ -87,7 +87,7 @@ scp_program -> proc_print_graph (*
 
 			=>nrel_goto: .print_graph_operator10;;
 		*);;
-
+//	Выводим идентификатор второй вершины.
 		.proc_print_graph_operator10 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _second_inc_vertex;;
@@ -106,7 +106,7 @@ scp_program -> proc_print_graph (*
 
 			=>nrel_goto: .proc_print_graph_operator12;;
 		*);;
-
+//	Добавляем вершины в множество выведенных.
 		-> .proc_print_graph_operator12 (*
 			<- genElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _printed_vertexes;;
