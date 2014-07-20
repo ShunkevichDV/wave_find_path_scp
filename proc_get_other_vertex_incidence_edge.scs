@@ -14,57 +14,13 @@ scp_program -> proc_get_other_vertex_incidence_edge (*
 		// Создаем копию множества вершин, инцидентных ребру
 		//
 		-> rrel_init: .proc_get_other_vertex_incidence_edge_operator1 (*
-			<- searchSetStr3;;
-			-> rrel_1: rrel_fixed: _edge;;
-			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
-			-> rrel_3: rrel_assign: _temp;;	
-			-> rrel_set_3: rrel_assign: _edge_copy;;
-
-			=> nrel_then: .proc_get_other_vertex_incidence_edge_operator2;;
-			=> nrel_else: .proc_get_other_vertex_incidence_edge_operator2;;
-		*);;
-
-		// Ищем в множестве вершин, инцидентных ребру, дугу, связывающее первую вершину с ребром графа 
-		//
-		-> .proc_get_other_vertex_incidence_edge_operator2(*
 			<- searchElStr3;;
-			-> rrel_1: rrel_fixed: _edge_copy;;
-			-> rrel_2: rrel_assign: rrel_arc: rrel_const: rrel_pos_: arc2;;
-			-> rrel_3: rrel_assign: _vertex1;;
-			
-			=> nrel_then: .proc_get_other_vertex_incidence_edge_operator3;;
-			=> nrel_else: .proc_get_other_vertex_incidence_edge_operator5;;				
-		*);;
+			-> rrel_1: rrel_fixed: _vertex1;;
+			-> rrel_2: rrel_fixed: rrel_common: _edge;;
+			-> rrel_3: rrel_assign: _vertex2;;	
 
-		// Удаляем из множества вершин, инцидентных ребру, первую вершину
-		//
-		-> .proc_get_other_vertex_incidence_edge_operator3 (*
-			<- eraseEl;;
-			-> rrel_1: rrel_fixed: rrel_erase: rrel_scp_var: _arc2;;
-			
-			-> nrel_goto: .proc_get_other_vertex_incidence_edge_operator4;;		
-		*);;
-
-		// Ищем в копии множества вершин, инцидентных ребру, оставшуюся вершину, и считаем ее за вторую
-		//		
-		-> .proc_get_other_vertex_incidence_edge_operator4 (*
-			<- searchElStr3;;
-			-> rrel_1: rrel_fixed: _edge_copy;;
-			-> rrel_2: rrel_assign: rrel_arc: rrel_const: rrel_pos: _arc2;;
-			-> rrel_3: rrel_assign: _vertex2;;
-			
-			=> nrel_then: .proc_get_other_vertex_incidence_edge_operator5;;
-			=> nrel_else: .proc_get_other_vertex_incidence_edge_operator5;;	
-		*);;		
-
-
-		// Очищаем память от копии множества вершин, инцидентных ребру
-		//
-		-> .proc_get_other_vertex_incidence_edge_operator5 (*
-			<- eraseEl;;
-			-> rrel_1: rrel_fixed: rrel_erase: rrel_scp_var: _edge_copy;;
-			
-			-> nrel_goto: .proc_get_other_vertex_incidence_edge_operator_return;;		
+			=> nrel_then: .proc_get_other_vertex_incidence_edge_operator_return;;
+			=> nrel_else: .proc_get_other_vertex_incidence_edge_operator_return;;
 		*);;
 
 		-> .proc_get_other_vertex_incidence_edge_operator_return (*

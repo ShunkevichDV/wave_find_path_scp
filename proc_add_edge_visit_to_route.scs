@@ -75,91 +75,56 @@ scp_program -> proc_add_edge_visit_to_route (*
 
 		  	=> nrel_goto: .proc_add_edge_visit_to_route_operator7;;
 		*);;
-		
-		// Создаём посещение связки
+
+		//Получаем посещение вершины _to_vertex.
 		//
 		-> .proc_add_edge_visit_to_route_operator7 (*
-			<- genEl;;
-			-> rrel_1: rrel_assign: rrel_node: rrel_const: _edge_visit;;
-
+			<- searchElStr5;;
+			-> rrel_1: rrel_assign: _to_vertex_visit;;
+			-> rrel_2: rrel_assign: rrel_common: _arc2;;
+			-> rrel_3: rrel_fixed: _to_vertex;;
+			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed: _route_visit;;
+			
 			=> nrel_goto: .proc_add_edge_visit_to_route_operator8;;
-		*);;
+		*);
 		
-		// Добавим _edge_visit как дугу в структуру маршрута
+		// Создаём посещение дуги...
 		//
 		-> .proc_add_edge_visit_to_route_operator8 (*
-			<- getElStr5;;
-			-> rrel_1: rrel_fixed: _route_struct;;
-			-> rrel_2: rrel_arc: rrel_pos: rrel_const: _arc2;;
-			-> rrel_3: rrel_fixed: _edge_visit;;
-			-> rrel_4: rrel_assign: rrel_pos: rrel_const: _arc4;;
-			-> rrel_5: rrel_fixed: rrel_const: rrel_arc;;
-
+			<- genElStr3;;
+			-> rrel_1: rrel_fixed: _from_vertex_visit;;
+			-> rrel_2: rrel_assign: rrel_common: _edge_visit;;
+			-> rrel_3: rrel_fixed: _to_vertex_visit;;
+			
 			=> nrel_goto: .proc_add_edge_visit_to_route_operator9;;
 		*);;
+
+		// Добавим её в структуру маршрута.
+		//
+		-> .proc_add_edge_visit_to_route_operator9 (*
+			<- getElStr5;;
+			-> rrel_1: rrel_fixed: _route_struct;;
+			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
+			-> rrel_3: rrel_fixed: _edge_visit;;
+			-> rrel_4: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed: rrel_const: rrel_arc;;
+
+			=> nrel_goto: .proc_add_edge_visit_to_route_operator10;;
+		*);;
+		
 	
 		// Укажем, что _edge_visit является посещением edge
 		//
-		-> .proc_add_edge_visit_to_route_operator9 (*
-			<- call;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: proc_build_ord_bin_conn;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_edge_visit_to_route_operator9_params (*
-				-> rrel_1: _route_visit;;
-				-> rrel_2: _edge_visit;;
-				-> rrel_3: _connective;;
-				-> rrel_4: _conn;;
-			*);;
-			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
-
-			=> nrel_goto: .proc_add_edge_visit_to_route_operator10;; 
-		*);;
-
-		// Укажем, что дуга edge_visit выходит из from_vertex_visit.
-		//
 		-> .proc_add_edge_visit_to_route_operator10 (*
-			<- getElStr5;;
-			-> rrel_1: rrel_fixed: _edge_visit;;
-			-> rrel_2: rrel_arc: rrel_pos: rrel_const: _arc2;;
-			-> rrel_3: rrel_fixed: _from_vertex_visit;;
-			-> rrel_4: rrel_assign: rrel_pos: rrel_const: _arc4;;
-			-> rrel_5: rrel_fixed: rrel_const: rrel_1;;
-
-			=> nrel_goto: .proc_add_edge_visit_to_route_operator11;;
-		*);;
-
-		// Найдем посещение для вершины _to_vertex.
-		//
-		-> .proc_add_edge_visit_to_route_operator11 (*
-			<- call;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: proc_bin_ord_at_1;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_edge_visit_to_route_operator11_params (*
-				-> rrel_1: _route_visit;;
-				-> rrel_2: _to_vertex;;
-				-> rrel_3: _to_vertex_visit;;
-			*);;
-			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
-
-			=> nrel_goto: .proc_add_edge_visit_to_route_operator12;; 
-		*);;
-
-		-> .proc_add_edge_visit_to_route_operator12 (*
-			<-waitReturn;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
-
-		  	=> nrel_goto: .proc_add_edge_visit_to_route_operator13;;
-		*);;
-
-		// Укажем, что дуга @p edge_visit входит в @p to_vertex_visit.
-		//
-		-> .proc_add_edge_visit_to_route_operator13 (*
-			<- getElStr5;;
-			-> rrel_1: rrel_fixed: _edge_visit;;
-			-> rrel_2: rrel_arc: rrel_pos: rrel_const: _arc2;;
-			-> rrel_3: rrel_fixed: _to_vertex_visit;;
-			-> rrel_4: rrel_assign: rrel_pos: rrel_const: _arc4;;
-			-> rrel_5: rrel_fixed: rrel_const: rrel_2;;
-
-			=> nrel_goto: .proc_add_edge_visit_to_route_operator_return;;
+				<- genElStr5;;
+				-> rrel_1: rrel_fixed: _edge_visit;;
+				-> rrel_2: rrel_assign: rrel_common: arc2;;
+				-> rrel_3: rrel_fixed: _edge;;
+				-> rrel_4: rrel_assign: rrel_pos: rrel_const: _arc4;;
+				-> rrel_5: rrel_fixed: _route_visit;;
+				
+				=> nrel_goto: .proc_add_edge_visit_to_route_operator_return;; 
 		*);;
 
 		-> .proc_add_edge_visit_to_route_operator_return (*

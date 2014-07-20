@@ -52,46 +52,34 @@ scp_program -> proc_add_vertex_visit_to_route (*
 		  	=> nrel_goto: .proc_add_vertex_visit_to_route_operator5;;
 		*);;
 
-		// ѕровер€ем, может уже есть посещение дл€ этой вершины существует
+		// ѕровер€ем, может посещение дл€ этой вершины уже существует
 		//
-		-> .proc_add_vertex_visit_to_route_operator5 (*
-			<- call;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: proc_bin_ord_at_1;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_vertex_visit_to_route_operator5_params (*
-				-> rrel_1: _route_visit;;
-				-> rrel_2: _vertex;;
-				-> rrel_3: _vertex_visit;;
-			*);;
-			-> rrell_3: rrel_assign: rrel_scp_var: _descr;;
 
-			=> nrel_goto: .proc_add_vertex_visit_to_route_operator6;;
-		*);;
-	
-		-> .proc_add_vertex_visit_to_route_operator6 (*
-			<-waitReturn;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+		.proc_add_vertex_visit_to_route_operator_5 (*
+			-> searchElStr5;;
+			-> rrel_1: rrel_assign: _vertex_visit;;
+			-> rrel_2: rrel_assign: rrel_common: rrel_pos: _arc2;;
+			-> rrel_3: rrel_fixed: _vertex;;
+			-> rrel_4: rrel_assign: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed: _route_visit;;
 
-		  	=> nrel_goto: .proc_add_vertex_visit_to_route_operator7;;
+			=> nrel_then: .proc_add_vertex_visit_to_route_operator6;;
+			=> nrel_else: .proc_add_vertex_visit_to_route_operator_return;;
 		*);;
 
-		-> .proc_add_vertex_visit_to_route_operator7 (*
-			<- ifVarAssign;;
-			-> rrel_1: _vertex_visit;;
-
-			=> nrel_then: .proc_add_vertex_visit_to_route_operator_return;;
-			=> nrel_else: .proc_add_vertex_visit_to_route_operator8;;
-		*);;
 
 		// ѕосещени€ не существует, значит создаем его
 		//
-		-> .proc_add_vertex_visit_to_route_operator8 (*
+		-> .proc_add_vertex_visit_to_route_operator6 (*
 			<- genEl;;
 			-> rrel_1: rrel_assign: rrel_node: rrel_const: _vertex_visit;;
 			
-			=> nrel_goto: .proc_add_vertex_visit_to_route_operator9;;
+			=> nrel_goto: .proc_add_vertex_visit_to_route_operator7;;
 		*);;
 
-		-> .proc_add_vertex_visit_to_route_operator9 (*
+		//ƒобавл€ем посещение вершины _vertex_visit в структуру маршрута как вершину.
+		//
+		-> .proc_add_vertex_visit_to_route_operator7 (*
 			<- genElStr5;;
 			-> rrel_1: rrel_fixed: _route_struct;;
 			-> rrel_2: rrel_assign: rrel_arc: rrel_pos: rrel_const: _arc2;;
@@ -99,29 +87,22 @@ scp_program -> proc_add_vertex_visit_to_route (*
 			-> rrel_4: rrel_assign: rrel_pos: rrel_const: _arc4;;
 			-> rrel_5: rrel_fixed: rrel_const: rrel_vertex;;
 
-			=> nrel_goto: .proc_add_edge_visit_to_route_operator10;;
+			=> nrel_goto: .proc_add_edge_visit_to_route_operator8;;
 		*);;	
 		
-		-> .proc_add_vertex_visit_to_route_operator10 (*
-			<- call;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: proc_build_ord_bin_conn;;
-			->rrel_2: rrel_fixed: rrel_scp_const: .proc_add_vertex_visit_to_route_operator10_params (*
-				-> rrel_1: _route_visit;;
-				-> rrel_2: _vertex_visit;;
-				-> rrel_3: _vertex;;
-				-> rrel_4: _conn;;
-			*);;
-			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+		//√енерируем бинарную дугу между посещением вершины и самой вершиной и добавл€ем еЄ в отношение соответстви€ маршрута.
+		//
+		-> .proc_add_edge_visit_to_route_operator8 (*
+			<- genElStr5;;
+			-> rrel_1: rrel_fixed: _vertex_visit;;
+			-> rrel_2: rrel_assign: rrel_common: _arc2;;
+			-> rrel_3: rrel_fixed: _vertex;;
+			-> rrel_4: rrel_assign: rrel_pos: rrel_const: _arc4;;
+			-> rrel_5: rrel_fixed:  _route_visit;;
 		
-			=> nrel_goto: .proc_add_vertex_visit_to_route_operator11;;
+			=> nrel_goto: .proc_add_vertex_visit_to_route_operator_return;;
 		*);;
 
-		-> .proc_add_vertex_visit_to_route_operator11 (*
-			<-waitReturn;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
-
-		  	=> nrel_goto: .proc_add_vertex_visit_to_route_operator_return;;
-		*);;
 
 		-> .proc_add_vertex_visit_to_route_operator_return (*
 			<- return;;
