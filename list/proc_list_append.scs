@@ -13,8 +13,8 @@ scp_program -> proc_list_append (*
 				<- call;;
 				-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
 		  		-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_append_operator1_params (*
-					-> rrel_1:  _new_element_value;;
-					-> rrel_2:  _new_element;;
+					-> rrel_1: rrel_fixed: rrel_scp_var:  _new_element_value;;
+					-> rrel_2: rrel_fixed: rrel_scp_var: _new_element;;
 				*);;
 				-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -32,8 +32,8 @@ scp_program -> proc_list_append (*
 				<- call;;
 				-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_set_next;;
 				-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_append_operator3_params (*
-					-> rrel_1:  _last_element;;
-					-> rrel_2:  _new_element;;
+					-> rrel_1: rrel_fixed: rrel_scp_var: _last_element;;
+					-> rrel_2: rrel_fixed: rrel_scp_var: _new_element;;
 				*);;
 				-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
