@@ -20,7 +20,16 @@ scp_program -> proc_get_other_vertex_incidence_edge (*
 			-> rrel_3: rrel_assign: _vertex2;;	
 
 			=> nrel_then: .proc_get_other_vertex_incidence_edge_operator_return;;
-			=> nrel_else: .proc_get_other_vertex_incidence_edge_operator_return;;
+			=> nrel_else: .proc_get_other_vertex_incidence_edge_operator2;;
+		*);;
+
+		->.proc_get_other_vertex_incidence_edge_operator2 (*
+			<- searchElStr3;;
+			-> rrel_1: rrel_assign: _vertex2;;
+			-> rrel_2: rrel_fixed: rrel_edge: _edge;;
+			-> rrel_3: rrel_fixed: _vertex1;;
+
+			=> nrel_goto: .proc_get_other_vertex_incidence_edge_operator_return;;
 		*);;
 
 		-> .proc_get_other_vertex_incidence_edge_operator_return (*
