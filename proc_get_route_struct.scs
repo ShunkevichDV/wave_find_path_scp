@@ -17,8 +17,7 @@ scp_program -> proc_get_route_struct (*
 			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
 			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_1;;
 		
-			=> nrel_then: .proc_get_route_struct_operator_return;;		
-		 	=> nrel_else: .proc_get_route_struct_operator_return;;	
+			=> nrel_goto: .proc_get_route_struct_operator_return;;		
 		*);;
 		
 		-> .proc_get_route_struct_operator_return (*
