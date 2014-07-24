@@ -23,11 +23,11 @@ scp_program -> proc_find_min_path (*
 //	”даление из множества непроверенных узла начала пути.
 		-> .proc_find_min_path_operator2 (*
 			<- eraseElStr3;;
-		 	-> rrel_1: rrel_fixed: rrel_scp_const: _not_checked_vertexes;;
+		 	-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
 			-> rrel_2: rrel_assign: rrel_erase: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_erase: rrel_scp_var: _beg_vertex;;
 
-		 	=> nrel_goto: .proc_find_min_path_operator3;;	//next operator
+		 	=> nrel_goto: .proc_find_min_path_operator3;;	
 		*);;
 // 2. —оздаем начальную волну и добавл€ем в нее начальную вершину пути.
 // 3. Ќачальна€ волна - нова€ волна.
