@@ -7,7 +7,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 		-> rrel_2: rrel_in: _edge;;
 		-> rrel_3: rrel_in: _from_verex;;
 		-> rrel_4: rrel_in: _to_vertex;;
-		-> rrel_4: rrel_out: _edge_visit;;
+		-> rrel_5: rrel_out: _edge_visit;;
 	*);;
 
 	-> rrel_operators: .proc_add_edge_visit_to_route_operator_set (*
