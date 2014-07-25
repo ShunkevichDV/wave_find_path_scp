@@ -1,4 +1,4 @@
-// Óäàëÿåò ýëåìåíòû èç ñïèñêà íà÷èíàÿ ñ åëåìåíòà _element
+// Ð£Ð´Ð°Ð»ÑÐµÑ‚ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚Ñ‹ Ð¸Ð· ÑÐ¿Ð¸ÑÐºÐ° Ð½Ð°Ñ‡Ð¸Ð½Ð°Ñ Ñ ÐµÐ»ÐµÐ¼ÐµÐ½Ñ‚Ð° _element
 
 scp_program -> proc_list_erase (*
 	-> rrel_params: .proc_list_erase_params (*
@@ -24,7 +24,7 @@ scp_program -> proc_list_erase (*
 		*);;
 
 		-> .proc_list_erase_operator4(*
-			<- call;
+			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_next;;
 		  	-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_append_operator4_params (*
 					-> rrel_1: rrel_fixed: rrel_scp_var: _previous_element;;

@@ -1,5 +1,5 @@
-// Èùåò äëÿ _vertex ëþáóþ ñìåæíóþ âåðøèíó èç âîëíû _prev_wave â ãðàôå _graph.
-// Âîçâðàùàåò _edge ìåæäó _vertex è íàéäåííîé âåðøèíîé
+// Ð˜Ñ‰ÐµÑ‚ Ð´Ð»Ñ _vertex Ð»ÑŽÐ±ÑƒÑŽ ÑÐ¼ÐµÐ¶Ð½ÑƒÑŽ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñƒ Ð¸Ð· Ð²Ð¾Ð»Ð½Ñ‹ _prev_wave Ð² Ð³Ñ€Ð°Ñ„Ðµ _graph.
+// Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ _edge Ð¼ÐµÐ¶Ð´Ñƒ _vertex Ð¸ Ð½Ð°Ð¹Ð´ÐµÐ½Ð½Ð¾Ð¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð¾Ð¹
 //
 scp_program -> proc_find_any_edge (*
 	
@@ -12,7 +12,7 @@ scp_program -> proc_find_any_edge (*
 
 	-> rrel_operators: .proc_find_any_edge_operator_set (*
 
-		// Ôîðìèðóåì ìíîæåñòâî ðåáåð ãðàôà äëÿ èòåðàöèè
+		// Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²Ð¾ Ñ€ÐµÐ±ÐµÑ€ Ð³Ñ€Ð°Ñ„Ð° Ð´Ð»Ñ Ð¸Ñ‚ÐµÑ€Ð°Ñ†Ð¸Ð¸
 		//			
 		-> rrel_init: .proc_find_any_edge_operator1 (*
 			<- searchSetStr5;;
@@ -26,7 +26,7 @@ scp_program -> proc_find_any_edge (*
 			=> nrel_goto: .proc_find_any_edge_operator2;;
 		*);;
 
-		//  Íà÷àëî öèêëà ïî ðåáðàì ãðàôà
+		//  ÐÐ°Ñ‡Ð°Ð»Ð¾ Ñ†Ð¸ÐºÐ»Ð° Ð¿Ð¾ Ñ€ÐµÐ±Ñ€Ð°Ð¼ Ð³Ñ€Ð°Ñ„Ð°
 		//
 		-> .proc_find_any_edge_operator2 (*
 			<-searchElStr3;;
@@ -45,7 +45,7 @@ scp_program -> proc_find_any_edge (*
 			-> nrel_goto: .proc_find_any_edge_operator4;;		
 		*);;
 
-		// Ïðîâåðêà, èíöèäåíòíî ëè ðåáðî edge âåðøèíå vertex
+		// ÐŸÑ€Ð¾Ð²ÐµÑ€ÐºÐ°, Ð¸Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ð½Ð¾ Ð»Ð¸ Ñ€ÐµÐ±Ñ€Ð¾ edge Ð²ÐµÑ€ÑˆÐ¸Ð½Ðµ vertex
 		//
 		-> .proc_find_any_edge_operator4 (*
 			<- searchElStr3;;
@@ -68,8 +68,8 @@ scp_program -> proc_find_any_edge (*
 		*);;
 
 
-		// Åñëè íàéäåííàÿ âåðøèíà other_vertex âõîäèò â ïðåäûäóùóþ âîëíó, òî
-		// íàø ïîèñê óñïåøåí è ìîæåò áûòü çàâåðøåí, èíà÷å ïðîäîëæàåì ïîèñê
+		// Ð•ÑÐ»Ð¸ Ð½Ð°Ð¹Ð´ÐµÐ½Ð½Ð°Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð° other_vertex Ð²Ñ…Ð¾Ð´Ð¸Ñ‚ Ð² Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ, Ñ‚Ð¾
+		// Ð½Ð°Ñˆ Ð¿Ð¾Ð¸ÑÐº ÑƒÑÐ¿ÐµÑˆÐµÐ½ Ð¸ Ð¼Ð¾Ð¶ÐµÑ‚ Ð±Ñ‹Ñ‚ÑŒ Ð·Ð°Ð²ÐµÑ€ÑˆÐµÐ½, Ð¸Ð½Ð°Ñ‡Ðµ Ð¿Ñ€Ð¾Ð´Ð¾Ð»Ð¶Ð°ÐµÐ¼ Ð¿Ð¾Ð¸ÑÐº
 		//
 		-> .proc_find_any_edge_operator6 (*
 			<- searchElStr3;;
@@ -91,4 +91,5 @@ scp_program -> proc_find_any_edge (*
 		-> .proc_find_any_edge_operator_return (*
 			<- return;;
 		*);;	
+	*);;
 *);;

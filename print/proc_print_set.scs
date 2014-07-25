@@ -1,6 +1,6 @@
 scp_program -> proc_print_set (*
 	-> rrel_params: .proc_print_set_params (*
-		rrel_1: rrel_in: _set;;
+		-> rrel_1: rrel_in: _set;;
 	*);;
 
 	-> rrel_operators: .proc_print_set_operator_set (*

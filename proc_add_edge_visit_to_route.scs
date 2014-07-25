@@ -1,4 +1,4 @@
-//Äîáàâëÿåò ïîñåùåíèå ðåáðà _edge è èíöèäåíòíûå åìó âåðøèíû â ìàðøðóò _route.
+//Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÑ‚ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸Ðµ Ñ€ÐµÐ±Ñ€Ð° _edge Ð¸ Ð¸Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ð½Ñ‹Ðµ ÐµÐ¼Ñƒ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹ Ð² Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚ _route.
 
 scp_program -> proc_add_edge_visit_to_route (*
 	
@@ -12,7 +12,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 
 	-> rrel_operators: .proc_add_edge_visit_to_route_operator_set (*
 		
-		// Íàõîäèì îðèåíòèðîâàííûé ãðàô ñòðóêòóðû ìðàøðóòà
+		// ÐÐ°Ñ…Ð¾Ð´Ð¸Ð¼ Ð¾Ñ€Ð¸ÐµÐ½Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð³Ñ€Ð°Ñ„ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹ Ð¼Ñ€Ð°ÑˆÑ€ÑƒÑ‚Ð°
 		//
 		-> rrel_init: .proc_add_edge_visit_to_route_operator1 (*
 			<- call;;
@@ -33,7 +33,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 		  	=> nrel_goto: .proc_add_edge_visit_to_route_operator3;;
 		*);;
 	
-		// Íàõîäèì îòíîøåíèå ñîîòâåòñòâèÿ ìàðøðóòà
+		// ÐÐ°Ñ…Ð¾Ð´Ð¸Ð¼ Ð¾Ñ‚Ð½Ð¾ÑˆÐµÐ½Ð¸Ðµ ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²Ð¸Ñ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð°
 		//
 		-> .proc_add_edge_visit_to_route_operator3 (*
 			<- call;;
@@ -54,7 +54,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 		  	=> nrel_goto: .proc_add_edge_visit_to_route_operator5;;
 		*);;
 
-		// Äîáàâèì ïîñåùåíèå âåðøèíû _from_vertex â ìàðøðóò
+		// Ð”Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸Ðµ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹ _from_vertex Ð² Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚
 		//
 		-> .proc_add_edge_visit_to_route_operator5 (*
 			<- call;;
@@ -76,7 +76,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 		  	=> nrel_goto: .proc_add_edge_visit_to_route_operator7;;
 		*);;
 
-		//Ïîëó÷àåì ïîñåùåíèå âåðøèíû _to_vertex.
+		//ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸Ðµ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹ _to_vertex.
 		//
 		-> .proc_add_edge_visit_to_route_operator7 (*
 			<- searchElStr5;;
@@ -87,9 +87,9 @@ scp_program -> proc_add_edge_visit_to_route (*
 			-> rrel_5: rrel_fixed: rrel_scp_var: _route_visit;;
 			
 			=> nrel_goto: .proc_add_edge_visit_to_route_operator8;;
-		*);
+		*);;
 		
-		// Ñîçäà¸ì ïîñåùåíèå äóãè...
+		// Ð¡Ð¾Ð·Ð´Ð°Ñ‘Ð¼ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸Ðµ Ð´ÑƒÐ³Ð¸...
 		//
 		-> .proc_add_edge_visit_to_route_operator8 (*
 			<- genElStr3;;
@@ -100,7 +100,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 			=> nrel_goto: .proc_add_edge_visit_to_route_operator9;;
 		*);;
 
-		// Äîáàâèì å¸ â ñòðóêòóðó ìàðøðóòà.
+		// Ð”Ð¾Ð±Ð°Ð²Ð¸Ð¼ ÐµÑ‘ Ð² ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñƒ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð°.
 		//
 		-> .proc_add_edge_visit_to_route_operator9 (*
 			<- getElStr5;;
@@ -114,7 +114,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 		*);;
 		
 	
-		// Óêàæåì, ÷òî _edge_visit ÿâëÿåòñÿ ïîñåùåíèåì edge
+		// Ð£ÐºÐ°Ð¶ÐµÐ¼, Ñ‡Ñ‚Ð¾ _edge_visit ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸ÐµÐ¼ edge
 		//
 		-> .proc_add_edge_visit_to_route_operator10 (*
 				<- genElStr5;;

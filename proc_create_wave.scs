@@ -7,14 +7,14 @@ scp_program -> proc_create_wave (*
 	*);;
 
 	-> rrel_operators: .proc_create_wave_operator_set (*
-//	Ñîçäàåì íîâóþ âîëíó.
+//	Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ Ð½Ð¾Ð²ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ.
 		-> rrel_init: .proc_create_wave_operator1 (*
 			<- genEl;;
 			-> rrel_1: rrel_assign: rrel_const: rrel_node: rrel_scp_var: _new_wave;;
 
 			=> nrel_goto: .proc_create_wave_operator2;;
 		*);;	
-// Ôîðìèðóåì êîïèþ âîëíû wave äëÿ ïåðåáîðà
+// Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ ÐºÐ¾Ð¿Ð¸ÑŽ Ð²Ð¾Ð»Ð½Ñ‹ wave Ð´Ð»Ñ Ð¿ÐµÑ€ÐµÐ±Ð¾Ñ€Ð°
 		-> .proc_create_wave_operator2 (*
 			 <- searchSetStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _wave;;
@@ -25,7 +25,7 @@ scp_program -> proc_create_wave (*
 			=> nrel_then: .proc_create_wave_operator3;;		
 		 	=> nrel_else: .proc_create_wave_operator_erase_wave_copy;;	
 		*);;	
-//	Öèêë ïî âåðøèíàì â âîëíå wave.
+//	Ð¦Ð¸ÐºÐ» Ð¿Ð¾ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°Ð¼ Ð² Ð²Ð¾Ð»Ð½Ðµ wave.
 		-> .proc_create_wave_operator3 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _wave_copy;;
@@ -42,8 +42,8 @@ scp_program -> proc_create_wave (*
 
 			=> nrel_goto: .proc_create_wave_operator5;;
 		*);;
-//	Ôîðìèðóåì ìíîæåñòâî ðåáåð ãðàôà äëÿ èòåðàöèè
-		.proc_create_wave_operator5 (*
+//	Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²Ð¾ Ñ€ÐµÐ±ÐµÑ€ Ð³Ñ€Ð°Ñ„Ð° Ð´Ð»Ñ Ð¸Ñ‚ÐµÑ€Ð°Ñ†Ð¸Ð¸
+		-> .proc_create_wave_operator5 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: graph;;
 			-> rrel_2: rrel_assign: rrel_pos: rrel_scp_var: _arc2;;
@@ -55,7 +55,7 @@ scp_program -> proc_create_wave (*
 			=> nrel_then: .proc_create_wave_operator6;;		
 		 	=> nrel_else: .proc_create_wave_operator_erase_wave_copy;;
 		*);;		
-//	Öèêë ïî ðåáðàì ãðàôà.
+//	Ð¦Ð¸ÐºÐ» Ð¿Ð¾ Ñ€ÐµÐ±Ñ€Ð°Ð¼ Ð³Ñ€Ð°Ñ„Ð°.
 		-> .proc_create_wave_operator6 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _edges_set;;
@@ -72,7 +72,7 @@ scp_program -> proc_create_wave (*
 
 			=> nrel_goto: .proc_create_wave_operator8;;
 		*);;
-//	Ïîèñê âåðøèíû èíöèäåíòíîé ðåáðó edge è îòëè÷íîé îò âåðøèíû vertex
+//	ÐŸÐ¾Ð¸ÑÐº Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹ Ð¸Ð½Ñ†Ð¸Ð´ÐµÐ½Ñ‚Ð½Ð¾Ð¹ Ñ€ÐµÐ±Ñ€Ñƒ edge Ð¸ Ð¾Ñ‚Ð»Ð¸Ñ‡Ð½Ð¾Ð¹ Ð¾Ñ‚ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹ vertex
 		-> .proc_create_wave_operator8 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_other_vertex_incidence_edge;;
@@ -126,14 +126,14 @@ scp_program -> proc_create_wave (*
 
 			=> nrel_goto: .proc_create_wave_operator6;;
 		*);;
-//  Ïîñëå êàæäîãî öèêëà èòåðàöèè ïî ðåáðàì áóäåì âûïîëíÿòü î÷èñòêó ïàìÿòè
+//  ÐŸÐ¾ÑÐ»Ðµ ÐºÐ°Ð¶Ð´Ð¾Ð³Ð¾ Ñ†Ð¸ÐºÐ»Ð° Ð¸Ñ‚ÐµÑ€Ð°Ñ†Ð¸Ð¸ Ð¿Ð¾ Ñ€ÐµÐ±Ñ€Ð°Ð¼ Ð±ÑƒÐ´ÐµÐ¼ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÑÑ‚ÑŒ Ð¾Ñ‡Ð¸ÑÑ‚ÐºÑƒ Ð¿Ð°Ð¼ÑÑ‚Ð¸
 		-> .proc_create_wave_operator_erase_edges_set (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _edges_set;;
 
 			=> nrel_goto: .proc_create_wave_operator3;;
 		*);;
-// Óäàëÿåì êîïèþ âîëíû.
+// Ð£Ð´Ð°Ð»ÑÐµÐ¼ ÐºÐ¾Ð¿Ð¸ÑŽ Ð²Ð¾Ð»Ð½Ñ‹.
 		-> .proc_create_wave_operator_erase_wave_copy (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _wave_copy;;

@@ -4,8 +4,8 @@ scp_program -> proc_print_route (*
 	*);;
 
 	-> rrel_operators: .proc_print_route_operator_set (*
-//	Находим ориентированный граф структуры маршрута.
-		-> rrel_init: .proc_print_route_operator1*(
+//	РќР°С…РѕРґРёРј РѕСЂРёРµРЅС‚РёСЂРѕРІР°РЅРЅС‹Р№ РіСЂР°С„ СЃС‚СЂСѓРєС‚СѓСЂС‹ РјР°СЂС€СЂСѓС‚Р°.
+		-> rrel_init: .proc_print_route_operator1 (*
 			<-call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_struct;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_get_route_struct_params (*
@@ -23,7 +23,7 @@ scp_program -> proc_print_route (*
 
 			=> nrel_goto: .proc_print_route_operator3;;
 		*);;
-//	Находим отношение соответствия маршрута.
+//	РќР°С…РѕРґРёРј РѕС‚РЅРѕС€РµРЅРёРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ РјР°СЂС€СЂСѓС‚Р°.
 		-> .proc_print_route_operator3*(
 			<-call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_visit;;
@@ -42,7 +42,7 @@ scp_program -> proc_print_route (*
 
 			=> nrel_goto: .proc_print_route_operator5;;
 		*);;
-//	Находим начальную вершину в ориентированном графе структуры маршрута.
+//	РќР°С…РѕРґРёРј РЅР°С‡Р°Р»СЊРЅСѓСЋ РІРµСЂС€РёРЅСѓ РІ РѕСЂРёРµРЅС‚РёСЂРѕРІР°РЅРЅРѕРј РіСЂР°С„Рµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РјР°СЂС€СЂСѓС‚Р°.
 		-> .proc_print_route_operator5*(
 			<-call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_struct_begin;;
@@ -61,7 +61,7 @@ scp_program -> proc_print_route (*
 
 			=> nrel_goto: .proc_print_route_operator7;;
 		*);;	
-//	Находим вершину, соответствующую начальному посещению.
+//	РќР°С…РѕРґРёРј РІРµСЂС€РёРЅСѓ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ РЅР°С‡Р°Р»СЊРЅРѕРјСѓ РїРѕСЃРµС‰РµРЅРёСЋ.
 		.proc_print_route_operator7 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _cur_visit;;
@@ -73,7 +73,7 @@ scp_program -> proc_print_route (*
 			=> nrel_then: .proc_print_route_operator8;;		
 		 	=> nrel_else: .proc_print_route_operator_return;;
 		*);;
-//	Выводим текущую посещенную вершину.
+//	Р’С‹РІРѕРґРёРј С‚РµРєСѓС‰СѓСЋ РїРѕСЃРµС‰РµРЅРЅСѓСЋ РІРµСЂС€РёРЅСѓ.
 		.proc_print_route_operator8 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _visited_vertex;;
@@ -92,7 +92,7 @@ scp_program -> proc_print_route (*
 
 			=>nrel_goto: .proc_print_route_operator10;;
 		*);;
-//	Находим следующее посещение.
+//	РќР°С…РѕРґРёРј СЃР»РµРґСѓСЋС‰РµРµ РїРѕСЃРµС‰РµРЅРёРµ.
 		.proc_print_route_operator10 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _cur_visit;;
@@ -104,7 +104,7 @@ scp_program -> proc_print_route (*
 			=> nrel_then: .proc_print_route_operator11;;		
 		 	=> nrel_else: .proc_print_route_operator_return;;
 		*);;
-//	Присваиваем следующее посещение текущему.
+//	РџСЂРёСЃРІР°РёРІР°РµРј СЃР»РµРґСѓСЋС‰РµРµ РїРѕСЃРµС‰РµРЅРёРµ С‚РµРєСѓС‰РµРјСѓ.
 		->.proc_find_min_path_operator11 (*
 			<-varAssign;;
 			-> rrel_1: rrel_assign: rrel_scp_var: _cur_visit;;
@@ -112,7 +112,7 @@ scp_program -> proc_print_route (*
 
 			=>nrel_goto: .proc_find_min_path_operator12;;
 		*);;
-//	Находим вершину, соответствующую текущему посещению.
+//	РќР°С…РѕРґРёРј РІРµСЂС€РёРЅСѓ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ С‚РµРєСѓС‰РµРјСѓ РїРѕСЃРµС‰РµРЅРёСЋ.
 		.proc_print_route_operator12 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _cur_visit;;
@@ -131,7 +131,7 @@ scp_program -> proc_print_route (*
 
 			=>nrel_goto: .proc_print_route_operator14;;
 		*);;
-//	Выводим текущую посещенную вершину.
+//	Р’С‹РІРѕРґРёРј С‚РµРєСѓС‰СѓСЋ РїРѕСЃРµС‰РµРЅРЅСѓСЋ РІРµСЂС€РёРЅСѓ.
 		.proc_print_route_operator14 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _visited_vertex;;

@@ -1,4 +1,4 @@
-//Ñîçäà¸ò íîâûé ýëåìåíò ñïèñêà _new_element ñî çíà÷åíèåì _element_value
+//Ð¡Ð¾Ð·Ð´Ð°Ñ‘Ñ‚ Ð½Ð¾Ð²Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ ÑÐ¿Ð¸ÑÐºÐ° _new_element ÑÐ¾ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸ÐµÐ¼ _element_value
 
 scp_program -> proc_list_new (*
 	

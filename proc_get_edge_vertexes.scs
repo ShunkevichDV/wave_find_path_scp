@@ -1,12 +1,12 @@
-// Процедура получения вершин, инцидентных ребру.
-// Учитывает кратное вхождение вершин, т.е. петлю.
+// РџСЂРѕС†РµРґСѓСЂР° РїРѕР»СѓС‡РµРЅРёСЏ РІРµСЂС€РёРЅ, РёРЅС†РёРґРµРЅС‚РЅС‹С… СЂРµР±СЂСѓ.
+// РЈС‡РёС‚С‹РІР°РµС‚ РєСЂР°С‚РЅРѕРµ РІС…РѕР¶РґРµРЅРёРµ РІРµСЂС€РёРЅ, С‚.Рµ. РїРµС‚Р»СЋ.
 //
 scp_program -> proc_get_edge_vertexes (*
 	
 	-> rrel_params: .proc_get_edge_vertexes_params (*
-		rrel_1: rrel_in: _edge;;
-		rrel_2: rrel_out: _vertex1;;
-		rrel_3: rrel_out: _vertex2;;
+		-> rrel_1: rrel_in: _edge;;
+		-> rrel_2: rrel_out: _vertex1;;
+		-> rrel_3: rrel_out: _vertex2;;
 	*);;
 
 	-> rrel_operators: .proc_get_edge_vertexes_operator_set (*
@@ -14,7 +14,7 @@ scp_program -> proc_get_edge_vertexes (*
 
 		rrel_init: .proc_get_edge_vertexes_operator1 (*
 
-			// Находим инцидентные вершины.
+			// РќР°С…РѕРґРёРј РёРЅС†РёРґРµРЅС‚РЅС‹Рµ РІРµСЂС€РёРЅС‹.
 	
 			<- searchElStr3;;
 			-> rrel_1: rrel_assign: rrel_scp_var: _vertex1;;

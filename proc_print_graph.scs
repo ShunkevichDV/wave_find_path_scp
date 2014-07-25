@@ -4,7 +4,7 @@ scp_program -> proc_print_graph (*
 	*);;
 
 	-> rrel_operators: .proc_print_graph_operator_set (*
-//	Формируем множество связок графа для итерации.
+//	Р¤РѕСЂРјРёСЂСѓРµРј РјРЅРѕР¶РµСЃС‚РІРѕ СЃРІСЏР·РѕРє РіСЂР°С„Р° РґР»СЏ РёС‚РµСЂР°С†РёРё.
 		-> rrel_init: .proc_print_graph_operator1 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: graph;;
@@ -17,14 +17,14 @@ scp_program -> proc_print_graph (*
 			=> nrel_then: .proc_print_graph_operator2;;		
 		 	=> nrel_else: .proc_print_graph_operator14;;	
 		*);;
-//	Создаем множество уже выведенных вершин.
+//	РЎРѕР·РґР°РµРј РјРЅРѕР¶РµСЃС‚РІРѕ СѓР¶Рµ РІС‹РІРµРґРµРЅРЅС‹С… РІРµСЂС€РёРЅ.
 		-> .proc_print_graph_operator2 (*
 			<- genEl;;
 			-> rrel_1: rrel_assign: rrel_const: rrel_node: rrel_scp_var: _printed_vertexes;;
 
 			=> nrel_goto: .proc_print_graph_operator3;;
 		*);;
-//	Вывод всех ребер графа.
+//	Р’С‹РІРѕРґ РІСЃРµС… СЂРµР±РµСЂ РіСЂР°С„Р°.
 		-> .proc_print_graph_operator3 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _edges_set;;
@@ -41,7 +41,7 @@ scp_program -> proc_print_graph (*
 
 			=> nrel_goto: .proc_print_graph_operator5;;
 		*);;
-//	Получаем вершины, инцидентные ребру.
+//	РџРѕР»СѓС‡Р°РµРј РІРµСЂС€РёРЅС‹, РёРЅС†РёРґРµРЅС‚РЅС‹Рµ СЂРµР±СЂСѓ.
 		-> .proc_print_graph_operator5 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_edge_vertexes;;
@@ -61,8 +61,8 @@ scp_program -> proc_print_graph (*
 
 			=> nrel_goto: .proc_print_graph_operator7;;
 		*);;	
-//	Выводим идентификатор первой вершины.
-		.proc_print_graph_operator7 (*
+//	Р’С‹РІРѕРґРёРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РїРµСЂРІРѕР№ РІРµСЂС€РёРЅС‹.
+		-> .proc_print_graph_operator7 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _first_inc_vertex;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
@@ -87,7 +87,7 @@ scp_program -> proc_print_graph (*
 
 			=>nrel_goto: .print_graph_operator10;;
 		*);;
-//	Выводим идентификатор второй вершины.
+//	Р’С‹РІРѕРґРёРј РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РІС‚РѕСЂРѕР№ РІРµСЂС€РёРЅС‹.
 		.proc_print_graph_operator10 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _second_inc_vertex;;
@@ -106,7 +106,7 @@ scp_program -> proc_print_graph (*
 
 			=>nrel_goto: .proc_print_graph_operator12;;
 		*);;
-//	Добавляем вершины в множество выведенных.
+//	Р”РѕР±Р°РІР»СЏРµРј РІРµСЂС€РёРЅС‹ РІ РјРЅРѕР¶РµСЃС‚РІРѕ РІС‹РІРµРґРµРЅРЅС‹С….
 		-> .proc_print_graph_operator12 (*
 			<- genElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _printed_vertexes;;
@@ -124,15 +124,15 @@ scp_program -> proc_print_graph (*
 
 			=> nrel_goto: .proc_print_graph_operator3;;
 		*);;
-//	Удалим уже пустое множество выводимых ребер.
+//	РЈРґР°Р»РёРј СѓР¶Рµ РїСѓСЃС‚РѕРµ РјРЅРѕР¶РµСЃС‚РІРѕ РІС‹РІРѕРґРёРјС‹С… СЂРµР±РµСЂ.
 		-> .proc_print_graph_operator14 (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _edges_set;;
 
 			=> nrel_goto: .proc_print_graph_operator15;;
 		*);;
-//	Вывод всех вершин, которые не имеют инцидентных дуг.
-//	Формируем множество вершин графа для итерации.
+//	Р’С‹РІРѕРґ РІСЃРµС… РІРµСЂС€РёРЅ, РєРѕС‚РѕСЂС‹Рµ РЅРµ РёРјРµСЋС‚ РёРЅС†РёРґРµРЅС‚РЅС‹С… РґСѓРі.
+//	Р¤РѕСЂРјРёСЂСѓРµРј РјРЅРѕР¶РµСЃС‚РІРѕ РІРµСЂС€РёРЅ РіСЂР°С„Р° РґР»СЏ РёС‚РµСЂР°С†РёРё.
 		-> .proc_print_graph_operator15 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: graph;;
@@ -145,7 +145,7 @@ scp_program -> proc_print_graph (*
 			=> nrel_then: .proc_print_graph_operator16;;		
 		 	=> nrel_else: .proc_print_graph_operator_return;;
 		*);;
-//	Цикл по вершинам.
+//	Р¦РёРєР» РїРѕ РІРµСЂС€РёРЅР°Рј.
 		-> .proc_print_graph_operator16 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _vertexes_set;;
@@ -162,8 +162,8 @@ scp_program -> proc_print_graph (*
 
 			=> nrel_goto: .proc_print_graph_operator18;;
 		*);;
-//	Если вершина уже была выведена (т.е. она в множестве printed_vertexes)
-//	то переходим на следующую итерацию.
+//	Р•СЃР»Рё РІРµСЂС€РёРЅР° СѓР¶Рµ Р±С‹Р»Р° РІС‹РІРµРґРµРЅР° (С‚.Рµ. РѕРЅР° РІ РјРЅРѕР¶РµСЃС‚РІРµ printed_vertexes)
+//	С‚Рѕ РїРµСЂРµС…РѕРґРёРј РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ РёС‚РµСЂР°С†РёСЋ.
 		-> .proc_print_graph_operator18 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _printed_vertexes;;
@@ -192,7 +192,7 @@ scp_program -> proc_print_graph (*
 
 			=>nrel_goto: .proc_print_graph_operator16;;
 		*);;
-//	Подчистим память.
+//	РџРѕРґС‡РёСЃС‚РёРј РїР°РјСЏС‚СЊ.
 		-> .proc_print_graph_operator21 (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _vertexes_set;;

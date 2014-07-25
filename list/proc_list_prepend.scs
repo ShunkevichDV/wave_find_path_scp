@@ -1,4 +1,4 @@
-//Ñîçäà¸ò íîâûé ıëìåíò ñïèñêà _new_element ñî çíà÷åíèåì _element_value è ïîìåùàåò åãî ïåğåä ıëåìåíòîì _current_element.
+//Ğ¡Ğ¾Ğ·Ğ´Ğ°Ñ‘Ñ‚ Ğ½Ğ¾Ğ²Ñ‹Ğ¹ ÑĞ»Ğ¼ĞµĞ½Ñ‚ ÑĞ¿Ğ¸ÑĞºĞ° _new_element ÑĞ¾ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸ĞµĞ¼ _element_value Ğ¸ Ğ¿Ğ¾Ğ¼ĞµÑ‰Ğ°ĞµÑ‚ ĞµĞ³Ğ¾ Ğ¿ĞµÑ€ĞµĞ´ ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ¾Ğ¼ _current_element.
 
 scp_program -> proc_list_prepend (*
 	

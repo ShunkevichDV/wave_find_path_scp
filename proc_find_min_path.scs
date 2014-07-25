@@ -7,7 +7,7 @@ scp_program -> proc_find_min_path (*
 	*);;
 
 	-> rrel_operators: .proc_find_min_path_operator_set (*
-//1. Äîáàâëåíèå âñåõ âåðøèí íåîðèåíòèðîâàííîãî ãðàôà âî ìíîæåñòâî íåïðîâåðåííûõ âåðøèí.
+//1. Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ Ð²ÑÐµÑ… Ð²ÐµÑ€ÑˆÐ¸Ð½ Ð½ÐµÐ¾Ñ€Ð¸ÐµÐ½Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ð¾Ð³Ð¾ Ð³Ñ€Ð°Ñ„Ð° Ð²Ð¾ Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²Ð¾ Ð½ÐµÐ¿Ñ€Ð¾Ð²ÐµÑ€ÐµÐ½Ð½Ñ‹Ñ… Ð²ÐµÑ€ÑˆÐ¸Ð½.
 		-> rrel_init: .proc_find_min_path_operator1 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
@@ -20,7 +20,7 @@ scp_program -> proc_find_min_path (*
 			=> nrel_then: .proc_find_min_path_operator2;;		
 		 	=> nrel_else: .proc_find_min_path_operator_erase_not_checked_vertexes;;	
 		*);;
-//	Óäàëåíèå èç ìíîæåñòâà íåïðîâåðåííûõ óçëà íà÷àëà ïóòè.
+//	Ð£Ð´Ð°Ð»ÐµÐ½Ð¸Ðµ Ð¸Ð· Ð¼Ð½Ð¾Ð¶ÐµÑÑ‚Ð²Ð° Ð½ÐµÐ¿Ñ€Ð¾Ð²ÐµÑ€ÐµÐ½Ð½Ñ‹Ñ… ÑƒÐ·Ð»Ð° Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¿ÑƒÑ‚Ð¸.
 		-> .proc_find_min_path_operator2 (*
 			<- eraseElStr3;;
 		 	-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
@@ -29,15 +29,15 @@ scp_program -> proc_find_min_path (*
 
 		 	=> nrel_goto: .proc_find_min_path_operator3;;	
 		*);;
-// 2. Ñîçäàåì íà÷àëüíóþ âîëíó è äîáàâëÿåì â íåå íà÷àëüíóþ âåðøèíó ïóòè.
-// 3. Íà÷àëüíàÿ âîëíà - íîâàÿ âîëíà.
+// 2. Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ Ð¸ Ð´Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ð² Ð½ÐµÐµ Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½ÑƒÑŽ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñƒ Ð¿ÑƒÑ‚Ð¸.
+// 3. ÐÐ°Ñ‡Ð°Ð»ÑŒÐ½Ð°Ñ Ð²Ð¾Ð»Ð½Ð° - Ð½Ð¾Ð²Ð°Ñ Ð²Ð¾Ð»Ð½Ð°.
 		-> .proc_find_min_path_operator3 (*
 			<- genEl;;
 			-> rrel_1: rrel_assign: rrel_const: rrel_node: rrel_scp_var: _new_wave;;
 
 			=> nrel_goto: .proc_find_min_path_operator4;;
 		*);;
-//	Äîáàâëÿåì ïåðâóþ âåðøèíó â íîâóþ âîëíó.
+//	Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ð¿ÐµÑ€Ð²ÑƒÑŽ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñƒ Ð² Ð½Ð¾Ð²ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ.
 		-> .proc_find_min_path_operator4 (*
 			<- genElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
@@ -46,7 +46,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator5;;
 		*);;
-//	Ñîçäàåì íà÷àëî ñïèñêà âîëí.
+//	Ð¡Ð¾Ð·Ð´Ð°ÐµÐ¼ Ð½Ð°Ñ‡Ð°Ð»Ð¾ ÑÐ¿Ð¸ÑÐºÐ° Ð²Ð¾Ð»Ð½.
 		-> .proc_find_min_path_operator5 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
@@ -81,7 +81,7 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: .proc_find_min_path_operator9;;
 		*);;
-//	Âûâåäåì ñîäåðæèìîå ïåðâîé âîëíû.
+//	Ð’Ñ‹Ð²ÐµÐ´ÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ð¿ÐµÑ€Ð²Ð¾Ð¹ Ð²Ð¾Ð»Ð½Ñ‹.
 		-> .proc_find_min_path_operator9 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
@@ -106,13 +106,13 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: .proc_find_min_path_operator12;;
 		*);;
-//	Ïåðâàÿ âîëíà ñôîðìèðîâàíà.
-//	Íà åå îñíîâå ôîðìèðóåì âñå äàëüíåéøèå âîëíû.
-//	Íà÷èíàåì öèêë ôîðìèðîâàíèÿ ñïèñêà âîëí.
+//	ÐŸÐµÑ€Ð²Ð°Ñ Ð²Ð¾Ð»Ð½Ð° ÑÑ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð°.
+//	ÐÐ° ÐµÐµ Ð¾ÑÐ½Ð¾Ð²Ðµ Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ Ð²ÑÐµ Ð´Ð°Ð»ÑŒÐ½ÐµÐ¹ÑˆÐ¸Ðµ Ð²Ð¾Ð»Ð½Ñ‹.
+//	ÐÐ°Ñ‡Ð¸Ð½Ð°ÐµÐ¼ Ñ†Ð¸ÐºÐ» Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð¸Ñ ÑÐ¿Ð¸ÑÐºÐ° Ð²Ð¾Ð»Ð½.
 		
-// 4. Ôîðìèðóåì ñëåäóþùóþ âîëíó íà îñíîâå íîâîé âîëíû.
-//	Óñòàíàâëèâàåì ñîçäàííóþ âîëíó êàê ñëåäóþùóþ äëÿ íîâîé âîëíû.
-//	Ñîçäàííàÿ âîëíà - íîâàÿ âîëíà.
+// 4. Ð¤Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ Ð½Ð° Ð¾ÑÐ½Ð¾Ð²Ðµ Ð½Ð¾Ð²Ð¾Ð¹ Ð²Ð¾Ð»Ð½Ñ‹.
+//	Ð£ÑÑ‚Ð°Ð½Ð°Ð²Ð»Ð¸Ð²Ð°ÐµÐ¼ ÑÐ¾Ð·Ð´Ð°Ð½Ð½ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ ÐºÐ°Ðº ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÑƒÑŽ Ð´Ð»Ñ Ð½Ð¾Ð²Ð¾Ð¹ Ð²Ð¾Ð»Ð½Ñ‹.
+//	Ð¡Ð¾Ð·Ð´Ð°Ð½Ð½Ð°Ñ Ð²Ð¾Ð»Ð½Ð° - Ð½Ð¾Ð²Ð°Ñ Ð²Ð¾Ð»Ð½Ð°.
 		
 		-> .proc_find_min_path_operator12 (*
 			<- call;;
@@ -142,7 +142,7 @@ scp_program -> proc_find_min_path (*
 			=>nrel_goto: .proc_find_min_path_operator15;;
 		*);;
 		
-//	Âûâåäåì ñîäåðæèìîå íîâîé ñîçäàííîé âîëíû.
+//	Ð’Ñ‹Ð²ÐµÐ´ÐµÐ¼ ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ð¼Ð¾Ðµ Ð½Ð¾Ð²Ð¾Ð¹ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ð¹ Ð²Ð¾Ð»Ð½Ñ‹.
 		-> .proc_find_min_path_operator15 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
@@ -167,7 +167,7 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: .proc_find_min_path_operator18;;
 		*);;
-// Äîáàâëÿåì new_wave â êîíåö ñïèñêà âîëí
+// Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ new_wave Ð² ÐºÐ¾Ð½ÐµÑ† ÑÐ¿Ð¸ÑÐºÐ° Ð²Ð¾Ð»Ð½
 		-> .proc_find_min_path_operator18 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
@@ -213,35 +213,35 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: .proc_find_min_path_operator23;;
 		*);;
-// 5. Åñëè íîâàÿ âîëíà ïóñòà, òî çíà÷èò ìåæäó âåðøèíàìè íå ñóùåñòâóåò ïóòè.
+// 5. Ð•ÑÐ»Ð¸ Ð½Ð¾Ð²Ð°Ñ Ð²Ð¾Ð»Ð½Ð° Ð¿ÑƒÑÑ‚Ð°, Ñ‚Ð¾ Ð·Ð½Ð°Ñ‡Ð¸Ñ‚ Ð¼ÐµÐ¶Ð´Ñƒ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°Ð¼Ð¸ Ð½Ðµ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÐµÑ‚ Ð¿ÑƒÑ‚Ð¸.
 		-> .proc_find_min_path_operator23 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _el3;;
-// Íîâàÿ âîëíà íå ïóñòà.
+// ÐÐ¾Ð²Ð°Ñ Ð²Ð¾Ð»Ð½Ð° Ð½Ðµ Ð¿ÑƒÑÑ‚Ð°.
 			=> nrel_then: .proc_find_min_path_operator24;;
-// Íîâàÿ âîëíà ïóñòà. Î÷èùàåì ïàìÿòü è çàâåðøàåì àëãîðèòì.
+// ÐÐ¾Ð²Ð°Ñ Ð²Ð¾Ð»Ð½Ð° Ð¿ÑƒÑÑ‚Ð°. ÐžÑ‡Ð¸Ñ‰Ð°ÐµÐ¼ Ð¿Ð°Ð¼ÑÑ‚ÑŒ Ð¸ Ð·Ð°Ð²ÐµÑ€ÑˆÐ°ÐµÐ¼ Ð°Ð»Ð³Ð¾Ñ€Ð¸Ñ‚Ð¼.
 			=> nrel_else: .proc_find_min_path_operator_erase_waves_list;; 
 		*);;
 
-// 6. Åñëè â òåêóùåé âîëíå åñòü êîíå÷íàÿ âåðøèíà, òî ïåðåéòè ê ïóíêòó 7, èíà÷å ê ïóíêòó 4.
+// 6. Ð•ÑÐ»Ð¸ Ð² Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹ Ð²Ð¾Ð»Ð½Ðµ ÐµÑÑ‚ÑŒ ÐºÐ¾Ð½ÐµÑ‡Ð½Ð°Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð°, Ñ‚Ð¾ Ð¿ÐµÑ€ÐµÐ¹Ñ‚Ð¸ Ðº Ð¿ÑƒÐ½ÐºÑ‚Ñƒ 7, Ð¸Ð½Ð°Ñ‡Ðµ Ðº Ð¿ÑƒÐ½ÐºÑ‚Ñƒ 4.
 
-//	Ïðîâåðèì, âõîäèò ëè êîíå÷íàÿ âåðøèíà ïóòè â ñîçäàâàåìóþ âîëíó	
+//	ÐŸÑ€Ð¾Ð²ÐµÑ€Ð¸Ð¼, Ð²Ñ…Ð¾Ð´Ð¸Ñ‚ Ð»Ð¸ ÐºÐ¾Ð½ÐµÑ‡Ð½Ð°Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð° Ð¿ÑƒÑ‚Ð¸ Ð² ÑÐ¾Ð·Ð´Ð°Ð²Ð°ÐµÐ¼ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ	
 		-> .proc_find_min_path_operator24 (*
 			<- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 			-> rrel_2: rrel_assign: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _end_vertex;;
-//	Êîíå÷íàÿ âåðøèíà íàéäåíà - êîíåö öèêëà ïîñòðîåíèÿ ñïèñêà âîëí
+//	ÐšÐ¾Ð½ÐµÑ‡Ð½Ð°Ñ Ð²ÐµÑ€ÑˆÐ¸Ð½Ð° Ð½Ð°Ð¹Ð´ÐµÐ½Ð° - ÐºÐ¾Ð½ÐµÑ† Ñ†Ð¸ÐºÐ»Ð° Ð¿Ð¾ÑÑ‚Ñ€Ð¾ÐµÐ½Ð¸Ñ ÑÐ¿Ð¸ÑÐºÐ° Ð²Ð¾Ð»Ð½
 			=> nrel_then: .proc_find_min_path_operator25;;
-//	Èíà÷å ñòðîèì ñëåäóþùóþ âîëíó.
+//	Ð˜Ð½Ð°Ñ‡Ðµ ÑÑ‚Ñ€Ð¾Ð¸Ð¼ ÑÐ»ÐµÐ´ÑƒÑŽÑ‰ÑƒÑŽ Ð²Ð¾Ð»Ð½Ñƒ.
 			=> nrel_else: .proc_find_min_path_operator12;; 
 		*);;
 
-// 7. Ñôîðìèðîâàòü îäèí èç ìèíèìàëüíûõ ïóòåé, ïðîõîäÿ â îáðàòíîì ïîðÿäêå ïî ñïèñêó âîëí.
+// 7. Ð¡Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€Ð¾Ð²Ð°Ñ‚ÑŒ Ð¾Ð´Ð¸Ð½ Ð¸Ð· Ð¼Ð¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ñ‹Ñ… Ð¿ÑƒÑ‚ÐµÐ¹, Ð¿Ñ€Ð¾Ñ…Ð¾Ð´Ñ Ð² Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¼ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ Ð¿Ð¾ ÑÐ¿Ð¸ÑÐºÑƒ Ð²Ð¾Ð»Ð½.
 
-//	Ñôîðìèðóåì ñâÿçêó îòíîøåíèÿ "ïðîñòàÿ öåïü*"
+//	Ð¡Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ ÑÐ²ÑÐ·ÐºÑƒ Ð¾Ñ‚Ð½Ð¾ÑˆÐµÐ½Ð¸Ñ "Ð¿Ñ€Ð¾ÑÑ‚Ð°Ñ Ñ†ÐµÐ¿ÑŒ*"
 
 		-> .proc_find_min_path_operator25 (*
 			<- genEl;;
@@ -272,7 +272,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator29;;
 		*);;
-//	Äîáàâèì âñå êîìïîíåíòû â ñâÿçêó îòíîøåíèÿ "ïðîñòàÿ öåïü*".
+//	Ð”Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð²ÑÐµ ÐºÐ¾Ð¼Ð¿Ð¾Ð½ÐµÐ½Ñ‚Ñ‹ Ð² ÑÐ²ÑÐ·ÐºÑƒ Ð¾Ñ‚Ð½Ð¾ÑˆÐµÐ½Ð¸Ñ "Ð¿Ñ€Ð¾ÑÑ‚Ð°Ñ Ñ†ÐµÐ¿ÑŒ*".
 		-> .proc_find_min_path_operator29 (*
 			<- genElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
@@ -314,7 +314,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator33;;
 		*);;
-//	Äîáàâèì â ïðîñòóþ öåïü ïîñåùåíèå íà÷àëüíîé âåðøèíû.
+//	Ð”Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð² Ð¿Ñ€Ð¾ÑÑ‚ÑƒÑŽ Ñ†ÐµÐ¿ÑŒ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸Ðµ Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ð¾Ð¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹.
 
 		-> .proc_find_min_path_operator33 (*
 			<- call;;
@@ -335,7 +335,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator35;;
 		*);;
-//	Äîáàâèì â ïðîñòóþ öåïü ïîñåùåíèå êîíå÷íîé âåðøèíû.
+//	Ð”Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð² Ð¿Ñ€Ð¾ÑÑ‚ÑƒÑŽ Ñ†ÐµÐ¿ÑŒ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸Ðµ ÐºÐ¾Ð½ÐµÑ‡Ð½Ð¾Ð¹ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñ‹.
 		
 		-> .proc_find_min_path_operator35 (*
 			<- call;;
@@ -357,7 +357,7 @@ scp_program -> proc_find_min_path (*
 			=> nrel_goto: .proc_find_min_path_operator37;;
 		*);;
 
-// Ïðîõîäèì â îáðàòíîì íàïðàâëåíèè ïî ñïèñêó âîëí è ôîðìèðóåì ñòðóêòóðó ìàðøðóòà.
+// ÐŸÑ€Ð¾Ñ…Ð¾Ð´Ð¸Ð¼ Ð² Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¼ Ð½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ð¸ Ð¿Ð¾ ÑÐ¿Ð¸ÑÐºÑƒ Ð²Ð¾Ð»Ð½ Ð¸ Ñ„Ð¾Ñ€Ð¼Ð¸Ñ€ÑƒÐµÐ¼ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñƒ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð°.
 
 		->.proc_find_min_path_operator37 (*
 			<-varAssign;;
@@ -366,7 +366,7 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: .proc_find_min_path_operator38;;
 		*);;
-// Ñòðîèì èç ñïèñêà âîëí ìàðøðóò, ïðîõîäÿ ïî ýòîìó ñïèñêó â îáðàòíîì íàïðàâëåíèè.
+// Ð¡Ñ‚Ñ€Ð¾Ð¸Ð¼ Ð¸Ð· ÑÐ¿Ð¸ÑÐºÐ° Ð²Ð¾Ð»Ð½ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚, Ð¿Ñ€Ð¾Ñ…Ð¾Ð´Ñ Ð¿Ð¾ ÑÑ‚Ð¾Ð¼Ñƒ ÑÐ¿Ð¸ÑÐºÑƒ Ð² Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¼ Ð½Ð°Ð¿Ñ€Ð°Ð²Ð»ÐµÐ½Ð¸Ð¸.
 
 		-> .proc_find_min_path_operator38 (*
 			<- call;;
@@ -386,7 +386,7 @@ scp_program -> proc_find_min_path (*
 
 		 	=> nrel_goto: .proc_find_min_path_operator40;;
 		*);;
-//	Öèêë ïîñòðîåíèÿ ñòðóêòóðû ìàðøðóòà
+//	Ð¦Ð¸ÐºÐ» Ð¿Ð¾ÑÑ‚Ñ€Ð¾ÐµÐ½Ð¸Ñ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñ‹ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð°
 
 		-> .proc_find_min_path_operator40 (*
 			<- ifVarAssign;;
@@ -435,7 +435,7 @@ scp_program -> proc_find_min_path (*
 
 		 	=> nrel_goto: .proc_find_min_path_operator45;;
 		*);;
-//	Ïîëó÷àåì ïðåäûäóùóþ âåðøèíó â ïóòè.
+//	ÐŸÐ¾Ð»ÑƒÑ‡Ð°ÐµÐ¼ Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÑƒÑŽ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñƒ Ð² Ð¿ÑƒÑ‚Ð¸.
 		-> .proc_find_min_path_operator45 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_other_vertex_incidence_edge;;
@@ -455,7 +455,7 @@ scp_program -> proc_find_min_path (*
 
 		 	=> nrel_goto: .proc_find_min_path_operator47;;
 		*);;
-//	Äîáàâëÿåì ïîñåùåíèå ðåáðà edge â ïóòü.
+//	Ð”Ð¾Ð±Ð°Ð²Ð»ÑÐµÐ¼ Ð¿Ð¾ÑÐµÑ‰ÐµÐ½Ð¸Ðµ Ñ€ÐµÐ±Ñ€Ð° edge Ð² Ð¿ÑƒÑ‚ÑŒ.
 		-> .proc_find_min_path_operator47 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_add_edge_visit_to_route;;
@@ -477,7 +477,7 @@ scp_program -> proc_find_min_path (*
 
 		 	=> nrel_goto: .proc_find_min_path_operator49;;
 		*);;
-//	Äåëàåì ïðåäûäóùóþ âåðøèíó òåêóùåé.
+//	Ð”ÐµÐ»Ð°ÐµÐ¼ Ð¿Ñ€ÐµÐ´Ñ‹Ð´ÑƒÑ‰ÑƒÑŽ Ð²ÐµÑ€ÑˆÐ¸Ð½Ñƒ Ñ‚ÐµÐºÑƒÑ‰ÐµÐ¹.
 		->.proc_find_min_path_operator49 (*
 			<-varAssign;;
 			-> rrel_1: rrel_assign: rrel_scp_var: _cur_vertex;;
@@ -504,7 +504,7 @@ scp_program -> proc_find_min_path (*
 
 		 	=> nrel_goto: .proc_find_min_path_operator40;;
 		*);;
-// ×èñòèì ïàìÿòü.
+// Ð§Ð¸ÑÑ‚Ð¸Ð¼ Ð¿Ð°Ð¼ÑÑ‚ÑŒ.
 		-> .proc_find_min_path_operator_erase_waves_list (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_erase_waves_list;;

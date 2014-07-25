@@ -1,11 +1,11 @@
-// Âîçâðàùàåò ñòðóêòóðó ìàðøðóòà äëÿ ñâÿçêè îòíîøåíèÿ ìàðøðóò*.
-// Ñòðóêòóðà ìàðøðóòà - ýòî êîìïîíåíò ñ àòðèáóòîì 1'.
-// Íàéäåííûé îðèåíòèðîâàííûé ãðàô âîçâðàùàåò â route_struct.
+// Ð’Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ ÑÑ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ñƒ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð° Ð´Ð»Ñ ÑÐ²ÑÐ·ÐºÐ¸ Ð¾Ñ‚Ð½Ð¾ÑˆÐµÐ½Ð¸Ñ Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚*.
+// Ð¡Ñ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° Ð¼Ð°Ñ€ÑˆÑ€ÑƒÑ‚Ð° - ÑÑ‚Ð¾ ÐºÐ¾Ð¼Ð¿Ð¾Ð½ÐµÐ½Ñ‚ Ñ Ð°Ñ‚Ñ€Ð¸Ð±ÑƒÑ‚Ð¾Ð¼ 1'.
+// ÐÐ°Ð¹Ð´ÐµÐ½Ð½Ñ‹Ð¹ Ð¾Ñ€Ð¸ÐµÐ½Ñ‚Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ð¹ Ð³Ñ€Ð°Ñ„ Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÑ‚ Ð² route_struct.
 scp_program -> proc_get_route_struct (*
 	
-	-> rrel_params: .proc_get_route_struct (*
-		rrel_1: rrel_in: _route;;
-		rrel_2: rrel_out: _route_struct;;
+	-> rrel_params: .proc_get_route_struct_params (*
+		-> rrel_1: rrel_in: _route;;
+		-> rrel_2: rrel_out: _route_struct;;
 	*);;
 
 	-> rrel_operators: .proc_get_route_struct_operator_set (*
