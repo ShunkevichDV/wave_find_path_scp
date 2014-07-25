@@ -174,7 +174,7 @@ scp_program -> proc_print_graph (*
 			=> nrel_else: .proc_print_graph_operator_19;; 	
 		*);;
 
-		.proc_print_graph_operator19 (*
+		-> .proc_print_graph_operator19 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _visited_vertex;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
