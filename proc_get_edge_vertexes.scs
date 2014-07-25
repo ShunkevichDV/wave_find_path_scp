@@ -11,8 +11,7 @@ scp_program -> proc_get_edge_vertexes (*
 
 	-> rrel_operators: .proc_get_edge_vertexes_operator_set (*
 
-
-		rrel_init: .proc_get_edge_vertexes_operator1 (*
+		-> rrel_init: .proc_get_edge_vertexes_operator1 (*
 
 			// Находим инцидентные вершины.
 	

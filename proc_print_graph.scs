@@ -88,7 +88,7 @@ scp_program -> proc_print_graph (*
 			=>nrel_goto: .print_graph_operator10;;
 		*);;
 //	Выводим идентификатор второй вершины.
-		.proc_print_graph_operator10 (*
+		-> .proc_print_graph_operator10 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _second_inc_vertex;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;

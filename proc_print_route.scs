@@ -24,7 +24,7 @@ scp_program -> proc_print_route (*
 			=> nrel_goto: .proc_print_route_operator3;;
 		*);;
 //	Находим отношение соответствия маршрута.
-		-> .proc_print_route_operator3*(
+		-> .proc_print_route_operator3 (*
 			<-call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_visit;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_get_route_visit_params (*
