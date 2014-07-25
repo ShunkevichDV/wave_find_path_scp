@@ -43,7 +43,7 @@ scp_program -> proc_print_route (*
 			=> nrel_goto: .proc_print_route_operator5;;
 		*);;
 //	Находим начальную вершину в ориентированном графе структуры маршрута.
-		-> .proc_print_route_operator5*(
+		-> .proc_print_route_operator5 (*
 			<-call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_struct_begin;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_get_route_struct_begin_params (*
@@ -62,7 +62,7 @@ scp_program -> proc_print_route (*
 			=> nrel_goto: .proc_print_route_operator7;;
 		*);;	
 //	Находим вершину, соответствующую начальному посещению.
-		.proc_print_route_operator7 (*
+		-> .proc_print_route_operator7 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _cur_visit;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
@@ -74,7 +74,7 @@ scp_program -> proc_print_route (*
 		 	=> nrel_else: .proc_print_route_operator_return;;
 		*);;
 //	Выводим текущую посещенную вершину.
-		.proc_print_route_operator8 (*
+		-> .proc_print_route_operator8 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _visited_vertex;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
@@ -93,7 +93,7 @@ scp_program -> proc_print_route (*
 			=>nrel_goto: .proc_print_route_operator10;;
 		*);;
 //	Находим следующее посещение.
-		.proc_print_route_operator10 (*
+		-> .proc_print_route_operator10 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _cur_visit;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
@@ -113,7 +113,7 @@ scp_program -> proc_print_route (*
 			=>nrel_goto: .proc_find_min_path_operator12;;
 		*);;
 //	Находим вершину, соответствующую текущему посещению.
-		.proc_print_route_operator12 (*
+		-> .proc_print_route_operator12 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _cur_visit;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
@@ -132,7 +132,7 @@ scp_program -> proc_print_route (*
 			=>nrel_goto: .proc_print_route_operator14;;
 		*);;
 //	Выводим текущую посещенную вершину.
-		.proc_print_route_operator14 (*
+		-> .proc_print_route_operator14 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _visited_vertex;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
