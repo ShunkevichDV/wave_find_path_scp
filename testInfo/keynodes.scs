@@ -1,0 +1,23 @@
+undirected_graph
+=> nrel_main_idtf: [неориентированный граф] (* <- lang_ru;; *);
+=> nrel_main_idtf: [undirected graph] (* 	<- lang_en;; *);;
+
+rrel_vertex 
+=> nrel_main_idtf: [вершина'] (* <- lang_ru;; *);
+=> nrel_main_idtf: [vertex'] (* <- lang_en;; *);;
+
+rrel_list_next
+=> nrel_main_idtf: [следующий элемент списка'] (* <- lang_ru;; *);
+=> nrel_main_idtf: [next list element'] (* <- lang_en;;	*);;
+
+rrel_list_value
+=> nrel_main_idtf: [значение элемент списка'] (* <- lang_ru;; *);
+=> nrel_main_idtf: [list element value'] (* <- lang_en;; *);;
+
+rrel_list_prev
+=> nrel_main_idtf: [предыдующий элемент списка'] (* <- lang_ru;; *);
+=> nrel_main_idtf: [previous list element'] (* <- lang_en;; *);;
+
+rrel_edge 
+=> nrel_main_idtf: [ребро'] (*  <- lang_ru;; *);
+=> nrel_main_idtf: [edge'] (* <- lang_en;;	*);;

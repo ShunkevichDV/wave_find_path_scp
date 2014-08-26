@@ -8,7 +8,14 @@ scp_program -> proc_list_new (*
 	*);;
 
 	-> rrel_operators: .proc_list_new_operator_set(*
-		-> rrel_init: .proc_list_new_operator1 (*
+		-> rrel_init: 
+		/*	 .proc_list_new_operator_printEl (*
+			<- printEl;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _element_value;;
+
+			=> nrel_goto: .proc_list_new_operator_return;;
+		*);;*/
+		.proc_list_new_operator1 (*
 			<- genElStr5;;
 			-> rrel_1: rrel_assign: rrel_node: rrel_const: rrel_scp_var: _new_element;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;

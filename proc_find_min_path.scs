@@ -3,11 +3,24 @@ scp_program -> proc_find_min_path (*
 		-> rrel_1: rrel_in: _graph;;
 		-> rrel_2: rrel_in: _beg_vertex;;
 		-> rrel_3: rrel_in: _end_vertex;;
-		-> rrel_4: rrel_out: _path;;
 	*);;
 
 	-> rrel_operators: .proc_find_min_path_operator_set (*
 //1. Добавление всех вершин неориентированного графа во множество непроверенных вершин.
+/*		-> rrel_init: .proc_find_min_path_operator1 (*
+			 <- searchSetStr5;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+			-> rrel_3: rrel_assign: rrel_scp_var: _el3;;
+			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
+			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_vertex;;
+		
+			->rrel_set_3: rrel_assign: rrel_scp_var: _not_checked_vertexes;;
+			=> nrel_then: .proc_find_min_path_operator_test3;;		
+		 	=> nrel_else: .proc_find_min_path_operator_fail;;	
+		*);;
+*/
+		
 		-> rrel_init: .proc_find_min_path_operator1 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
@@ -20,15 +33,114 @@ scp_program -> proc_find_min_path (*
 			=> nrel_then: .proc_find_min_path_operator2;;		
 		 	=> nrel_else: .proc_find_min_path_operator_erase_not_checked_vertexes;;	
 		*);;
+		
+	
+//--------------------------------test block-----------------
+		
+//------test operators---
+		-> .proc_find_min_path_operator_test (*
+			 <- searchElStr3;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
+			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
+			-> rrel_3: rrel_fixed: rrel_scp_var: _beg_vertex;;
+		
+			=> nrel_then: .proc_find_min_path_operator_test2;;		
+		 	=> nrel_else: .proc_find_min_path_operator_well;;
+		*);;
+		->.proc_find_min_path_operator_test2 (*
+			<-eraseEl;;
+			-> rrel_1: rrel_erase: rrel_fixed: rrel_scp_var: _arc2;;
+
+			=>nrel_goto: .proc_find_min_path_operator_test3;;
+		*);;
+		-> .proc_find_min_path_operator_test3 (*
+			 <- searchElStr5;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _beg_vertex;;
+			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_3: rrel_assign: rrel_scp_var: _print_valueStr;;
+			-> rrel_4: rrel_assign: rrel_pos: rrel_scp_var: _arc4;;
+			-> rrel_5: rrel_fixed: rrel_scp_const: nrel_system_identifier;;
+		
+			=> nrel_then: .proc_find_min_path_operator_print;;		
+		 	=> nrel_else: .proc_fin_min_path_operator_fail;;
+		*);;
+
+		->.proc_find_min_path_operator_test4 (*
+			<-printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _print_valueStr;;
+
+			=>nrel_goto: .proc_find_min_path_operator_test;;
+		*);;
+
+
+/*
+		-> .proc_find_min_path_operator_test (*
+			 <- searchElStr5;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _beg_vertex;;
+			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
+			-> rrel_3: rrel_assign: rrel_scp_var: _print_valueStr;;
+			-> rrel_4: rrel_assign: rrel_pos: rrel_scp_var: _arc4;;
+			-> rrel_5: rrel_fixed: rrel_scp_const: nrel_system_identifier;;
+		
+			=> nrel_then: .proc_find_min_path_operatorp;;		
+		 	=> nrel_else: .proc_find_min_path_operator_return;;
+		*);;
+
+*/		
+		-> .proc_find_min_path_operator_print (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _print_valueStr;;
+
+			=> nrel_goto: .proc_find_min_path_operator_return;;
+		*);;
+		
+		-> .proc_find_min_path_operator_printEl (*
+			<- printEl;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
+
+			=> nrel_goto: .proc_find_min_path_operator_return;;
+		*);;
+
+		-> .proc_find_min_path_operator_fail (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [----fail test----];;
+
+			=> nrel_goto: .proc_find_min_path_operator_return;;
+		*);;
+
+		-> .proc_find_min_path_operator_well (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [----well done test----];;
+
+			=> nrel_goto: .proc_find_min_path_operator_return;;
+		*);;
+		
+		-> .proc_find_min_path_operator_fatal (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [----fatal----];;
+
+			=> nrel_goto: .proc_find_min_path_operator_return;;
+		*);;
+//-----------------------------------------------------------
+
 //	Удаление из множества непроверенных узла начала пути.
 		-> .proc_find_min_path_operator2 (*
-			<- eraseElStr3;;
+			<- searchElStr3;;
 		 	-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
-			-> rrel_2: rrel_assign: rrel_erase: rrel_pos_const_perm: rrel_scp_var: _arc2;;
-			-> rrel_3: rrel_fixed: rrel_erase: rrel_scp_var: _beg_vertex;;
+			-> rrel_2: rrel_assign: rrel_scp_var: rrel_pos_const_perm: _arc2;;
+			-> rrel_3: rrel_fixed: rrel_scp_var: _beg_vertex;;
+
+		 	=> nrel_goto: .proc_find_min_path_operator_er;;	
+		*);;
+		
+		-> .proc_find_min_path_operator_er (*
+			<- eraseEl;;
+		 	-> rrel_1: rrel_fixed: rrel_erase: rrel_scp_var: _arc2;;
 
 		 	=> nrel_goto: .proc_find_min_path_operator3;;	
 		*);;
+//-------------------------------------------------------------------------------
+
 // 2. Создаем начальную волну и добавляем в нее начальную вершину пути.
 // 3. Начальная волна - новая волна.
 		-> .proc_find_min_path_operator3 (*
@@ -47,10 +159,11 @@ scp_program -> proc_find_min_path (*
 			=> nrel_goto: .proc_find_min_path_operator5;;
 		*);;
 //	Создаем начало списка волн.
+//--------------(it's posiable change _wave_list_head to in param)-------------------
 		-> .proc_find_min_path_operator5 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_new_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_new_call_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _waves_list_head;;
 			*);;
@@ -65,8 +178,8 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator7;;
 		*);;
-
-
+//6 operators tested
+/*
 		->.proc_find_min_path_operator7 (*
 			<-varAssign;;
 			-> rrel_1: rrel_assign: rrel_scp_var: _waves_list_tail;;
@@ -522,7 +635,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator_erase_not_checked_vertexes;;
 		*);;		
-
+*/
 		-> .proc_find_min_path_operator_erase_not_checked_vertexes (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _not_checked_vertexes;;
