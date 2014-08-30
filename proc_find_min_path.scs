@@ -6,21 +6,7 @@ scp_program -> proc_find_min_path (*
 	*);;
 
 	-> rrel_operators: .proc_find_min_path_operator_set (*
-//1. Добавление всех вершин неориентированного графа во множество непроверенных вершин.
-/*		-> rrel_init: .proc_find_min_path_operator1 (*
-			 <- searchSetStr5;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
-			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
-			-> rrel_3: rrel_assign: rrel_scp_var: _el3;;
-			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
-			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_vertex;;
-		
-			->rrel_set_3: rrel_assign: rrel_scp_var: _not_checked_vertexes;;
-			=> nrel_then: .proc_find_min_path_operator_test3;;		
-		 	=> nrel_else: .proc_find_min_path_operator_fail;;	
-		*);;
-*/
-		
+//1. Добавление всех вершин неориентированного графа во множество непроверенных вершин.	
 		-> rrel_init: .proc_find_min_path_operator1 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
@@ -38,7 +24,7 @@ scp_program -> proc_find_min_path (*
 //--------------------------------test block-----------------
 		
 //------test operators---
-		-> .proc_find_min_path_operator_test (*
+	/*	-> .proc_find_min_path_operator_test (*
 			 <- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
@@ -72,21 +58,6 @@ scp_program -> proc_find_min_path (*
 			=>nrel_goto: .proc_find_min_path_operator_test;;
 		*);;
 
-
-/*
-		-> .proc_find_min_path_operator_test (*
-			 <- searchElStr5;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _beg_vertex;;
-			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
-			-> rrel_3: rrel_assign: rrel_scp_var: _print_valueStr;;
-			-> rrel_4: rrel_assign: rrel_pos: rrel_scp_var: _arc4;;
-			-> rrel_5: rrel_fixed: rrel_scp_const: nrel_system_identifier;;
-		
-			=> nrel_then: .proc_find_min_path_operatorp;;		
-		 	=> nrel_else: .proc_find_min_path_operator_return;;
-		*);;
-
-*/		
 		-> .proc_find_min_path_operator_print (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _print_valueStr;;
@@ -96,7 +67,7 @@ scp_program -> proc_find_min_path (*
 		
 		-> .proc_find_min_path_operator_printEl (*
 			<- printEl;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _created_wave;;
 
 			=> nrel_goto: .proc_find_min_path_operator_return;;
 		*);;
@@ -107,20 +78,20 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator_return;;
 		*);;
-
+*/
 		-> .proc_find_min_path_operator_well (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [----well done test----];;
 
 			=> nrel_goto: .proc_find_min_path_operator_return;;
 		*);;
-		
+/*		
 		-> .proc_find_min_path_operator_fatal (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [----fatal----];;
 
 			=> nrel_goto: .proc_find_min_path_operator_return;;
-		*);;
+		*);;*/
 //-----------------------------------------------------------
 
 //	Удаление из множества непроверенных узла начала пути.
@@ -178,8 +149,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator7;;
 		*);;
-//6 operators tested
-/*
+
 		->.proc_find_min_path_operator7 (*
 			<-varAssign;;
 			-> rrel_1: rrel_assign: rrel_scp_var: _waves_list_tail;;
@@ -194,11 +164,12 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: .proc_find_min_path_operator9;;
 		*);;
+
 //	Выведем содержимое первой волны.
 		-> .proc_find_min_path_operator9 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_print_set_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_print_set_call_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
@@ -212,13 +183,15 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator11;;
 		*);;
-		
-		->.proc_find_min_path_operato11 (*
-			<-print;;
+
+		->.proc_find_min_path_operator11 (*
+			<-printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [""];;
 
-			=>nrel_goto: .proc_find_min_path_operator12;;
+			=>nrel_goto: .proc_find_min_path_operator_return;;
 		*);;
+
+
 //	Первая волна сформирована.
 //	На ее основе формируем все дальнейшие волны.
 //	Начинаем цикл формирования списка волн.
@@ -226,15 +199,15 @@ scp_program -> proc_find_min_path (*
 // 4. Формируем следующую волну на основе новой волны.
 //	Устанавливаем созданную волну как следующую для новой волны.
 //	Созданная волна - новая волна.
-		
+	/*	
 		-> .proc_find_min_path_operator12 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_create_wave;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_create_wave_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_create_wave_call_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _new_wave;;
 				-> rrel_3: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
-				-> rrel_4: rrel_assign: rrel_scp_var: _new_wave;;
+				-> rrel_4: rrel_assign: rrel_scp_var: _created_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -247,19 +220,27 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: .proc_find_min_path_operator14;;
 		*);;		
-			
-		->.proc_find_min_path_operator14 (*
+		
+	/*	->.proc_find_min_path_operator_varAssign (*
+			<-varAssign;;
+			-> rrel_1: rrel_assign: rrel_scp_var: _new_wave;;
+			-> rrel_2: rrel_fixed: rrel_scp_var: _created_wave;;
+
+			=>nrel_goto: .proc_find_min_path_operator14;;
+		*);;
+*/
+	/*	->.proc_find_min_path_operator14 (*
 			<-print;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [Wave : ];;
 
 			=>nrel_goto: .proc_find_min_path_operator15;;
 		*);;
-		
+
 //	Выведем содержимое новой созданной волны.
 		-> .proc_find_min_path_operator15 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_print_set_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_print_set_call_params (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
@@ -274,12 +255,13 @@ scp_program -> proc_find_min_path (*
 			=> nrel_goto: .proc_find_min_path_operator17;;
 		*);;
 		
-		->.proc_find_min_path_operato17 (*
-			<-print;;
+		->.proc_find_min_path_operator17 (*
+			<-printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [""];;
 
-			=>nrel_goto: .proc_find_min_path_operator18;;
+			=>nrel_goto: .proc_find_min_path_operator_return;;
 		*);;
+/*
 // Добавляем new_wave в конец списка волн
 		-> .proc_find_min_path_operator18 (*
 			<- call;;
