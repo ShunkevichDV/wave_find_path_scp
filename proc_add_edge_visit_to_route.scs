@@ -12,7 +12,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 
 	-> rrel_operators: .proc_add_edge_visit_to_route_operator_set (*
 		
-		// Находим ориентированный граф структуры мрашрута
+		// Находим ориентированный граф структуры маршрута
 		//
 		-> rrel_init: .proc_add_edge_visit_to_route_operator1 (*
 			<- call;;

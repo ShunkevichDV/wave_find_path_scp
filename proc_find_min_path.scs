@@ -134,7 +134,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator5 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_new_call_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _waves_list_head;;
 			*);;
@@ -169,7 +169,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator9 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_print_set_call_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
@@ -188,7 +188,7 @@ scp_program -> proc_find_min_path (*
 			<-printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [""];;
 
-			=>nrel_goto: .proc_find_min_path_operator_return;;
+			=>nrel_goto: .proc_find_min_path_operator12;;
 		*);;
 
 
@@ -199,11 +199,11 @@ scp_program -> proc_find_min_path (*
 // 4. Формируем следующую волну на основе новой волны.
 //	Устанавливаем созданную волну как следующую для новой волны.
 //	Созданная волна - новая волна.
-	/*	
+		/*
 		-> .proc_find_min_path_operator12 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_create_wave;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_create_wave_call_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _new_wave;;
 				-> rrel_3: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
@@ -228,8 +228,9 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: .proc_find_min_path_operator14;;
 		*);;
-*/
-	/*	->.proc_find_min_path_operator14 (*
+	*/
+		
+		->.proc_find_min_path_operator14 (*
 			<-print;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [Wave : ];;
 
@@ -240,8 +241,8 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator15 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_print_set_call_params (*
-				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _created_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -266,7 +267,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator18 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_new_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _waves_list_curr;;
 			*);;
@@ -285,7 +286,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator20 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_set_next;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_set_next_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _waves_list_tail;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _waves_list_curr;;
 			*);;
@@ -414,7 +415,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator33 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_add_vertex_visit_to_route;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_vertex_visit_to_route_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _beg_vertex;;
 				-> rrel_3: rrel_assign: rrel_scp_var: _beg_vertex_visit;;
@@ -435,7 +436,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator35 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_add_vertex_visit_to_route;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_vertex_visit_to_route_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _end_vertex;;
 				-> rrel_3: rrel_assign: rrel_scp_var: _end_vertex_visit;;
@@ -466,7 +467,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator38 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_prev;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_get_prev_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _waves_list_tail;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _list_it;;
 			*);;
@@ -494,7 +495,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator41 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_value;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_get_value_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _list_it;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _cur_wave;;
 			*);;
@@ -513,7 +514,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator43 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_find_any_edge;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_find_any_edge_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _cur_vertex;;
 				-> rrel_3: rrel_fixed: rrel_scp_var: _cur_wave;;
@@ -534,7 +535,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator45 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_other_vertex_incidence_edge;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_get_other_vertex_incidence_edge_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _edge;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _cur_vertex;;
 				-> rrel_3: rrel_assign: rrel_scp_var: _prev_vertex;;
@@ -554,7 +555,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator47 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_add_edge_visit_to_route;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_add_edge_visit_to_route_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _edge;;
 				-> rrel_3: rrel_fixed: rrel_scp_var: _prev_vertex;;
@@ -584,7 +585,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator50 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_prev;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_list_get_prev_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _list_it;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _list_it;;
 			*);;
@@ -603,7 +604,7 @@ scp_program -> proc_find_min_path (*
 		-> .proc_find_min_path_operator_erase_waves_list (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_erase_waves_list;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: .proc_erase_waves_list_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _waves_list_head;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
