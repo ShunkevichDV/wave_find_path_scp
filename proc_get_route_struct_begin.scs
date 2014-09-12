@@ -2,12 +2,12 @@
 // Наденную вершину возвращает в _route_begin.
 scp_program -> proc_get_route_struct_begin (*
 	
-	-> rrel_params: ..proc_get_route_struct_begin_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _route_struct;;
 		-> rrel_2: rrel_out: _route_begin;;
 	*);;
 
-	-> rrel_operators: ..proc_get_route_struct_begin_operator_set (*
+	-> rrel_operators: ... (*
 //	Начальной считается вершина, в которую нет входящих бинарных дуг.
 //	Переберем все вершины и проверим их на это свойство.
 

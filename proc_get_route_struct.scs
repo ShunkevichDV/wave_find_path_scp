@@ -3,12 +3,12 @@
 // Найденный ориентированный граф возвращает в route_struct.
 scp_program -> proc_get_route_struct (*
 	
-	-> rrel_params: ..proc_get_route_struct_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _route;;
 		-> rrel_2: rrel_out: _route_struct;;
 	*);;
 
-	-> rrel_operators: ..proc_get_route_struct_operator_set (*
+	-> rrel_operators: ... (*
 		-> rrel_init: ..proc_get_route_struct_operator1 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _route;;

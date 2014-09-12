@@ -3,13 +3,13 @@
 //
 scp_program -> proc_get_other_vertex_incidence_edge (*
 	
-	-> rrel_params: ..proc_get_other_vertex_incidence_edge_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _edge;;
 		-> rrel_2: rrel_in: _vertex1;;
 		-> rrel_3: rrel_out: _vertex2;;
 	*);;
 
-	-> rrel_operators: ..proc_get_other_vertex_incidence_edge_operator_set (*
+	-> rrel_operators: ... (*
 
 		// Создаем копию множества вершин, инцидентных ребру
 		//

@@ -3,14 +3,14 @@
 //
 scp_program -> proc_find_any_edge (*
 	
-	-> rrel_params: ..proc_find_any_edge_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _graph;;
 		-> rrel_2: rrel_in: _vertex;;
 		-> rrel_3: rrel_in: _prev_wave;;
 		-> rrel_4: rrel_out: _edge;;
 	*);;
 
-	-> rrel_operators: ..proc_find_any_edge_operator_set (*
+	-> rrel_operators: ... (*
 
 		// Формируем множество ребер графа для итерации
 		//			

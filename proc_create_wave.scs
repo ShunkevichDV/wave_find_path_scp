@@ -1,12 +1,12 @@
 scp_program -> proc_create_wave (*	
-	-> rrel_params: ..proc_create_wave_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _graph;;
 		-> rrel_2: rrel_in: _wave;;
 		-> rrel_3: rrel_in: _not_checked_vertexes;;
 		-> rrel_4: rrel_out: _new_wave;;
 	*);;
 
-	-> rrel_operators: ..proc_create_wave_operator_set (*
+	-> rrel_operators: ... (*
 //	Создаем новую волну.
 		-> rrel_init: ..proc_create_wave_operator1 (*
 			<- genEl;;

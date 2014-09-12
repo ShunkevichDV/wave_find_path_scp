@@ -3,13 +3,13 @@
 //
 scp_program -> proc_get_edge_vertexes (*
 	
-	-> rrel_params: ..proc_get_edge_vertexes_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _edge;;
 		-> rrel_2: rrel_out: _vertex1;;
 		-> rrel_3: rrel_out: _vertex2;;
 	*);;
 
-	-> rrel_operators: ..proc_get_edge_vertexes_operator_set (*
+	-> rrel_operators: ... (*
 
 		-> rrel_init: ..proc_get_edge_vertexes_operator1 (*
 

@@ -1,9 +1,9 @@
 scp_program -> proc_print_graph (*	
-	-> rrel_params: ..proc_print_graph_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _graph;;
 	*);;
 
-	-> rrel_operators: ..proc_print_graph_operator_set (*
+	-> rrel_operators: ... (*
 //	Формируем множество связок графа для итерации.
 		-> rrel_init: ..proc_print_graph_operator1 (*
 			 <- searchSetStr5;;
@@ -45,7 +45,7 @@ scp_program -> proc_print_graph (*
 		-> ..proc_print_graph_operator5 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_edge_vertexes;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: ..proc_get_edge_vertexes_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _cur_edge;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _first_inc_vertex;;
 				-> rrel_3: rrel_assign: rrel_scp_var: _second_inc_vertex;;

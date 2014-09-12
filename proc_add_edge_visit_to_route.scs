@@ -2,7 +2,7 @@
 
 scp_program -> proc_add_edge_visit_to_route (*
 	
-	-> rrel_params: ..proc_add_edge_visit_to_route_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _route;;
 		-> rrel_2: rrel_in: _edge;;
 		-> rrel_3: rrel_in: _from_verex;;
@@ -10,14 +10,14 @@ scp_program -> proc_add_edge_visit_to_route (*
 		-> rrel_5: rrel_out: _edge_visit;;
 	*);;
 
-	-> rrel_operators: ..proc_add_edge_visit_to_route_operator_set (*
+	-> rrel_operators: ... (*
 		
 		// Находим ориентированный граф структуры маршрута
 		//
 		-> rrel_init: ..proc_add_edge_visit_to_route_operator1 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_struct;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: ..proc_add_edge_visit_to_route_operator1_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _route_struct;;
 			*);;
@@ -38,7 +38,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 		-> ..proc_add_edge_visit_to_route_operator3 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_visit;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: ..proc_add_edge_visit_to_route_operator2_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _route_visit;;
 			*);;
@@ -59,7 +59,7 @@ scp_program -> proc_add_edge_visit_to_route (*
 		-> ..proc_add_edge_visit_to_route_operator5 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_add_vertex_visit_to_route;;
-			-> rrel_2: rrel_fixed: rrel_scp_const: ..proc_add_edge_visit_to_route_operator5_params (*
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
 				-> rrel_2: rrel_fixed: rrel_scp_var: _from_vertex;;
 				-> rrel_3: rrel_fixed: rrel_scp_var: _from_vertex_visit;;

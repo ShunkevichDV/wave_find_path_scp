@@ -1,11 +1,11 @@
 scp_program -> proc_find_min_path (*	
-	-> rrel_params: ..proc_find_min_path_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _graph;;
 		-> rrel_2: rrel_in: _beg_vertex;;
 		-> rrel_3: rrel_in: _end_vertex;;
 	*);;
 
-	-> rrel_operators: ..proc_find_min_path_operator_set (*
+	-> rrel_operators: ... (*
 //1. Добавление всех вершин неориентированного графа во множество непроверенных вершин.	
 		-> rrel_init: ..proc_find_min_path_operator1 (*
 			 <- searchSetStr5;;

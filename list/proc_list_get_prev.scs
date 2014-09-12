@@ -1,11 +1,11 @@
 scp_program -> proc_list_get_prev (*
 	
-	-> rrel_params: ..proc_list_get_prev_params (*
+	-> rrel_params: ... (*
 		-> rrel_1: rrel_in: _current_element;;
 		-> rrel_2: rrel_out: _previous_element;;
 	*);;
 
-	-> rrel_operators: ..proc_list_get_prev_operator_set (*
+	-> rrel_operators: ... (*
 		
 		-> rrel_init: ..proc_list_get_prev_operator1 (*
 			<- varErase;;
