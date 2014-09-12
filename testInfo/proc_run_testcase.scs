@@ -4,7 +4,7 @@ scp_program -> proc_run_testcase (*
 	-> rrel_params: ... ;;
 
 	-> rrel_operators: ... (*
-	-> rrel_init: .proc_run_testcase_operator1 (*
+	-> rrel_init: ..proc_run_testcase_operator1 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_find_min_path;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
@@ -15,16 +15,16 @@ scp_program -> proc_run_testcase (*
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
-			=> nrel_goto: .proc_run_testcase_operator2;;
+			=> nrel_goto: ..proc_run_testcase_operator2;;
 		*);;
-		-> .proc_run_testcase_operator2 (*
+		-> ..proc_run_testcase_operator2 (*
 			<- waitReturn;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
 
-			=> nrel_goto: .proc_run_testcase_operator_finish;;
+			=> nrel_goto: ..proc_run_testcase_operator_finish;;
 		*);;
 //----------------------this operators work---------------		 
-/*			 .proc_run_testcase_operator1 (*
+/*			 ..proc_run_testcase_operator1 (*
 			 <- searchSetStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: graph1;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
@@ -33,26 +33,26 @@ scp_program -> proc_run_testcase (*
 			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_vertex;;
 		
 			->rrel_set_3: rrel_assign: rrel_scp_var: _not_checked_vertexes;;
-			=> nrel_then: .proc_run_testcase_operator6;;		
-		 	=> nrel_else: .proc_run_testcase_operator_finish;;	
+			=> nrel_then: ..proc_run_testcase_operator6;;		
+		 	=> nrel_else: ..proc_run_testcase_operator_finish;;	
 		*);;
 		
-		-> .proc_run_testcase_operator6 (*
+		-> ..proc_run_testcase_operator6 (*
 			 <- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _print_value;;
 		
-			=> nrel_then: .proc_run_testcase_operator7;;		
-		 	=> nrel_else: .proc_run_testcase_operator_finish;;
+			=> nrel_then: ..proc_run_testcase_operator7;;		
+		 	=> nrel_else: ..proc_run_testcase_operator_finish;;
 		*);;
-		->.proc_run_testcase_operator7 (*
+		->..proc_run_testcase_operator7 (*
 			<-eraseEl;;
 			-> rrel_1: rrel_erase: rrel_fixed: rrel_scp_var: _arc2;;
 
-			=>nrel_goto: .proc_run_testcase_operator8;;
+			=>nrel_goto: ..proc_run_testcase_operator8;;
 		*);;
-		-> .proc_run_testcase_operator8 (*
+		-> ..proc_run_testcase_operator8 (*
 			 <- searchElStr5;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _print_value;;
 			-> rrel_2: rrel_assign: rrel_const: rrel_common: rrel_scp_var: _arc2;;
@@ -60,42 +60,42 @@ scp_program -> proc_run_testcase (*
 			-> rrel_4: rrel_assign: rrel_pos: rrel_scp_var: _arc4;;
 			-> rrel_5: rrel_fixed: rrel_scp_const: nrel_system_identifier;;
 		
-			=> nrel_then: .proc_run_testcase_operator9;;		
-		 	=> nrel_else: .proc_run_testcase_operator_return;;
+			=> nrel_then: ..proc_run_testcase_operator9;;		
+		 	=> nrel_else: ..proc_run_testcase_operator_return;;
 		*);;
 
-		->.proc_run_testcase_operator9 (*
+		->..proc_run_testcase_operator9 (*
 			<-print;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _print_valueStr;;
 
-			=>nrel_goto: .proc_run_testcase_operator6;;
+			=>nrel_goto: ..proc_run_testcase_operator6;;
 		*);;
 */
 //------------------------------------------------------------------------		
 	
-		-> .proc_run_testcase_operator_finish (*
+		-> ..proc_run_testcase_operator_finish (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [program done!  <--------------];;
 
-			=> nrel_goto: .proc_run_testcase_operator_return;;
+			=> nrel_goto: ..proc_run_testcase_operator_return;;
 		*);;
 
-		-> .proc_run_testcase_operator_fail (*
+		-> ..proc_run_testcase_operator_fail (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [----fail test----];;
 
-			=> nrel_goto: .proc_run_testcase_operator_return;;
+			=> nrel_goto: ..proc_run_testcase_operator_return;;
 		*);;
 
-		-> .proc_run_testcase_operator_well (*
+		-> ..proc_run_testcase_operator_well (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [----well done test----];;
 
-			=> nrel_goto: .proc_run_testcase_operator_return;;
+			=> nrel_goto: ..proc_run_testcase_operator_return;;
 		*);;
 		
 
-		-> .proc_run_testcase_operator_return (*
+		-> ..proc_run_testcase_operator_return (*
 			<- return;;
 		*);;
 	*);;

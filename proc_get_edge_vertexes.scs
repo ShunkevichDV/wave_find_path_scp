@@ -3,15 +3,15 @@
 //
 scp_program -> proc_get_edge_vertexes (*
 	
-	-> rrel_params: .proc_get_edge_vertexes_params (*
+	-> rrel_params: ..proc_get_edge_vertexes_params (*
 		-> rrel_1: rrel_in: _edge;;
 		-> rrel_2: rrel_out: _vertex1;;
 		-> rrel_3: rrel_out: _vertex2;;
 	*);;
 
-	-> rrel_operators: .proc_get_edge_vertexes_operator_set (*
+	-> rrel_operators: ..proc_get_edge_vertexes_operator_set (*
 
-		-> rrel_init: .proc_get_edge_vertexes_operator1 (*
+		-> rrel_init: ..proc_get_edge_vertexes_operator1 (*
 
 			// Находим инцидентные вершины.
 	
@@ -20,10 +20,10 @@ scp_program -> proc_get_edge_vertexes (*
 			-> rrel_2: rrel_fixed: rrel_edge: rrel_scp_var: _edge;;
 			-> rrel_3: rrel_assign: rrel_scp_var: _vertex2;;	
 
-			=> nrel_goto: .proc_get_edge_vertexes_operator_return;;
+			=> nrel_goto: ..proc_get_edge_vertexes_operator_return;;
 		*);;
 
-		-> .proc_get_edge_vertexes_operator_return (*
+		-> ..proc_get_edge_vertexes_operator_return (*
 			<- return;;
 		*);;	
 	*);;
