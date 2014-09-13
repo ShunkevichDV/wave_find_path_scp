@@ -110,7 +110,7 @@ scp_program -> proc_print_route (*
 			-> rrel_1: rrel_assign: rrel_scp_var: _cur_visit;;
 			-> rrel_2: rrel_fixed: rrel_scp_var: _next_visit;;
 
-			=>nrel_goto: ..proc_find_min_path_operator12;;
+			=>nrel_goto: ..proc_print_route_operator12;;
 		*);;
 //	Находим вершину, соответствующую текущему посещению.
 		-> ..proc_print_route_operator12 (*

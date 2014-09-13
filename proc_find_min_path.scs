@@ -24,7 +24,7 @@ scp_program -> proc_find_min_path (*
 //--------------------------------test block-----------------
 		
 //------test operators---
-	/*	-> ..proc_find_min_path_operator_test (*
+		-> ..proc_find_min_path_operator_test (*
 			 <- searchElStr3;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
@@ -67,7 +67,7 @@ scp_program -> proc_find_min_path (*
 		
 		-> ..proc_find_min_path_operator_printEl (*
 			<- printEl;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _created_wave;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
 
 			=> nrel_goto: ..proc_find_min_path_operator_return;;
 		*);;
@@ -78,7 +78,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: ..proc_find_min_path_operator_return;;
 		*);;
-*/
+
 		-> ..proc_find_min_path_operator_well (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [----well done test----];;
@@ -232,7 +232,7 @@ scp_program -> proc_find_min_path (*
 		
 		->..proc_find_min_path_operator14 (*
 			<-print;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: [Wave : ];;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [Wave : ] ;;
 
 			=>nrel_goto: ..proc_find_min_path_operator15;;
 		*);;
@@ -242,7 +242,7 @@ scp_program -> proc_find_min_path (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
-				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
+				-> rrel_1: rrel_fixed: rrel_scp_var: _created_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
