@@ -64,7 +64,7 @@ scp_program -> proc_create_wave (*
 			-> rrel_3: rrel_assign: rrel_scp_var: _edge;;
 
 			=> nrel_then: ..proc_create_wave_operator7;;
-			=> nrel_else: ..proc_create_wave_operator_erase_wave_copy;;
+			=> nrel_else: ..proc_create_wave_operator_erase_edges_set ;;
 		*);;
 	
 		-> ..proc_create_wave_operator7 (*

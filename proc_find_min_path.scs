@@ -218,7 +218,7 @@ scp_program -> proc_find_min_path (*
 			<- waitReturn;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
 
-			=> nrel_goto: ..proc_find_min_path_operator14;;
+			=> nrel_goto: ..proc_find_min_path_operator_varAssign;;
 		*);;		
 		
 		->..proc_find_min_path_operator_varAssign (*
@@ -242,7 +242,7 @@ scp_program -> proc_find_min_path (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_set;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
-				-> rrel_1: rrel_fixed: rrel_scp_var: _created_wave;;
+				-> rrel_1: rrel_fixed: rrel_scp_var: _new_wave;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -260,9 +260,9 @@ scp_program -> proc_find_min_path (*
 			<-printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [""];;
 
-			=>nrel_goto: ..proc_find_min_path_operator_return;;
+			=>nrel_goto: ..proc_find_min_path_operator18;;
 		*);;
-/*
+
 // Добавляем new_wave в конец списка волн
 		-> ..proc_find_min_path_operator18 (*
 			<- call;;
@@ -320,6 +320,8 @@ scp_program -> proc_find_min_path (*
 // Новая волна пуста. Очищаем память и завершаем алгоритм.
 			=> nrel_else: ..proc_find_min_path_operator_erase_waves_list;; 
 		*);;
+
+
 
 // 6. Если в текущей волне есть конечная вершина, то перейти к пункту 7, иначе к пункту 4.
 
@@ -600,6 +602,8 @@ scp_program -> proc_find_min_path (*
 
 		 	=> nrel_goto: ..proc_find_min_path_operator40;;
 		*);;
+
+
 // Чистим память.
 		-> ..proc_find_min_path_operator_erase_waves_list (*
 			<- call;;
@@ -618,7 +622,7 @@ scp_program -> proc_find_min_path (*
 
 			=> nrel_goto: ..proc_find_min_path_operator_erase_not_checked_vertexes;;
 		*);;		
-*/
+
 		-> ..proc_find_min_path_operator_erase_not_checked_vertexes (*
 			<- eraseEl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: rrel_erase: _not_checked_vertexes;;
