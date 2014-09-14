@@ -21,3 +21,20 @@ rrel_list_prev
 rrel_edge 
 => nrel_main_idtf: [ребро'] (*  <- lang_ru;; *);
 => nrel_main_idtf: [edge'] (* <- lang_en;;	*);;
+
+nrel_simple_trail 
+=> nrel_main_idtf: [простая цепь*] (*  <- lang_ru;; *);
+=> nrel_main_idtf: [simple trail*] (* <- lang_en;;	*);;
+
+rrel_1 
+=> nrel_main_idtf: [1'] (*  <- lang_ru;; *);
+=> nrel_main_idtf: [1'] (* <- lang_en;;	*);;
+
+rrel_2 
+=> nrel_main_idtf: [2'] (*  <- lang_ru;; *);
+=> nrel_main_idtf: [2'] (* <- lang_en;;	*);;
+
+rrel_3 
+=> nrel_main_idtf: [3'] (*  <- lang_ru;; *);
+=> nrel_main_idtf: [3'] (* <- lang_en;;	*);;
+

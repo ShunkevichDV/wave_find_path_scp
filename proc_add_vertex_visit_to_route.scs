@@ -17,7 +17,7 @@ scp_program -> proc_add_vertex_visit_to_route (*
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_struct;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1:  rrel_fixed: rrel_scp_var: _route;;
-				-> rrel_2:  rrel_fixed: rrel_scp_var: _route_struct;;
+				-> rrel_2:  rrel_assign: rrel_scp_var: _route_struct;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -38,7 +38,7 @@ scp_program -> proc_add_vertex_visit_to_route (*
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_route_visit;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
-				-> rrel_2: rrel_fixed: rrel_scp_var: _route_visit;;
+				-> rrel_2: rrel_assign: rrel_scp_var: _route_visit;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
@@ -55,8 +55,8 @@ scp_program -> proc_add_vertex_visit_to_route (*
 		// Проверяем, может посещение для этой вершины уже существует
 		//
 
-		-> ..proc_add_vertex_visit_to_route_operator_5 (*
-			-> searchElStr5;;
+		-> ..proc_add_vertex_visit_to_route_operator5 (*
+			<- searchElStr5;;
 			-> rrel_1: rrel_assign: rrel_scp_var: _vertex_visit;;
 			-> rrel_2: rrel_assign: rrel_common: rrel_scp_var: _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _vertex;;

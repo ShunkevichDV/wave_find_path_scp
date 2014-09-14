@@ -67,7 +67,7 @@ scp_program -> proc_find_min_path (*
 		
 		-> ..proc_find_min_path_operator_printEl (*
 			<- printEl;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _not_checked_vertexes;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _prev_vertex;;
 
 			=> nrel_goto: ..proc_find_min_path_operator_return;;
 		*);;
@@ -343,21 +343,21 @@ scp_program -> proc_find_min_path (*
 
 		-> ..proc_find_min_path_operator25 (*
 			<- genEl;;
-			-> rrel_1: rrel_assign: rrel_const: rrel_node: rrel_scp_var: _route;;
+			-> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _route;;
 
 			=> nrel_goto: ..proc_find_min_path_operator26;;
 		*);;
 		
 		-> ..proc_find_min_path_operator26 (*
 			<- genEl;;
-			-> rrel_1: rrel_assign: rrel_const: rrel_node: rrel_scp_var: _route_stuct;;
+			-> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _route_stuct;;
 
 			=> nrel_goto: ..proc_find_min_path_operator27;;
 		*);;
 
 		-> ..proc_find_min_path_operator27 (*
 			<- genEl;;
-			-> rrel_1: rrel_assign: rrel_const: rrel_node: rrel_scp_var: _route_visit;;
+			-> rrel_1: rrel_assign: rrel_node: rrel_scp_var: _route_visit;;
 
 			=> nrel_goto: ..proc_find_min_path_operator28;;
 		*);;
@@ -534,6 +534,8 @@ scp_program -> proc_find_min_path (*
 		 	=> nrel_goto: ..proc_find_min_path_operator45;;
 		*);;
 //	Получаем предыдущую вершину в пути.
+
+//check edge value
 		-> ..proc_find_min_path_operator45 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_get_other_vertex_incidence_edge;;
