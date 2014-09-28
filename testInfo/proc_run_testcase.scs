@@ -8,9 +8,9 @@ scp_program -> proc_run_testcase (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_find_min_path;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
-				-> rrel_1: rrel_fixed: rrel_scp_const: graph1;;
+				-> rrel_1: rrel_fixed: rrel_scp_const: graph2;;
 				-> rrel_2: rrel_fixed: rrel_scp_const: A;;
-				-> rrel_3: rrel_fixed: rrel_scp_const: E;;
+				-> rrel_3: rrel_fixed: rrel_scp_const: M;;
 				-> rrel_4: rrel_assign: rrel_scp_var: _route;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
@@ -21,11 +21,42 @@ scp_program -> proc_run_testcase (*
 			<- waitReturn;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
 
-			=> nrel_goto: ..proc_run_testcase_operator_2;;
+			=> nrel_goto: ..proc_run_testcase_operator3;;
 		*);;
 		
+		-> ..proc_run_testcase_operator3 (*
+			<- ifVarAssign;;
+			-> rrel_1: _route;;
+
+			=> nrel_then: ..proc_run_testcase_operator4;;
+			=> nrel_else: ..proc_run_testcase_operator_path_is_not_exist;;
+		*);;
+
+		-> ..proc_run_testcase_operator4 (*
+			<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_route;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: ..proc_run_testcase_operator5;;
+		*);;
+
+		-> ..proc_run_testcase_operator5 (*
+			<- waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+
+			=> nrel_goto: ..proc_run_testcase_operator_finish;;
+		*);;	
 //------------------------------------------------------------------------		
-	
+		-> ..proc_run_testcase_operator_path_is_not_exist (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [path isn't exist!!];;
+
+			=> nrel_goto: ..proc_run_testcase_operator_finish;;
+		*);;
+
 		-> ..proc_run_testcase_operator_finish (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [program done!  <--------------];;
