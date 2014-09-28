@@ -585,31 +585,39 @@ scp_program -> proc_find_min_path (*
 
 			=>nrel_goto: ..proc_find_min_path_operator50;;
 		*);;
+		
+		->..proc_find_min_path_operator50 (*
+			<-varAssign;;
+			-> rrel_1: rrel_assign: rrel_scp_var: _list_it_temp;;
+			-> rrel_2: rrel_fixed: rrel_scp_var: _list_it;;
 
-		-> ..proc_find_min_path_operator50 (*
+			=>nrel_goto: ..proc_find_min_path_operator51;;
+		*);;
+
+		-> ..proc_find_min_path_operator51 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_get_prev;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
-				-> rrel_1: rrel_fixed: rrel_scp_var: _list_it;;
+				-> rrel_1: rrel_fixed: rrel_scp_var: _list_it_temp;;
 				-> rrel_2: rrel_assign: rrel_scp_var: _list_it;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
-			=> nrel_goto: ..proc_find_min_path_operator51;;
+			=> nrel_goto: ..proc_find_min_path_operator52;;
 		*);;
 		
-		-> ..proc_find_min_path_operator51 (*
+		-> ..proc_find_min_path_operator52 (*
 			<- waitReturn;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
 
 		 	=> nrel_goto: ..proc_find_min_path_operator40;;
 		*);;
-
+		
 
 // Чистим память.
 		-> ..proc_find_min_path_operator_erase_waves_list (*
 			<- call;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: proc_erase_waves_list;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_erase_wave_list;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
 				-> rrel_1: rrel_fixed: rrel_scp_var: _waves_list_head;;
 			*);;
