@@ -1,4 +1,4 @@
-undirected_graph->graph1(*
+undirected_graph->graph2(*
 	->rrel_vertex: A;;
 	->rrel_vertex: B;;
 	->rrel_vertex: C;;
