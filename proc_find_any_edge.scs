@@ -45,13 +45,6 @@ scp_program -> proc_find_any_edge (*
 			=> nrel_goto: ..proc_find_any_edge_operator4;;		
 		*);;
 		
-
-		-> ..proc_find_any_edge_operator_printEl (*
-			<- printEl;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _other_vertex;;
-			
-			=> nrel_goto: ..proc_find_any_edge_operator8;;		
-		*);;
 		// Проверка, инцидентно ли ребро edge вершине vertex
 		//
 		-> ..proc_find_any_edge_operator4 (*
@@ -92,7 +85,7 @@ scp_program -> proc_find_any_edge (*
 			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var:  _arc2;;
 			-> rrel_3: rrel_fixed: rrel_scp_var: _other_vertex;;
 			
-			=> nrel_then: ..proc_find_any_edge_operator_printEl;;
+			=> nrel_then: ..proc_find_any_edge_operator8;;
 			=> nrel_else: ..proc_find_any_edge_operator2;;	
 	*);;
 
