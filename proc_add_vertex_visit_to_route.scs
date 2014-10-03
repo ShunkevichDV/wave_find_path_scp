@@ -31,12 +31,6 @@ scp_program -> proc_add_vertex_visit_to_route (*
 		  	=> nrel_goto: ..proc_add_vertex_visit_to_route_operator3;;
 		*);;		
 		
-		-> ..proc_add_vertex_visit_to_route_operatorTest (*
-			<-printEl;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _vertex_visit;;
-
-		  	=> nrel_goto: ..proc_add_vertex_visit_to_route_operator_return;;
-		*);;
 		// Находим отношение соответствия маршрута
 		//
 		-> ..proc_add_vertex_visit_to_route_operator3 (*
