@@ -4,10 +4,26 @@ scp_program -> proc_run_testcase (*
 		-> rrel_1: rrel_in: _graph;;
 		-> rrel_2: rrel_in: _beg_vertex;;
 		-> rrel_3: rrel_in: _end_vertex;;
+		-> rrel_4: rrel_in: _test_number;;
 	*);;
 
 	-> rrel_operators: ... (*
-	-> rrel_init: ..proc_run_testcase_operator1 (*
+
+	-> rrel_init: ..proc_print_test_start (*
+			<- print;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [---------------Test];; 		
+		
+			=> nrel_goto: ..proc_print_test_number;;	
+		*);;
+
+	-> ..proc_print_test_number (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _test_number;; 		
+		
+			=> nrel_goto: ..proc_run_testcase_operator1;;	
+		*);;
+
+	-> ..proc_run_testcase_operator1 (*
 			<- call;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: proc_find_min_path;;
 			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
@@ -31,8 +47,15 @@ scp_program -> proc_run_testcase (*
 			<- ifVarAssign;;
 			-> rrel_1: _route;;
 
-			=> nrel_then: ..proc_run_testcase_operator4;;
-			=> nrel_else: ..proc_run_testcase_operator_path_is_not_exist;;
+			=> nrel_then: ..proc_run_testcase_print_route_begin;;
+			=> nrel_else: ..proc_run_testcase_operator_path_does_not_exist;;
+		*);;
+
+		-> ..proc_run_testcase_print_route_begin (*
+			<- print;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [Path: ];;
+
+			=> nrel_goto: ..proc_run_testcase_operator4;;
 		*);;
 
 		-> ..proc_run_testcase_operator4 (*
@@ -50,22 +73,28 @@ scp_program -> proc_run_testcase (*
 			<- waitReturn;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
 
-			=> nrel_goto: ..proc_run_testcase_operator_finish;;
+			=> nrel_goto: ..proc_run_testcase_print_route_end;;
 		*);;	
-//------------------------------------------------------------------------		
-		-> ..proc_run_testcase_operator_path_is_not_exist (*
+		
+		-> ..proc_run_testcase_print_route_end (*
+			<- printNl;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [;];;
+
+			=> nrel_goto: ..proc_run_testcase_print_test_finish;;
+		*);;
+		-> ..proc_run_testcase_operator_path_does_not_exist (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_const: [path doesn't exist!!];;
 
-			=> nrel_goto: ..proc_run_testcase_operator_finish;;
+			=> nrel_goto: ..proc_run_testcase_print_test_finish;;
 		*);;
 
-		-> ..proc_run_testcase_operator_finish (*
+		-> ..proc_run_testcase_print_test_finish (*
 			<- printNl;;
-			-> rrel_1: rrel_fixed: rrel_scp_const: [program done!  <--------------];;
+			-> rrel_1: rrel_fixed: rrel_scp_const: [---------------Test done!!!];;
 
 			=> nrel_goto: ..proc_run_testcase_operator_return;;
-		*);;	
+		*);;
 
 		-> ..proc_run_testcase_operator_return (*
 			<- return;;
