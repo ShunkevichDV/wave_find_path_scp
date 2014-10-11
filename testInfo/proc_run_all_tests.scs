@@ -100,6 +100,7 @@ _<= nrel_decomposition_of_action:: _... (*
 			_<- waitReturn;;
 			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
 
+
 			_=> nrel_goto:: _..operator_test5;;
 		*);;
 

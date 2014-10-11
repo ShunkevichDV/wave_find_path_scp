@@ -78,7 +78,7 @@ _<= nrel_decomposition_of_action:: _... (*
 
 		_=> nrel_goto:: _..proc_run_testcase_operator5;;
 	*);;
-
+	
 	_-> _..proc_run_testcase_operator5 (*
 		_<- waitReturn;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
