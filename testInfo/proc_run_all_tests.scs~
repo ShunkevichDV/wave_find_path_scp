@@ -11,7 +11,7 @@ scp_program -> proc_run_all_tests (*
 				-> rrel_1: rrel_fixed: rrel_scp_const: graph1;;
 				-> rrel_2: rrel_fixed: rrel_scp_const: A;;
 				-> rrel_3: rrel_fixed: rrel_scp_const: F;;
-				-> rrel_4: rrel_fixed: rrel_scp_const: [1];;
+				-> rrel_4: rrel_fixed: rrel_scp_const: 1;;
 			*);;
 			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
 
