@@ -416,7 +416,7 @@ scp_program -> proc_find_min_path (*
 
 		-> ..proc_find_min_path_operator40 (*
 			<- ifVarAssign;;
-			-> rrel_1: _list_it;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _list_it;;
 
 		 	=> nrel_then: ..proc_find_min_path_operator41;;
 			=> nrel_else: ..proc_find_min_path_operator_erase_waves_list;; 
