@@ -20,8 +20,26 @@ scp_program -> proc_run_testcase (*
 			<- printNl;;
 			-> rrel_1: rrel_fixed: rrel_scp_var: _test_number;; 		
 		
-			=> nrel_goto: ..proc_run_testcase_operator1;;	
+			=> nrel_goto: ..proc_print_test_graph;;
 		*);;
+
+	-> ..proc_print_test_graph (*
+		<- call;;
+			-> rrel_1: rrel_fixed: rrel_scp_const: proc_print_graph;;
+			-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
+				-> rrel_1: rrel_fixed: rrel_scp_var: _graph;;
+			*);;
+			-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+
+			=> nrel_goto: ..proc_wait_print_graph;;
+	*);;
+
+	-> ..proc_wait_print_graph (*
+			<- waitReturn;;
+			-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+
+			=> nrel_goto: ..proc_run_testcase_operator1;;
+	*);;
 
 	-> ..proc_run_testcase_operator1 (*
 			<- call;;
