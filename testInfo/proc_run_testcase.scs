@@ -33,7 +33,6 @@ _<= nrel_decomposition_of_action:: _... (*
 	_-> _..proc_run_testcase_operator1 
 	(*
 		_<- call;;
-
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_find_min_path;;
 		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params (*
 			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _graph;;
