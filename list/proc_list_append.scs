@@ -1,55 +1,62 @@
 //Создаёт новый элемент списка со значением _new_element_value и добавляет его в список после элемента _last_element.
 //Созданный элемент списка возвращается в _new_element.
-scp_program -> proc_list_append (*
-		-> rrel_params: ... (*
-			-> rrel_1: rrel_in: _last_element;;					// Элемент списка, после которго будет добавлен новый элемент
-			-> rrel_2: rrel_in: _new_element_value;;			// Значение нового элемента
-			-> rrel_3: rrel_out: _new_element;;				// Созданный новый элемент
+proc_list_append
+=> nrel_main_idtf:
+	[Создаёт новый элемент списка со значением _new_element_value и добавляет его в список после элемента _last_element] (* <- lang_ru;; *);
+	[list append] (* <- lang_en;; *);
+<- scp_program;
+-> rrel_key_sc_element: _process1;;
+
+proc_list_append = [*
+_process1 
+_<- scp_process;
+
+_-> rrel_1:: rrel_in:: _last_element;					// Элемент списка, после которго будет добавлен новый элемент
+_-> rrel_2:: rrel_in:: _new_element_value;			// Значение нового элемента
+_-> rrel_3:: rrel_out:: _new_element;				// Созданный новый элемент
+
+_<= nrel_decomposition_of_action:: _... (*
+
+	_-> rrel_1:: _..proc_list_append_operator1 (*
+		_<- call;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_new;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: ...(*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_const::  _new_element_value;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _new_element;;
 		*);;
-		
-		-> rrel_operators: ... (*
-			
-			-> rrel_init: ..proc_list_append_operator1 (*
-				<- call;;
-				-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_new;;
-		  		-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
-					-> rrel_1: rrel_fixed: rrel_scp_var:  _new_element_value;;
-					-> rrel_2: rrel_fixed: rrel_scp_var: _new_element;;
-				*);;
-				-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
 
-		 		=> nrel_goto: ..proc_list_append_operator2;;
-			*);;
+		_=> nrel_goto:: _..proc_list_append_operator2;;
+	*);;
 
-			->..proc_list_append_operator2 (*
-				<-waitReturn;;
-				-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
+	_->_..proc_list_append_operator2 (*
+		_<-waitReturn;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
 
-		  		=> nrel_goto: ..proc_list_append_operator3;;
-			*);;
+		_=> nrel_goto:: _..proc_list_append_operator3;;
+	*);;
 
-			-> ..proc_list_append_operator3 (*
-				<- call;;
-				-> rrel_1: rrel_fixed: rrel_scp_const: proc_list_set_next;;
-				-> rrel_2: rrel_fixed: rrel_scp_const: ... (*
-					-> rrel_1: rrel_fixed: rrel_scp_var: _last_element;;
-					-> rrel_2: rrel_fixed: rrel_scp_var: _new_element;;
-				*);;
-				-> rrel_3: rrel_assign: rrel_scp_var: _descr;;
-
-				=> nrel_goto: ..proc_list_append_operator4;;
-			*);;
-			
-			->..proc_list_append_operator4 (*
-				<-waitReturn;;
-				-> rrel_1: rrel_fixed: rrel_scp_var: _descr;;
-
-		  		=> nrel_goto: ..proc_list_append_operator_return;;
-			*);;
-
-			-> ..proc_list_append_operator_return (*
-				<- return;;
-			*);;	
+	_-> _..proc_list_append_operator3 (*
+		_<- call;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_set_next;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params(*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _last_element;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _new_element;;
 		*);;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
 
+		_=> nrel_goto:: _..proc_list_append_operator4;;
+	*);;
+	
+	_->_..proc_list_append_operator4 (*
+		_<-waitReturn;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+
+		_=> nrel_goto:: _..proc_list_append_operator_return;;
+	*);;
+
+	_-> _..proc_list_append_operator_return (*
+		_<- return;;
+	*);;	
 *);;
+*];;
