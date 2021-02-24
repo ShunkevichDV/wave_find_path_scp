@@ -1,27 +1,35 @@
 // Возвращает структуру маршрута для связки отношения маршрут*.
 // Структура маршрута - это компонент с атрибутом 1'.
 // Найденный ориентированный граф возвращает в route_struct.
-scp_program -> proc_get_route_struct (*
-	
-	-> rrel_params: ... (*
-		-> rrel_1: rrel_in: _route;;
-		-> rrel_2: rrel_out: _route_struct;;
-	*);;
+proc_get_route_struct
+=> nrel_main_idtf:
+	[Возвращает в _vertex2 вершину ,которая инцидентена ребру _edge и не является вершиной  _vertex.] (* <- lang_ru;; *);
+	[Get second incedent vertex] (* <- lang_en;; *);
+<- scp_program;
+-> rrel_key_sc_element: _process1;;
 
-	-> rrel_operators: ... (*
-		-> rrel_init: ..proc_get_route_struct_operator1 (*
-			 <- searchElStr5;;
-			-> rrel_1: rrel_fixed: rrel_scp_var: _route;;
-			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
-			-> rrel_3: rrel_assign: rrel_scp_var: _route_struct;;
-			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
-			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_1;;
-		
-			=> nrel_goto: ..proc_get_route_struct_operator_return;;		
-		*);;
-		
-		-> ..proc_get_route_struct_operator_return (*
-			<- return;;
-		*);;
+proc_get_route_struct = [*
+_process1 
+_<- scp_process;
+
+_-> rrel_1:: rrel_in:: _route;
+_-> rrel_2:: rrel_out:: _route_struct;
+
+_<= nrel_decomposition_of_action:: _... (*
+
+	_-> rrel_1:: _..proc_get_route_struct_operator1 (*
+		_<- searchElStr5;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _route;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm: rrel_scp_var:: _arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _route_struct;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_1;;
+	
+		_=> nrel_goto:: _..proc_get_route_struct_operator_return;;		
+	*);;
+	
+	_-> _..proc_get_route_struct_operator_return (*
+		_<- return;;
 	*);;
 *);;
+*];;

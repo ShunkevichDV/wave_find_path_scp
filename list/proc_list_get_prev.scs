@@ -1,25 +1,33 @@
-scp_program -> proc_list_get_prev (*
-	
-	-> rrel_params: ... (*
-		-> rrel_1: rrel_in: _current_element;;
-		-> rrel_2: rrel_out: _previous_element;;
+//Возвращает предыдущий элемент списка _next_element для элемента списка _current_element 
+proc_list_get_prev
+=> nrel_main_idtf:
+	[Возвращает предыдущий элемент списка _next_element для элемента списка _current_element] (* <- lang_ru;; *);
+	[list get prev] (* <- lang_en;; *);
+<- scp_program;
+-> rrel_key_sc_element: _process1;;
+
+proc_list_get_prev = [*
+_process1 
+_<- scp_process;
+
+_-> rrel_1:: rrel_in:: _current_element;
+_-> rrel_2:: rrel_out:: _previous_element;
+
+_<= nrel_decomposition_of_action:: _...(*
+
+	_-> rrel_1:: _..proc_list_get_prev_operator2 (*
+		_<- searchElStr5;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _previous_element;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _current_element;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_list_next;;
+
+		_=> nrel_goto:: _..proc_list_get_prev_operator_return;;
 	*);;
 
-	-> rrel_operators: ... (*
-	
-		-> rrel_init: ..proc_list_get_prev_operator2 (*
-			<- searchElStr5;;
-			-> rrel_1: rrel_assign: rrel_scp_var: _previous_element;;
-			-> rrel_2: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc2;;
-			-> rrel_3: rrel_fixed: rrel_scp_var: _current_element;;
-			-> rrel_4: rrel_assign: rrel_pos_const_perm: rrel_scp_var: _arc4;;
-			-> rrel_5: rrel_fixed: rrel_scp_const: rrel_list_next;;
-
-			=> nrel_goto: ..proc_list_get_prev_operator_return;;
-		*);;
-
-		-> ..proc_list_get_prev_operator_return (*
-			<- return;;
-		*);;	
-	*);;
+	_-> _..proc_list_get_prev_operator_return (*
+		_<- return;;
+	*);;			
 *);;
+*];;
