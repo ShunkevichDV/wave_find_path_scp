@@ -4,67 +4,67 @@ proc_list_erase
 	[Удаляет элементы из списка начиная с елемента _element] (* <- lang_ru;; *);
 	[list erase] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_list_erase = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_->rrel_1:: rrel_in:: _element; 
+_->rrel_1:: rrel_in:: .._element;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-	_-> rrel_1:: _..proc_list_erase_operator1 (*
+	_-> rrel_1:: .._proc_list_erase_operator1 (*
 		_<- varAssign;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _current_element;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _element;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._current_element;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._element;;
 
-		_=> nrel_goto:: _..proc_list_erase_operator2;;
+		_=> nrel_goto:: .._proc_list_erase_operator2;;
 	*);;
 
-	_-> _..proc_list_erase_operator2 (*
+	_-> .._proc_list_erase_operator2 (*
 		_<- varAssign;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _previous_element;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _current_element;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._previous_element;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._current_element;;
 		
-		_=> nrel_goto:: _..proc_list_erase_operator3;;
+		_=> nrel_goto:: .._proc_list_erase_operator3;;
 	*);;
 
-	_-> _..proc_list_erase_operator4(*
+	_-> .._proc_list_erase_operator4(*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_get_next;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _previous_element;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _current_element;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params1 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._previous_element;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._current_element;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_list_erase_operator5;;
+		_=> nrel_goto:: .._proc_list_erase_operator5;;
 	*);;
 
-	_-> _..proc_list_erase_operator5 (*
+	_-> .._proc_list_erase_operator5 (*
 		_<-waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_list_append_operator6;;
+		_=> nrel_goto:: .._proc_list_append_operator6;;
 	*);;
 
-	_-> _..proc_list_erase_operator6(*
+	_-> .._proc_list_erase_operator6(*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: _previous_element;;
+		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: .._previous_element;;
 		
-		_=> nrel_goto:: _..proc_list_erase_operator7;;
+		_=> nrel_goto:: .._proc_list_erase_operator7;;
 	*);;
 
-	_-> _..proc_list_erase_operator7(*
+	_-> .._proc_list_erase_operator7(*
 		_<- ifVarAssign;;
-		_->rrel_1:: rrel_fixed:: rrel_scp_var:: _previous_element;;
+		_->rrel_1:: rrel_fixed:: rrel_scp_var:: .._previous_element;;
 
-		_=> nrel_then:: _..proc_list_erase_operator2;;
-		_=> nrel_else:: _..proc_list_append_operator_return;;
+		_=> nrel_then:: .._proc_list_erase_operator2;;
+		_=> nrel_else:: .._proc_list_append_operator_return;;
 	*);;
 
-	_-> _..proc_list_append_operator_return (*
+	_-> .._proc_list_append_operator_return (*
 		_<- return;;
 	*);;		
 *);;

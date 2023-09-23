@@ -3,132 +3,132 @@ proc_run_all_tests
 	[Программа поиска минимальных путей в графе] (* <- lang_ru;; *);
 	[Program for search minimal path in graph] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_run_all_tests = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-		_-> rrel_1::_..operator_test1
+		_-> rrel_1:: .._operator_test1
 			(*
 			_<- call;;
 
 			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_run_testcase;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params (*
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params1 (*
 				_-> rrel_1:: rrel_fixed:: rrel_scp_const:: G0;;
-				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: V1;;
-				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: V3;;
+				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: A;;
+				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: C;;
 				_-> rrel_4:: rrel_fixed:: rrel_scp_const:: [1];;
 			*);;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..proc_run_all_tests_wait_test_1;;
+			_=> nrel_goto:: .._proc_run_all_tests_wait_test_1;;
 			*);;
 
-		_-> _..proc_run_all_tests_wait_test_1 (*
+		_-> .._proc_run_all_tests_wait_test_1 (*
 			_<- waitReturn;;
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..operator_test2;;
+			_=> nrel_goto:: .._operator_test2;;
 		*);;
 
-		_-> _..operator_test2
+		_-> .._operator_test2
 			(*
 			_<- call;;
 
 			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_run_testcase;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params2 (*
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params2 (*
 				_-> rrel_1:: rrel_fixed:: rrel_scp_const:: G1;;
-				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: V1;;
-				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: V5;;
+				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: A;;
+				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: D;;
 				_-> rrel_4:: rrel_fixed:: rrel_scp_const:: [2];;
 			*);;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..proc_run_all_tests_wait_test_2;;
+			_=> nrel_goto:: .._proc_run_all_tests_wait_test_2;;
 			*);;
 
-		_-> _..proc_run_all_tests_wait_test_2 (*
+		_-> .._proc_run_all_tests_wait_test_2 (*
 			_<- waitReturn;;
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..operator_test3;;
+			_=> nrel_goto:: .._operator_test3;;
 		*);;
 
-		_-> _..operator_test3
+		_-> .._operator_test3
 			(*
 			_<- call;;
 
 			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_run_testcase;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params3 (*
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params3 (*
 				_-> rrel_1:: rrel_fixed:: rrel_scp_const:: G2;;
 				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: V1;;
 				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: V6;;
 				_-> rrel_4:: rrel_fixed:: rrel_scp_const:: [3];;
 			*);;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..proc_run_all_tests_wait_test_3;;
+			_=> nrel_goto:: .._proc_run_all_tests_wait_test_3;;
 			*);;
 
-		_-> _..proc_run_all_tests_wait_test_3 (*
+		_-> .._proc_run_all_tests_wait_test_3 (*
 			_<- waitReturn;;
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..operator_test4;;
+			_=> nrel_goto:: .._operator_test4;;
 		*);;
 
-		_-> _..operator_test4
+		_-> .._operator_test4
 			(*
 			_<- call;;
 
 			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_run_testcase;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params4 (*
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params4 (*
 				_-> rrel_1:: rrel_fixed:: rrel_scp_const:: G3;;
-				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: V1;;
-				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: V9;;
+				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: A;;
+				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: A;;
 				_-> rrel_4:: rrel_fixed:: rrel_scp_const:: [4];;
 			*);;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..proc_run_all_tests_wait_test_4;;
+			_=> nrel_goto:: .._proc_run_all_tests_wait_test_4;;
 			*);;
 
-		_-> _..proc_run_all_tests_wait_test_4 (*
+		_-> .._proc_run_all_tests_wait_test_4 (*
 			_<- waitReturn;;
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
 
-			_=> nrel_goto:: _..operator_test5;;
+			_=> nrel_goto:: .._operator_test5;;
 		*);;
 
-		_-> _..operator_test5
+		_-> .._operator_test5
 			(*
 			_<- call;;
 
 			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_run_testcase;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params5 (*
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params5 (*
 				_-> rrel_1:: rrel_fixed:: rrel_scp_const:: G4;;
 				_-> rrel_2:: rrel_fixed:: rrel_scp_const:: V5;;
-				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: V11;;
+				_-> rrel_3:: rrel_fixed:: rrel_scp_const:: V9;;
 				_-> rrel_4:: rrel_fixed:: rrel_scp_const:: [5];;
 			*);;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..proc_run_all_tests_wait_test_5;;
+			_=> nrel_goto:: .._proc_run_all_tests_wait_test_5;;
 			*);;
 
-		_-> _..proc_run_all_tests_wait_test_5 (*
+		_-> .._proc_run_all_tests_wait_test_5 (*
 			_<- waitReturn;;
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-			_=> nrel_goto:: _..operator_return;;
+			_=> nrel_goto:: .._operator_return;;
 		*);;
 
 		
-		_-> _..operator_return (*
+		_-> .._operator_return (*
 			_<- return;;
 		*);;
 *);;

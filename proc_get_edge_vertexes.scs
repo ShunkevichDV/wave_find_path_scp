@@ -6,31 +6,31 @@ proc_get_edge_vertexes
 	[Процедура получения вершин, инцидентных ребру] (* <- lang_ru;; *);
 	[Get incedent vertex] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_get_edge_vertexes = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_-> rrel_1:: rrel_in:: _edge;
-_-> rrel_2:: rrel_out:: _vertex1;
-_-> rrel_3:: rrel_out:: _vertex2;
+_-> rrel_1:: rrel_in:: .._edge;
+_-> rrel_2:: rrel_out:: .._vertex1;
+_-> rrel_3:: rrel_out:: .._vertex2;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-	_-> rrel_1:: _..proc_get_edge_vertexes_operator1 (*
+	_-> rrel_1:: .._proc_get_edge_vertexes_operator1 (*
 
 		// Находим инцидентные вершины.
 
 		_<- searchElStr3;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _vertex1;;
-		_-> rrel_2:: rrel_fixed:: rrel_edge:: rrel_scp_const:: _edge;;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _vertex2;;	
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._vertex1;;
+		_-> rrel_2:: rrel_fixed:: rrel_edge:: rrel_scp_const:: .._edge;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._vertex2;;
 
-		_=> nrel_goto:: _..proc_get_edge_vertexes_operator_return;;
+		_=> nrel_goto:: .._proc_get_edge_vertexes_operator_return;;
 	*);;
 
-	_-> _..proc_get_edge_vertexes_operator_return (*
+	_-> .._proc_get_edge_vertexes_operator_return (*
 		_<- return;;
 	*);;	
 *);;

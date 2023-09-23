@@ -3,111 +3,111 @@ proc_print_set
 	[Вывод множества] (* <- lang_ru;; *);
 	[print set] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_print_set = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_-> rrel_1:: rrel_in:: _set;
+_-> rrel_1:: rrel_in:: .._set;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-	_-> rrel_1:: _..proc_print_set_operator1 (*
+	_-> rrel_1:: .._proc_print_set_operator1 (*
 		_<- searchSetStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _set;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _element;;
-		_-> rrel_set_3:: rrel_assign:: rrel_scp_var:: _set_copy;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._set;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._element;;
+		_-> rrel_set_3:: rrel_assign:: rrel_scp_var:: .._set_copy;;
 	
-		_=> nrel_goto:: _..proc_print_set_operator2;;
+		_=> nrel_goto:: .._proc_print_set_operator2;;
 	*);;
 	
 
-	_-> _..proc_print_set_operator2 (*
+	_-> .._proc_print_set_operator2 (*
 		_<- printNl;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: [{];;
 		
-		_=> nrel_goto:: _..proc_print_set_operator3;;
+		_=> nrel_goto:: .._proc_print_set_operator3;;
 	*);;
 	
-	_-> _..proc_print_set_operator3 (*
+	_-> .._proc_print_set_operator3 (*
 		_<- ifVarAssign;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _set_copy;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._set_copy;;
 		
-		_=> nrel_then:: _..proc_print_set_operator4;;
-		_=> nrel_else:: _..proc_print_set_operator11;;
+		_=> nrel_then:: .._proc_print_set_operator4;;
+		_=> nrel_else:: .._proc_print_set_operator11;;
 	*);;
 
-	_-> _..proc_print_set_operator4 (*
+	_-> .._proc_print_set_operator4 (*
 		_<- searchElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _set_copy;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _element;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._set_copy;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._element;;
 
-		_=> nrel_then:: _..proc_print_set_operator5;;
-		_=> nrel_else:: _..proc_print_set_operator_return;;
+		_=> nrel_then:: .._proc_print_set_operator5;;
+		_=> nrel_else:: .._proc_print_set_operator_return;;
 	*);;
 
-	_-> _..proc_print_set_operator5 (*
+	_-> .._proc_print_set_operator5 (*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: _arc2;;
+		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: .._arc2;;
 
-		_=> nrel_goto:: _..proc_print_set_operator6;;
+		_=> nrel_goto:: .._proc_print_set_operator6;;
 	*);;
 
-	_-> _..proc_print_set_operator6 
+	_-> .._proc_print_set_operator6
 	(*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_print_idtf;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params(*	
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _element;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params1 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._element;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 	
-		_=> nrel_goto:: _..proc_print_set_operator7;;
+		_=> nrel_goto:: .._proc_print_set_operator7;;
 	*);;
 
-	_-> _..proc_print_set_operator7 (*
-		_<-waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+	_-> .._proc_print_set_operator7 (*
+		_<- waitReturn;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_print_set_operator8;;
+		_=> nrel_goto:: .._proc_print_set_operator8;;
 	*);;
 
-	_-> _..proc_print_set_operator8 (*
+	_-> .._proc_print_set_operator8 (*
 		_<- searchElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _set_copy;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _element;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._set_copy;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._element;;
 
-		_=> nrel_then:: _..proc_print_set_operator9;;
-		_=> nrel_else:: _..proc_print_set_operator10;;
+		_=> nrel_then:: .._proc_print_set_operator9;;
+		_=> nrel_else:: .._proc_print_set_operator10;;
 	*);;
 
-	_-> _..proc_print_set_operator9 (*
+	_-> .._proc_print_set_operator9 (*
 		_<- printNl;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: [, ];;
 		
-		_=> nrel_goto:: _..proc_print_set_operator4;;
+		_=> nrel_goto:: .._proc_print_set_operator4;;
 	*);;
 
-	_-> _..proc_print_set_operator10 (*
+	_-> .._proc_print_set_operator10 (*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: _set_copy;;
+		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: .._set_copy;;
 
-		_=> nrel_goto:: _..proc_print_set_operator11;;
+		_=> nrel_goto:: .._proc_print_set_operator11;;
 	*);;
 
-	_-> _..proc_print_set_operator11 (*
+	_-> .._proc_print_set_operator11 (*
 		_<- printNl;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: [}];;
 		
-		_=> nrel_goto:: _..proc_print_set_operator_return;;
+		_=> nrel_goto:: .._proc_print_set_operator_return;;
 	*);;
 
-	_-> _..proc_print_set_operator_return (*
-		_<-return;;
+	_-> .._proc_print_set_operator_return (*
+		_<- return;;
 	*);;
 *);;
 *];;

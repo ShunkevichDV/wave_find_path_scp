@@ -5,79 +5,79 @@ proc_list_prepend
 	[Создаёт новый элмент списка _new_element со значением _element_value и помещает его перед элементом _current_element] (* <- lang_ru;; *);
 	[list prepend] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_list_prepend = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_-> rrel_1:: rrel_in:: _current_element;
-_-> rrel_2:: rrel_in:: _element_value;
-_-> rrel_3:: rrel_out:: _new_element;
+_-> rrel_1:: rrel_in:: .._current_element;
+_-> rrel_2:: rrel_in:: .._element_value;
+_-> rrel_3:: rrel_out:: .._new_element;
 
-_<= nrel_decomposition_of_action:: _...(*
+_<= nrel_decomposition_of_action:: .._actions(*
 
-	_-> rrel_1:: _..proc_list_prepend_operator1 (*
+	_-> rrel_1:: .._proc_list_prepend_operator1 (*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_new;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_const::  _element_value;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _new_element;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params1 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._element_value;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._new_element;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 		
-		_=> nrel_goto:: _..proc_list_prepend_operator2;;
+		_=> nrel_goto:: .._proc_list_prepend_operator2;;
 	*);;
 
-	_-> _..proc_list_prepend_operator2 (*
+	_-> .._proc_list_prepend_operator2 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 	
-		_=> nrel_goto:: _..proc_list_prepend_operator3;;
+		_=> nrel_goto:: .._proc_list_prepend_operator3;;
 	*);;
 
-	_-> _..proc_list_prepend_operator3 (*
+	_-> .._proc_list_prepend_operator3 (*
 		_<- searchElStr5;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _old_prev;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _current_element;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._old_prev;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._current_element;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const::  rrel_list_next;;
 		
-		_=> nrel_then:: _..proc_list_prepend_operator4;;
-		_=> nrel_else:: _..proc_list_prepend_operator6;;
+		_=> nrel_then:: .._proc_list_prepend_operator4;;
+		_=> nrel_else:: .._proc_list_prepend_operator6;;
 	*);;
 
-	_-> _..proc_list_prepend_operator4 (*
+	_-> .._proc_list_prepend_operator4 (*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: _arc2;;
+		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: .._arc2;;
 
-		_=> nrel_goto:: _..proc_list_prepend_operator5;;
+		_=> nrel_goto:: .._proc_list_prepend_operator5;;
 	*);;
 
-	_-> _..proc_list_prepend_operator5 (*
+	_-> .._proc_list_prepend_operator5 (*
 		_<- genElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _old_prev;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _new_element;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._old_prev;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._new_element;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_list_next;;
 
-		_=> nrel_goto:: _..proc_list_prepend_operator6;;
+		_=> nrel_goto:: .._proc_list_prepend_operator6;;
 	*);;
 
-	_-> _..proc_list_prepend_operator6 (*
+	_-> .._proc_list_prepend_operator6 (*
 		_<- genElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_element;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _current_element;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._new_element;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._current_element;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_list_next;;
 
-		_=> nrel_goto::  _..proc_list_prepend_operator_return;;
+		_=> nrel_goto::  .._proc_list_prepend_operator_return;;
 	*);;
 
-	_-> _..proc_list_prepend_operator_return (*
+	_-> .._proc_list_prepend_operator_return (*
 		_<- return;;
 	*);;			
 *);;

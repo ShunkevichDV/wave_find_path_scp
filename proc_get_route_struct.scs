@@ -6,29 +6,29 @@ proc_get_route_struct
 	[Возвращает в _vertex2 вершину ,которая инцидентена ребру _edge и не является вершиной  _vertex.] (* <- lang_ru;; *);
 	[Get second incedent vertex] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_get_route_struct = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_-> rrel_1:: rrel_in:: _route;
-_-> rrel_2:: rrel_out:: _route_struct;
+_-> rrel_1:: rrel_in:: .._route;
+_-> rrel_2:: rrel_out:: .._route_struct;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-	_-> rrel_1:: _..proc_get_route_struct_operator1 (*
+	_-> rrel_1:: .._proc_get_route_struct_operator1 (*
 		_<- searchElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _route;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _route_struct;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._route;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._route_struct;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_1;;
 	
-		_=> nrel_goto:: _..proc_get_route_struct_operator_return;;		
+		_=> nrel_goto:: .._proc_get_route_struct_operator_return;;
 	*);;
 	
-	_-> _..proc_get_route_struct_operator_return (*
+	_-> .._proc_get_route_struct_operator_return (*
 		_<- return;;
 	*);;
 *);;
