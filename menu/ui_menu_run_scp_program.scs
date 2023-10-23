@@ -7,10 +7,10 @@ ui_menu_run_scp_program => ui_nrel_command_template:
 		question_scp_interpretation_request _-> ._question_scp_interpretation_request_instance
 			(*
 				_-> rrel_1:: ui_arg_1;;	
-				_-> rrel_2:: _...;;	
+				_-> rrel_2:: .._actions;;
 			*);;
 		._question_scp_interpretation_request_instance _<- question;;
-		._question_scp_interpretation_request_instance _<= nrel_authors:: _... (* _-> abstract_scp_machine;; *);;
+		._question_scp_interpretation_request_instance _<= nrel_authors:: .._actions (* _-> abstract_scp_machine;; *);;
 	*];;
 
 ui_menu_run_scp_program => ui_nrel_command_lang_template: [Запуск scp-программы: $ui_arg_1] (* <- lang_ru;; *);;

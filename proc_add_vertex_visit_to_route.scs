@@ -5,114 +5,111 @@ proc_add_vertex_visit_to_route
 	[Добавляет посещение вершины _vertex в маршрут _route] (* <- lang_ru;; *);
 	[Add vertex in path] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_add_vertex_visit_to_route = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_-> rrel_1:: rrel_in:: _route;
-_-> rrel_2:: rrel_in:: _vertex;
-_-> rrel_3:: rrel_out:: _vertex_visit;
+_-> rrel_1:: rrel_in:: .._route;
+_-> rrel_2:: rrel_in:: .._vertex;
+_-> rrel_3:: rrel_out:: .._vertex_visit;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-	_-> rrel_1:: _..proc_add_vertex_visit_to_route_operator1 (*
+	_-> rrel_1:: .._proc_add_vertex_visit_to_route_operator1 (*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_get_route_struct;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params (*
-			_-> rrel_1::  rrel_fixed:: rrel_scp_const:: _route;;
-			_-> rrel_2::  rrel_assign:: rrel_scp_var:: _route_struct;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params1 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._route;;
+			_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._route_struct;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_add_vertex_visit_to_route_operator2;;
+		_=> nrel_goto:: .._proc_add_vertex_visit_to_route_operator2;;
 	*);;
 
-	_-> _..proc_add_vertex_visit_to_route_operator2 (*
+	_-> .._proc_add_vertex_visit_to_route_operator2 (*
 		_<-waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_add_vertex_visit_to_route_operator3;;
+		_=> nrel_goto:: .._proc_add_vertex_visit_to_route_operator3;;
 	*);;		
 		
 		// Находим отношение соответствия маршрута
 		//
-	_-> _..proc_add_vertex_visit_to_route_operator3 (*
+	_-> .._proc_add_vertex_visit_to_route_operator3 (*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_get_route_visit;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params (*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _route;;
-			_-> rrel_2:: rrel_assign:: rrel_scp_var:: _route_visit;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params2 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._route;;
+			_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._route_visit;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_add_vertex_visit_to_route_operator4;; 
+		_=> nrel_goto:: .._proc_add_vertex_visit_to_route_operator4;;
 	*);;
 
-	_-> _..proc_add_vertex_visit_to_route_operator4 (*
-		_<-waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+	_-> .._proc_add_vertex_visit_to_route_operator4 (*
+		_<- waitReturn;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_add_vertex_visit_to_route_operator5;;
+		_=> nrel_goto:: .._proc_add_vertex_visit_to_route_operator5;;
 	*);;
 
 	// Проверяем, может посещение для этой вершины уже существует
 	//
 
-	_-> _..proc_add_vertex_visit_to_route_operator5 (*
+	_-> .._proc_add_vertex_visit_to_route_operator5 (*
 		_<- searchElStr5;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _vertex_visit;;
-		_-> rrel_2:: rrel_assign:: rrel_common:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _vertex;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
-		_-> rrel_5:: rrel_fixed:: rrel_scp_var:: _route_visit;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._vertex_visit;;
+		_-> rrel_2:: rrel_assign:: rrel_common:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._vertex;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
+		_-> rrel_5:: rrel_fixed:: rrel_scp_var:: .._route_visit;;
 
-		_=> nrel_then:: _..proc_add_vertex_visit_to_route_operator_return;;
-		_=> nrel_else:: _..proc_add_vertex_visit_to_route_operator6;;
+		_=> nrel_then:: .._proc_add_vertex_visit_to_route_operator_return;;
+		_=> nrel_else:: .._proc_add_vertex_visit_to_route_operator6;;
 	*);;
 
 
 	// Посещения не существует, значит создаем его
 	//
-	_-> _..proc_add_vertex_visit_to_route_operator6 (*
+	_-> .._proc_add_vertex_visit_to_route_operator6 (*
 		_<- genEl;;
-		_-> rrel_1:: rrel_assign: rrel_node:: rrel_const:: rrel_scp_var:: _vertex_visit;;
+		_-> rrel_1:: rrel_assign:: rrel_node:: rrel_const:: rrel_scp_var:: .._vertex_visit;;
 		
-		_=> nrel_goto:: _..proc_add_vertex_visit_to_route_operator7;;
+		_=> nrel_goto:: .._proc_add_vertex_visit_to_route_operator7;;
 	*);;
 
 	//Добавляем посещение вершины _vertex_visit в структуру маршрута как вершину.
 	//
-	_-> _..proc_add_vertex_visit_to_route_operator7 (*
+	_-> .._proc_add_vertex_visit_to_route_operator7 (*
 		_<- genElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _route_struct;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _vertex_visit;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._route_struct;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._vertex_visit;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_vertex;;
 
-		_=> nrel_goto:: _..proc_add_edge_visit_to_route_operator8;;
+		_=> nrel_goto:: .._proc_add_edge_visit_to_route_operator8;;
 	*);;	
 	
 	//Генерируем бинарную дугу между посещением вершины и самой вершиной и добавляем её в отношение соответствия маршрута.
-	//
-	_-> _..proc_add_edge_visit_to_route_operator8 (*
+	_-> .._proc_add_edge_visit_to_route_operator8 (*
 		_<- genElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _vertex_visit;;
-		_-> rrel_2:: rrel_assign: rrel_common:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _vertex;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
-		_-> rrel_5:: rrel_fixed:: rrel_scp_var:: _route_visit;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._vertex_visit;;
+		_-> rrel_2:: rrel_assign:: rrel_common:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._vertex;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
+		_-> rrel_5:: rrel_fixed:: rrel_scp_var:: .._route_visit;;
 	
-		_=> nrel_goto:: _..proc_add_vertex_visit_to_route_operator_return;;
+		_=> nrel_goto:: .._proc_add_vertex_visit_to_route_operator_return;;
 	*);;
 
-
-	_-> _..proc_add_vertex_visit_to_route_operator_return (*
+	_-> .._proc_add_vertex_visit_to_route_operator_return (*
 		_<- return;;
-	*);;	
-
+	*);;
 *);;
 
 *];;

@@ -7,102 +7,102 @@ proc_find_any_edge
 	[Ищет для _vertex любую смежную вершину из волны _prev_wave в графе _graph] (* <- lang_ru;; *);
 	[Find incidend vertex in wave] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_find_any_edge = [*
-_process1 
+.._process1
 _<- scp_process;
 
-_-> rrel_1:: rrel_in:: _graph;
-_-> rrel_2:: rrel_in:: _vertex;
-_-> rrel_3:: rrel_in:: _prev_wave;
-_-> rrel_4:: rrel_out:: _edge;
+_-> rrel_1:: rrel_in:: .._graph;
+_-> rrel_2:: rrel_in:: .._vertex;
+_-> rrel_3:: rrel_in:: .._prev_wave;
+_-> rrel_4:: rrel_out:: .._edge;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-	_-> rrel_1:: _..proc_find_any_edge_operator1 (*
+	_-> rrel_1:: .._proc_find_any_edge_operator1 (*
 		_<- searchSetStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _graph;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._graph;;
 		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var::  _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_edge:: rrel_scp_var:: _temp_edge;;
+		_-> rrel_3:: rrel_assign:: rrel_edge:: rrel_scp_var:: .._temp_edge;;
 		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var::  _arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_edge;;			
-		_-> rrel_set_3:: rrel_assign:: rrel_scp_var:: _edges_set;;
+		_-> rrel_set_3:: rrel_assign:: rrel_scp_var:: .._edges_set;;
 
-		_=> nrel_goto:: _..proc_find_any_edge_operator2;;
+		_=> nrel_goto:: .._proc_find_any_edge_operator2;;
 	*);;
 
 	//  Начало цикла по ребрам графа
 	//
-	_-> _..proc_find_any_edge_operator2 (*
+	_-> .._proc_find_any_edge_operator2 (*
 		_<-searchElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _edges_set;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_edge:: rrel_scp_var:: _edge;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._edges_set;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_edge:: rrel_scp_var:: .._edge;;
 		
-		_=> nrel_then:: _..proc_find_any_edge_operator3;;
-		_=> nrel_else:: _..proc_find_any_edge_operator7;;					
+		_=> nrel_then:: .._proc_find_any_edge_operator3;;
+		_=> nrel_else:: .._proc_find_any_edge_operator7;;
 	*);;
 
-	_-> _..proc_find_any_edge_operator3 (*
+	_-> .._proc_find_any_edge_operator3 (*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: _arc2;;
+		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: .._arc2;;
 		
-		_=> nrel_goto:: _..proc_find_any_edge_operator4;;		
+		_=> nrel_goto:: .._proc_find_any_edge_operator4;;
 	*);;
 	
 	// Проверка, инцидентно ли ребро edge вершине vertex
 	//
-	_-> _..proc_find_any_edge_operator4 (*
+	_-> .._proc_find_any_edge_operator4 (*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_get_other_vertex_incidence_edge;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _edge;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _vertex;;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _other_vertex;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._edge;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._vertex;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._other_vertex;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_any_edge_operator5;;
+		_=> nrel_goto:: .._proc_find_any_edge_operator5;;
 	*);;
 	
-	_-> _..proc_find_any_edge_operator5 (*
+	_-> .._proc_find_any_edge_operator5 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_any_edge_operator6;;
+		_=> nrel_goto:: .._proc_find_any_edge_operator6;;
 	*);;
 
-	_-> _..proc_find_any_edge_operator6 (*
+	_-> .._proc_find_any_edge_operator6 (*
 		_<- ifVarAssign;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _other_vertex;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._other_vertex;;
 		
-		_=> nrel_then:: _..proc_find_any_edge_operator7;;
-		_=> nrel_else:: _..proc_find_any_edge_operator2;;	
+		_=> nrel_then:: .._proc_find_any_edge_operator7;;
+		_=> nrel_else:: .._proc_find_any_edge_operator2;;
 	*);;
 
 
 	// Если найденная вершина other_vertex входит в предыдущую волну, то
 	// наш поиск успешен и может быть завершен, иначе продолжаем поиск
 	//
-	_-> _..proc_find_any_edge_operator7 (*
+	_-> .._proc_find_any_edge_operator7 (*
 		_<- searchElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _prev_wave;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._prev_wave;;
 		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var::  _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _other_vertex;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._other_vertex;;
 		
-		_=> nrel_then:: _..proc_find_any_edge_operator8;;
-		_=> nrel_else:: _..proc_find_any_edge_operator2;;	
+		_=> nrel_then:: .._proc_find_any_edge_operator8;;
+		_=> nrel_else:: .._proc_find_any_edge_operator2;;
 	*);;
 
-	_-> _..proc_find_any_edge_operator8 (*
+	_-> .._proc_find_any_edge_operator8 (*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: _edges_set;;
+		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: .._edges_set;;
 		
-		_=> nrel_goto:: _..proc_find_any_edge_operator_return;;		
+		_=> nrel_goto:: .._proc_find_any_edge_operator_return;;
 	*);;
 
-	_-> _..proc_find_any_edge_operator_return (*
+	_-> .._proc_find_any_edge_operator_return (*
 		_<- return;;
 	*);;	
 

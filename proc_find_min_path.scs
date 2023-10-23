@@ -3,131 +3,130 @@ proc_find_min_path
 	[Поиск минимального пути] (* <- lang_ru;; *);
 	[Findin min path] (* <- lang_en;; *);
 <- scp_program;
--> rrel_key_sc_element: _process1;;
+-> rrel_key_sc_element: .._process1;;
 
 proc_find_min_path = [*
-_process1
+.._process1
 _<- scp_process;
 
-_-> rrel_1:: rrel_in:: _graph;
-_-> rrel_2:: rrel_in:: _beg_vertex;
-_-> rrel_3:: rrel_in:: _end_vertex;
-_-> rrel_4:: rrel_out:: _route;
+_-> rrel_1:: rrel_in:: .._graph;
+_-> rrel_2:: rrel_in:: .._beg_vertex;
+_-> rrel_3:: rrel_in:: .._end_vertex;
+_-> rrel_4:: rrel_out:: .._route;
 
-_<= nrel_decomposition_of_action:: _... (*
+_<= nrel_decomposition_of_action:: .._actions (*
 
-	_-> rrel_1:: _..proc_find_min_path_operator1 
-	(*
+	_-> rrel_1:: .._proc_find_min_path_operator1 (*
 		_<- searchSetStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _graph;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _el3;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._graph;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._el3;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_vertex;;
 	
-		_->rrel_set_3:: rrel_assign:: rrel_scp_var:: _not_checked_vertexes;;
-		_=> nrel_then:: _..proc_find_min_path_operator2;;		
-		_=> nrel_else:: _..proc_find_min_path_operator_erase_not_checked_vertexes;;	
+		_-> rrel_set_3:: rrel_assign:: rrel_scp_var:: .._not_checked_vertexes;;
+		_=> nrel_then:: .._proc_find_min_path_operator2;;
+		_=> nrel_else:: .._proc_find_min_path_operator_erase_not_checked_vertexes;;
 	*);;
 //	Удаление из множества непроверенных узла начала пути.
-	_-> _..proc_find_min_path_operator2 (*
+	_-> .._proc_find_min_path_operator2 (*
 		_<- searchElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _not_checked_vertexes;;
-		_-> rrel_2:: rrel_assign:: rrel_scp_var:: rrel_pos_const_perm:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _beg_vertex;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._not_checked_vertexes;;
+		_-> rrel_2:: rrel_assign:: rrel_scp_var:: rrel_pos_const_perm:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._beg_vertex;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator_er;;	
+		_=> nrel_goto:: .._proc_find_min_path_operator_er;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator_er (*
+	_-> .._proc_find_min_path_operator_er (*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: _arc2;;
+		_-> rrel_1:: rrel_fixed:: rrel_erase:: rrel_scp_var:: .._arc2;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator3;;	
+		_=> nrel_goto:: .._proc_find_min_path_operator3;;
 	*);;
 
 //-------------------------------------------------------------------------------
 
 // 2. Создаем начальную волну и добавляем в нее начальную вершину пути.
 // 3. Начальная волна - новая волна.
-	_-> _..proc_find_min_path_operator3 (*
+	_-> .._proc_find_min_path_operator3 (*
 		_<- genEl;;
-		_-> rrel_1:: rrel_assign:: rrel_const:: rrel_node:: rrel_scp_var:: _new_wave;;
+		_-> rrel_1:: rrel_assign:: rrel_const:: rrel_node:: rrel_scp_var:: .._new_wave;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator4;;
+		_=> nrel_goto:: .._proc_find_min_path_operator4;;
 	*);;
 //	Добавляем первую вершину в новую волну.
-	_-> _..proc_find_min_path_operator4 (*
+	_-> .._proc_find_min_path_operator4 (*
 		_<- genElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_wave;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _beg_vertex;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._beg_vertex;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator5;;
+		_=> nrel_goto:: .._proc_find_min_path_operator5;;
 	*);;
 	
 //	Создаем начало списка волн.
 //--------------(it's posiable change _wave_list_head to in param)-------------------
-	_-> _..proc_find_min_path_operator5 
+	_-> .._proc_find_min_path_operator5
 	(*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_new;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params (*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_wave;;
-			_-> rrel_2:: rrel_assign:: rrel_scp_var:: _waves_list_head;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params1 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
+			_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._waves_list_head;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator6;;
+		_=> nrel_goto:: .._proc_find_min_path_operator6;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator6 (*
+	_-> .._proc_find_min_path_operator6 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator7;;
+		_=> nrel_goto:: .._proc_find_min_path_operator7;;
 	*);;
 
-	_-> _..proc_find_min_path_operator7 (*
+	_-> .._proc_find_min_path_operator7 (*
 		_<-varAssign;;
-		_->rrel_1:: rrel_assign:: rrel_scp_var:: _waves_list_tail;;
-		_->rrel_2:: rrel_fixed:: rrel_scp_var:: _waves_list_head;;
+		_->rrel_1:: rrel_assign:: rrel_scp_var:: .._waves_list_tail;;
+		_->rrel_2:: rrel_fixed:: rrel_scp_var:: .._waves_list_head;;
 
-		_=>nrel_goto :: _..proc_find_min_path_operator8;;
+		_=>nrel_goto :: .._proc_find_min_path_operator8;;
 	*);;
 
-	_-> _..proc_find_min_path_operator8 (*
+	_-> .._proc_find_min_path_operator8 (*
 		_<- printNl;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: [Begin wave : ];;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator9;;
+		_=> nrel_goto:: .._proc_find_min_path_operator9;;
 	*);;
 
 //	Выведем содержимое первой волны.
-	_-> _..proc_find_min_path_operator9 
+	_-> .._proc_find_min_path_operator9
 	(*
 		_<- call;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_print_set;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params2(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_wave;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params2 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator10;;
+		_=> nrel_goto:: .._proc_find_min_path_operator10;;
 	*);;
 
-	_-> _..proc_find_min_path_operator10 (*
+	_-> .._proc_find_min_path_operator10 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator11;;
+		_=> nrel_goto:: .._proc_find_min_path_operator11;;
 	*);;
 
-	_-> _..proc_find_min_path_operator11 (*
+	_-> .._proc_find_min_path_operator11 (*
 		_<-printNl;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: [;];;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator12;;
+		_=> nrel_goto:: .._proc_find_min_path_operator12;;
 	*);;
 
 
@@ -139,133 +138,133 @@ _<= nrel_decomposition_of_action:: _... (*
 //	Устанавливаем созданную волну как следующую для новой волны.
 //	Созданная волна - новая волна.
 
-	_-> _..proc_find_min_path_operator12 
+	_-> .._proc_find_min_path_operator12
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_create_wave;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params3 (*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _graph;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _new_wave;;
-			_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _not_checked_vertexes;;
-			_-> rrel_4:: rrel_assign:: rrel_scp_var:: _created_wave;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params3 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._graph;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
+			_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._not_checked_vertexes;;
+			_-> rrel_4:: rrel_assign:: rrel_scp_var:: .._created_wave;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator13;;
+		_=> nrel_goto:: .._proc_find_min_path_operator13;;
 	*);;
 
-	_-> _..proc_find_min_path_operator13 (*
+	_-> .._proc_find_min_path_operator13 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator_varAssign;;
+		_=> nrel_goto:: .._proc_find_min_path_operator_varAssign;;
 	*);;		
 	
-	_-> _..proc_find_min_path_operator_varAssign (*
+	_-> .._proc_find_min_path_operator_varAssign (*
 		_<-varAssign;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _new_wave;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _created_wave;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._new_wave;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._created_wave;;
 
-		_=>nrel_goto:: _..proc_find_min_path_operator14;;
+		_=>nrel_goto:: .._proc_find_min_path_operator14;;
 	*);;
 
 
-	_-> _..proc_find_min_path_operator14 (*
+	_-> .._proc_find_min_path_operator14 (*
 		_<-printNl;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: [Wave : ] ;;
 
-		_=>nrel_goto:: _..proc_find_min_path_operator15;;
+		_=>nrel_goto:: .._proc_find_min_path_operator15;;
 	*);;
 
 //	Выведем содержимое новой созданной волны.
-	_-> _..proc_find_min_path_operator15 
+	_-> .._proc_find_min_path_operator15
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_print_set;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params4(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_wave;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params4 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator16;;
+		_=> nrel_goto:: .._proc_find_min_path_operator16;;
 	*);;
 
-	_-> _..proc_find_min_path_operator16 (*
+	_-> .._proc_find_min_path_operator16 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator17;;
+		_=> nrel_goto:: .._proc_find_min_path_operator17;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator17 (*
+	_-> .._proc_find_min_path_operator17 (*
 		_<-printNl;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: [;];;
 
-		_=>nrel_goto:: _..proc_find_min_path_operator18;;
+		_=>nrel_goto:: .._proc_find_min_path_operator18;;
 	*);;
 
 // Добавляем new_wave в конец списка волн
-	_-> _..proc_find_min_path_operator18 
+	_-> .._proc_find_min_path_operator18
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_new;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params5(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_wave;;
-			_-> rrel_2:: rrel_assign:: rrel_scp_var:: _waves_list_curr;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params5 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
+			_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._waves_list_curr;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator19;;
+		_=> nrel_goto:: .._proc_find_min_path_operator19;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator19 (*
+	_-> .._proc_find_min_path_operator19 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator20;;
+		_=> nrel_goto:: .._proc_find_min_path_operator20;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator20 
+	_-> .._proc_find_min_path_operator20
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_set_next;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params6(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _waves_list_tail;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _waves_list_curr;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params6 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._waves_list_tail;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._waves_list_curr;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator21;;
+		_=> nrel_goto:: .._proc_find_min_path_operator21;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator21 (*
+	_-> .._proc_find_min_path_operator21 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator22;;
+		_=> nrel_goto:: .._proc_find_min_path_operator22;;
 	*);;
 
-	_-> _..proc_find_min_path_operator22 (*
+	_-> .._proc_find_min_path_operator22 (*
 		_<-varAssign;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _waves_list_tail;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _waves_list_curr;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._waves_list_tail;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._waves_list_curr;;
 
-		_=>nrel_goto:: _..proc_find_min_path_operator23;;
+		_=>nrel_goto:: .._proc_find_min_path_operator23;;
 	*);;
 // 5. Если новая волна пуста, то значит между вершинами не существует пути.
-	_-> _..proc_find_min_path_operator23 (*
+	_-> .._proc_find_min_path_operator23 (*
 		_<- searchElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_wave;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _el3;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._el3;;
 // Новая волна не пуста.
-		_=> nrel_then:: _..proc_find_min_path_operator24;;
+		_=> nrel_then:: .._proc_find_min_path_operator24;;
 // Новая волна пуста. Очищаем память и завершаем алгоритм.
-		_=> nrel_else:: _..proc_find_min_path_operator_erase_waves_list;; 
+		_=> nrel_else:: .._proc_find_min_path_operator_erase_waves_list;;
 	*);;
 
 
@@ -273,343 +272,341 @@ _<= nrel_decomposition_of_action:: _... (*
 // 6. Если в текущей волне есть конечная вершина, то перейти к пункту 7, иначе к пункту 4.
 
 //	Проверим, входит ли конечная вершина пути в создаваемую волну	
-	_-> _..proc_find_min_path_operator24 (*
+	_-> .._proc_find_min_path_operator24 (*
 		_<- searchElStr3;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _new_wave;;
-		_-> rrel_2:: rrel_assign:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _end_vertex;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._new_wave;;
+		_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._end_vertex;;
 //	Конечная вершина найдена - конец цикла построения списка волн
-		_=> nrel_then:: _..proc_find_min_path_operator25;;
+		_=> nrel_then:: .._proc_find_min_path_operator25;;
 //	Иначе строим следующую волну.
-		_=> nrel_else:: _..proc_find_min_path_operator12;; 
+		_=> nrel_else:: .._proc_find_min_path_operator12;;
 	*);;
 
 // 7. Сформировать один из минимальных путей, проходя в обратном порядке по списку волн.
 
 //	Сформируем связку отношения "простая цепь*"
 
-	_-> _..proc_find_min_path_operator25 (*
+	_-> .._proc_find_min_path_operator25 (*
 		_<- genEl;;
-		_-> rrel_1:: rrel_assign:: rrel_node:: rrel_scp_var:: _route;;
+		_-> rrel_1:: rrel_assign:: rrel_node:: rrel_const:: rrel_scp_var:: .._route;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator26;;
+		_=> nrel_goto:: .._proc_find_min_path_operator26;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator26 (*
+	_-> .._proc_find_min_path_operator26 (*
 		_<- genEl;;
-		_-> rrel_1:: rrel_assign:: rrel_node:: rrel_scp_var:: _route_stuct;;
+		_-> rrel_1:: rrel_assign:: rrel_node:: rrel_const:: rrel_scp_var:: .._route_struct;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator27;;
+		_=> nrel_goto:: .._proc_find_min_path_operator27;;
 	*);;
 
-	_-> _..proc_find_min_path_operator27 (*
+	_-> .._proc_find_min_path_operator27 (*
 		_<- genEl;;
-		_-> rrel_1:: rrel_assign:: rrel_node:: rrel_scp_var:: _route_visit;;
+		_-> rrel_1:: rrel_assign:: rrel_node:: rrel_const:: rrel_scp_var:: .._route_visit;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator28;;
+		_=> nrel_goto:: .._proc_find_min_path_operator28;;
 	*);;
 
-	_-> _..proc_find_min_path_operator28 (*
+	_-> .._proc_find_min_path_operator28 (*
 		_<- genElStr3;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: directed_graph;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _route_stuct;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._route_struct;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator29;;
+		_=> nrel_goto:: .._proc_find_min_path_operator29;;
 	*);;
 
 //	Добавим все компоненты в связку отношения "простая цепь*".
-	_-> _..proc_find_min_path_operator29 (*
+	_-> .._proc_find_min_path_operator29 (*
 		_<- genElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _route;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _route_stuct;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._route;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._route_struct;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_1;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator30;;
+		_=> nrel_goto:: .._proc_find_min_path_operator30;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator30 (*
+	_-> .._proc_find_min_path_operator30 (*
 		_<- genElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _route;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: _graph;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._route;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_const:: .._graph;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_2;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator31;;
+		_=> nrel_goto:: .._proc_find_min_path_operator31;;
 	*);;
 
-	_-> _..proc_find_min_path_operator31 (*
+	_-> .._proc_find_min_path_operator31 (*
 		_<- genElStr5;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _route;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _route_visit;;
-		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc4;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._route;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._route_visit;;
+		_-> rrel_4:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc4;;
 		_-> rrel_5:: rrel_fixed:: rrel_scp_const:: rrel_3;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator32;;
+		_=> nrel_goto:: .._proc_find_min_path_operator32;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator32 (*
+	_-> .._proc_find_min_path_operator32 (*
 		_<- genElStr3;;
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: nrel_simple_trail;;
-		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: _arc2;;
-		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _route;;
+		_-> rrel_2:: rrel_assign:: rrel_pos_const_perm:: rrel_scp_var:: .._arc2;;
+		_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._route;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator33;;
+		_=> nrel_goto:: .._proc_find_min_path_operator33;;
 	*);;
 //	Добавим в простую цепь посещение начальной вершины.
 
-	_-> _..proc_find_min_path_operator33 
+	_-> .._proc_find_min_path_operator33
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_add_vertex_visit_to_route;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params7(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _route;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _beg_vertex;;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _beg_vertex_visit;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params7 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._route;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._beg_vertex;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._beg_vertex_visit;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator34;;
+		_=> nrel_goto:: .._proc_find_min_path_operator34;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator34 (*
+	_-> .._proc_find_min_path_operator34 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator35;;
+		_=> nrel_goto:: .._proc_find_min_path_operator35;;
 	*);;
 //	Добавим в простую цепь посещение конечной вершины.
 		
-	_-> _..proc_find_min_path_operator35 
+	_-> .._proc_find_min_path_operator35
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_add_vertex_visit_to_route;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params8(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _route;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _end_vertex;;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _end_vertex_visit;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params8 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._route;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._end_vertex;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._end_vertex_visit;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator36;;
+		_=> nrel_goto:: .._proc_find_min_path_operator36;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator36 (*
+	_-> .._proc_find_min_path_operator36 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator37;;
+		_=> nrel_goto:: .._proc_find_min_path_operator37;;
 	*);;
 
 // Проходим в обратном направлении по списку волн и формируем структуру маршрута.
 
-	_-> _..proc_find_min_path_operator37 (*
-		_<-varAssign;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _cur_vertex;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _end_vertex;;
+	_-> .._proc_find_min_path_operator37 (*
+		_<- varAssign;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._cur_vertex;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._end_vertex;;
 
-		_=>nrel_goto:: _..proc_find_min_path_operator38;;
+		_=>nrel_goto:: .._proc_find_min_path_operator38;;
 	*);;
 // Строим из списка волн маршрут, проходя по этому списку в обратном направлении.
 
-	_-> _..proc_find_min_path_operator38 
+	_-> .._proc_find_min_path_operator38
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_get_prev;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params9(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _waves_list_tail;;
-			_-> rrel_2:: rrel_assign:: rrel_scp_var:: _list_it;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params9 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._waves_list_tail;;
+			_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._list_it;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator39;;
+		_=> nrel_goto:: .._proc_find_min_path_operator39;;
 	*);;	
 	
-	_-> _..proc_find_min_path_operator39 (*
+	_-> .._proc_find_min_path_operator39 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator40;;
+		_=> nrel_goto:: .._proc_find_min_path_operator40;;
 	*);;
 //	Цикл построения структуры маршрута
 
-	_-> _..proc_find_min_path_operator40 (*
+	_-> .._proc_find_min_path_operator40 (*
 		_<- ifVarAssign;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _list_it;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._list_it;;
 
-		_=> nrel_then:: _..proc_find_min_path_operator41;;
-		_=> nrel_else:: _..proc_find_min_path_operator_erase_waves_list;; 
+		_=> nrel_then:: .._proc_find_min_path_operator41;;
+		_=> nrel_else:: .._proc_find_min_path_operator_erase_waves_list;;
 	*);;
 
-	_-> _..proc_find_min_path_operator41 
+	_-> .._proc_find_min_path_operator41
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_get_value;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params10(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _list_it;;
-			_-> rrel_2:: rrel_assign:: rrel_scp_var:: _cur_wave;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params10 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._list_it;;
+			_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._cur_wave;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator42;;
+		_=> nrel_goto:: .._proc_find_min_path_operator42;;
 	*);;
 
-	_-> _..proc_find_min_path_operator42 (*
+	_-> .._proc_find_min_path_operator42 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator43;;
+		_=> nrel_goto:: .._proc_find_min_path_operator43;;
 	*);;
 
-	_-> _..proc_find_min_path_operator43 
+	_-> .._proc_find_min_path_operator43
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_find_any_edge;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params11(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: _graph;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _cur_vertex;;
-			_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _cur_wave;;
-			_-> rrel_4:: rrel_assign:: rrel_scp_var:: _edge;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params11 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_const:: .._graph;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._cur_vertex;;
+			_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._cur_wave;;
+			_-> rrel_4:: rrel_assign:: rrel_scp_var:: .._edge;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator44;;
+		_=> nrel_goto:: .._proc_find_min_path_operator44;;
 	*);;
 
-	_-> _..proc_find_min_path_operator44 (*
+	_-> .._proc_find_min_path_operator44 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator45;;
+		_=> nrel_goto:: .._proc_find_min_path_operator45;;
 	*);;
 //	Получаем предыдущую вершину в пути.
 
 //check edge value
-	_-> _..proc_find_min_path_operator45 
+	_-> .._proc_find_min_path_operator45
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_get_other_vertex_incidence_edge;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params12(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _edge;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _cur_vertex;;
-			_-> rrel_3:: rrel_assign:: rrel_scp_var:: _prev_vertex;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params12 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._edge;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._cur_vertex;;
+			_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._prev_vertex;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator46;;
+		_=> nrel_goto:: .._proc_find_min_path_operator46;;
 	*);;
 
-	_-> _..proc_find_min_path_operator46 (*
+	_-> .._proc_find_min_path_operator46 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator47;;
+		_=> nrel_goto:: .._proc_find_min_path_operator47;;
 	*);;
 //	Добавляем посещение ребра edge в путь.
-	_-> _..proc_find_min_path_operator47 
+	_-> .._proc_find_min_path_operator47
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_add_edge_visit_to_route;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params13(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _route;;
-			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _edge;;
-			_-> rrel_3:: rrel_fixed:: rrel_scp_var:: _prev_vertex;;
-			_-> rrel_4:: rrel_fixed:: rrel_scp_var:: _cur_vertex;;
-			_-> rrel_5:: rrel_assign:: rrel_scp_var:: _edge_visit;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params13 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._route;;
+			_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._edge;;
+			_-> rrel_3:: rrel_fixed:: rrel_scp_var:: .._prev_vertex;;
+			_-> rrel_4:: rrel_fixed:: rrel_scp_var:: .._cur_vertex;;
+			_-> rrel_5:: rrel_assign:: rrel_scp_var:: .._edge_visit;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator48;;
+		_=> nrel_goto:: .._proc_find_min_path_operator48;;
 	*);;
 
-	_-> _..proc_find_min_path_operator48 (*
+	_-> .._proc_find_min_path_operator48 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator49;;
+		_=> nrel_goto:: .._proc_find_min_path_operator49;;
 	*);;
 //	Делаем предыдущую вершину текущей.
 
-	_->_..proc_find_min_path_operator49 (*
-		_<-varAssign;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _cur_vertex;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _prev_vertex;;
+	_-> .._proc_find_min_path_operator49 (*
+		_<- varAssign;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._cur_vertex;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._prev_vertex;;
 
-		_=>nrel_goto:: _..proc_find_min_path_operator50;;
+		_=> nrel_goto:: .._proc_find_min_path_operator50;;
 	*);;
 	
-	_->_..proc_find_min_path_operator50 (*
-		_<-varAssign;;
-		_-> rrel_1:: rrel_assign:: rrel_scp_var:: _list_it_temp;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: _list_it;;
+	_-> .._proc_find_min_path_operator50 (*
+		_<- varAssign;;
+		_-> rrel_1:: rrel_assign:: rrel_scp_var:: .._list_it_temp;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_var:: .._list_it;;
 
-		_=>nrel_goto:: _..proc_find_min_path_operator51;;
+		_=> nrel_goto:: .._proc_find_min_path_operator51;;
 	*);;
 
-	_-> _..proc_find_min_path_operator51 
-	(*
+	_-> .._proc_find_min_path_operator51 (*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_list_get_prev;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params14(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _list_it_temp;;
-			_-> rrel_2:: rrel_assign:: rrel_scp_var:: _list_it;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params14 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._list_it_temp;;
+			_-> rrel_2:: rrel_assign:: rrel_scp_var:: .._list_it;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator52;;
+		_=> nrel_goto:: .._proc_find_min_path_operator52;;
 	*);;
 	
-	_-> _..proc_find_min_path_operator52 (*
+	_-> .._proc_find_min_path_operator52 (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator40;;
+		_=> nrel_goto:: .._proc_find_min_path_operator40;;
 	*);;
 	
 
 // Чистим память.
-	_-> _..proc_find_min_path_operator_erase_waves_list 
+	_-> .._proc_find_min_path_operator_erase_waves_list
 	(*
 		_<- call;;
 
 		_-> rrel_1:: rrel_fixed:: rrel_scp_const:: proc_erase_wave_list;;
-		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: _..params15(*
-			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _waves_list_head;;
+		_-> rrel_2:: rrel_fixed:: rrel_scp_const:: .._params15 (*
+			_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._waves_list_head;;
 		*);;
-		_-> rrel_3:: rrel_assign:: rrel_scp_var:: _descr;;
+		_-> rrel_3:: rrel_assign:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator_wait_return_list_erase;;
+		_=> nrel_goto:: .._proc_find_min_path_operator_wait_return_list_erase;;
 	*);;	
 
-	_-> _..proc_find_min_path_operator_wait_return_list_erase (*
+	_-> .._proc_find_min_path_operator_wait_return_list_erase (*
 		_<- waitReturn;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: _descr;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: .._descr;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator_erase_not_checked_vertexes;;
+		_=> nrel_goto:: .._proc_find_min_path_operator_erase_not_checked_vertexes;;
 	*);;		
 
-	_-> _..proc_find_min_path_operator_erase_not_checked_vertexes (*
+	_-> .._proc_find_min_path_operator_erase_not_checked_vertexes (*
 		_<- eraseEl;;
-		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: rrel_erase:: _not_checked_vertexes;;
+		_-> rrel_1:: rrel_fixed:: rrel_scp_var:: rrel_erase:: .._not_checked_vertexes;;
 
-		_=> nrel_goto:: _..proc_find_min_path_operator_return;;
+		_=> nrel_goto:: .._proc_find_min_path_operator_return;;
 	*);;
-	/*
-	_-> _..proc_find_min_path_operator_return (*
+
+	_-> .._proc_find_min_path_operator_return (*
 		_<- return;;
 	*);;
-*/
 *);;
 *];;
